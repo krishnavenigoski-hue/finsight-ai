@@ -108,3 +108,45 @@ footer {
     color: #aaa;
     border-top: 1px solid #243b55;
 }
+/* Expense Form Styling */
+
+input,
+select {
+    width: 90%;
+    padding: 12px;
+    margin: 8px;
+    background: #0f172a;
+    color: white;
+    border: 1px solid #00e5ff;
+    border-radius: 12px;
+    font-size: 16px;
+}
+
+
+input::placeholder {
+    color: #94a3b8;
+}
+
+
+select {
+    cursor: pointer;
+}
+
+
+.card input,
+.card select {
+    box-shadow: 0 0 10px rgba(0,229,255,0.2);
+}
+
+
+.card button {
+    margin-top: 10px;
+    background: linear-gradient(135deg,#00e5ff,#8a7dff);
+    color: black;
+    font-weight: bold;
+}
+
+
+.card button:hover {
+    box-shadow: 0 0 20px #00e5ff;
+}
