@@ -7,7 +7,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: #070b1a;
+    background: #080c1f;
     color: white;
     line-height: 1.6;
 }
@@ -17,21 +17,20 @@ body {
 
 header {
     text-align: center;
-    padding: 40px 20px;
-    background: linear-gradient(135deg, #111827, #1e3a8a);
-    border-bottom: 1px solid #00e5ff;
+    padding: 45px 20px;
+    background: linear-gradient(135deg, #111827, #312e81, #0f766e);
 }
 
 
 header h1 {
     font-size: 45px;
-    color: #00e5ff;
+    color: #22d3ee;
 }
 
 
 header p {
+    color: #e0f2fe;
     font-size: 18px;
-    color: #dbeafe;
 }
 
 
@@ -45,60 +44,87 @@ nav {
 /* Sections */
 
 section {
-    margin: 30px auto;
-    padding: 30px;
+
     width: 90%;
-    max-width: 1000px;
+    max-width: 1100px;
 
-    background: linear-gradient(145deg,#111827,#1f2937);
+    margin: 35px auto;
 
-    border-radius: 20px;
+    padding: 35px;
 
-    box-shadow: 0 0 25px rgba(0,229,255,0.15);
+    background: rgba(17,24,39,0.9);
+
+    border-radius: 25px;
+
+    box-shadow: 0 0 25px rgba(139,92,246,0.2);
+
+}
+
+
+
+section:hover {
+
+    box-shadow: 0 0 35px rgba(34,211,238,0.25);
+
 }
 
 
 
 h2 {
-    color: #8b5cf6;
+
+    color: #a78bfa;
+
     margin-bottom: 20px;
+
 }
 
 
+
 h3 {
-    color: #00e676;
+
+    color: #facc15;
+
 }
 
 
 
 /* Hero */
 
+
 .hero {
+
     text-align: center;
+
 }
 
 
+
 .hero h1 {
-    font-size: 38px;
-    color: white;
+
+    font-size: 40px;
+
 }
 
 
 
 .hero p {
+
     margin: 20px;
+
     color: #cbd5e1;
+
 }
 
 
 
-
-/* Dashboard Cards */
+/* Dashboard */
 
 .dashboard {
 
     display: flex;
+
     gap: 20px;
+
     flex-wrap: wrap;
 
 }
@@ -108,19 +134,35 @@ h3 {
 .card {
 
     flex: 1;
-    min-width: 200px;
 
-    background: linear-gradient(135deg,#172554,#312e81);
+    min-width: 220px;
 
     padding: 25px;
 
-    border-radius: 18px;
-
     text-align: center;
 
-    border: 1px solid rgba(0,229,255,0.3);
 
-    box-shadow: 0 0 15px rgba(139,92,246,0.3);
+    background: linear-gradient(135deg,#1e3a8a,#6d28d9);
+
+
+    border-radius: 20px;
+
+
+    border: 1px solid rgba(34,211,238,0.4);
+
+
+    transition: 0.3s ease;
+
+
+}
+
+
+
+.card:hover {
+
+    transform: translateY(-10px);
+
+    box-shadow: 0 0 30px rgba(34,211,238,0.5);
 
 }
 
@@ -128,13 +170,14 @@ h3 {
 
 .card p {
 
-    color: #00e5ff;
+    color: #22d3ee;
 
     font-size: 22px;
 
     font-weight: bold;
 
 }
+
 
 
 
@@ -145,30 +188,41 @@ button {
 
     margin-top: 15px;
 
-    padding: 14px 30px;
+    padding: 14px 35px;
+
 
     border: none;
 
+
     border-radius: 30px;
 
-    background: linear-gradient(90deg,#00e5ff,#8b5cf6);
+
+    background: linear-gradient(90deg,#22d3ee,#a78bfa);
+
 
     color: black;
 
+
     font-weight: bold;
+
 
     cursor: pointer;
 
+
     font-size: 16px;
+
+
+    transition: 0.3s;
 
 }
 
 
+
 button:hover {
 
-    transform: scale(1.05);
+    transform: scale(1.08);
 
-    box-shadow: 0 0 20px #00e5ff;
+    box-shadow: 0 0 25px #22d3ee;
 
 }
 
@@ -184,19 +238,27 @@ select {
 
     width: 90%;
 
+
     padding: 15px;
+
 
     margin: 10px;
 
+
     background: #020617;
+
 
     color: white;
 
-    border: 2px solid #00e5ff;
+
+    border: 2px solid #22d3ee;
+
 
     border-radius: 15px;
 
+
     font-size: 16px;
+
 
 }
 
@@ -210,20 +272,13 @@ input::placeholder {
 
 
 
-select {
-
-    cursor: pointer;
-
-}
-
-
 
 /* Lists */
 
 
 li {
 
-    margin: 10px;
+    margin: 12px;
 
     color: #e2e8f0;
 
