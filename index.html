@@ -6,7 +6,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
+
 <body>
+
 
 <header>
 
@@ -18,10 +20,12 @@
         Home |
         Dashboard |
         AI Insights |
+        Expenses |
         Contact
     </nav>
 
 </header>
+
 
 
 <section class="hero">
@@ -41,16 +45,19 @@
 
 
 
+
+
 <section>
 
 <h2>✨ Powerful Features</h2>
+
 
 <div class="dashboard">
 
 
 <div class="card">
 <h3>💳 Expense Tracking</h3>
-<p>Record and manage daily expenses easily.</p>
+<p>Manage your daily expenses easily.</p>
 </div>
 
 
@@ -62,19 +69,21 @@
 
 <div class="card">
 <h3>🤖 AI Insights</h3>
-<p>Get personalized saving suggestions.</p>
+<p>Get intelligent saving suggestions.</p>
 </div>
 
 
 <div class="card">
 <h3>🎯 Financial Goals</h3>
-<p>Plan your future financial goals.</p>
+<p>Plan your financial future.</p>
 </div>
 
 
 </div>
 
 </section>
+
+
 
 
 
@@ -112,7 +121,10 @@
 
 </div>
 
+
 </section>
+
+
 
 
 
@@ -124,19 +136,21 @@
 <div class="card">
 
 <p>
-⚠️ Your shopping expenses increased by 25% this month.
+⚠️ Shopping expenses increased by 25% this month.
 </p>
-
 
 <p>
 💡 Suggestion:
-Reduce unnecessary spending and save ₹2000 more.
+Reduce unnecessary spending and save more.
 </p>
 
 
 </div>
 
+
 </section>
+
+
 
 
 
@@ -149,33 +163,44 @@ Reduce unnecessary spending and save ₹2000 more.
 <div class="card">
 
 
-<input type="text" id="expenseName" placeholder="Expense Name">
-
-<br><br>
-
-
-<input type="number" id="expenseAmount" placeholder="Amount">
+<input 
+type="text" 
+id="expenseName" 
+placeholder="Expense Name">
 
 
-<br><br>
+<br>
+
+
+<input 
+type="number" 
+id="expenseAmount" 
+placeholder="Amount">
+
+
+<br>
 
 
 <select id="expenseCategory">
 
 <option>Food</option>
+
 <option>Travel</option>
+
 <option>Shopping</option>
+
 <option>Education</option>
+
 <option>Other</option>
 
 </select>
 
 
-<br><br>
+<br>
 
 
 <button onclick="addExpense()">
-Add Expense
+Add Expense 🚀
 </button>
 
 
@@ -187,7 +212,45 @@ Add Expense
 
 
 
+
+
 <section>
+
+<h2>📋 Recent Expenses</h2>
+
+
+<div class="card">
+
+
+<table id="expenseTable">
+
+
+<tr>
+
+<th>Name</th>
+
+<th>Amount</th>
+
+<th>Category</th>
+
+</tr>
+
+
+</table>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+<section>
+
 
 <h2>🌟 Why FinSight AI?</h2>
 
@@ -200,13 +263,15 @@ Add Expense
 
 <li>Better saving decisions</li>
 
-<li>Simple user-friendly design</li>
+<li>User-friendly fintech experience</li>
 
 
 </ul>
 
 
 </section>
+
+
 
 
 
@@ -218,6 +283,8 @@ Add Expense
 </p>
 
 </footer>
+
+
 
 
 
