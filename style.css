@@ -4,203 +4,141 @@
     box-sizing: border-box;
 }
 
-
 body {
-
     font-family: Arial, sans-serif;
-
-    background: linear-gradient(135deg,#0f172a,#172554,#1e1b4b);
-
+    background: linear-gradient(135deg, #111827, #1e3a8a, #312e81);
     color: white;
-
     line-height: 1.6;
-
 }
-
 
 
 /* Header */
 
 header {
-
     text-align: center;
-
     padding: 45px 20px;
-
-    background: linear-gradient(135deg,#1e3a8a,#4c1d95,#0f766e);
-
-    border-bottom: 1px solid #22d3ee;
-
+    background: linear-gradient(135deg, #1e293b, #4338ca);
+    border-bottom: 2px solid #22d3ee;
 }
-
 
 header h1 {
-
     font-size: 45px;
-
     color: #67e8f9;
-
 }
-
 
 header p {
-
     font-size: 18px;
-
     color: #e0f2fe;
-
 }
-
 
 nav {
-
     margin-top: 20px;
-
-    color: white;
-
 }
-
-
-
 
 
 /* Sections */
 
 section {
-
     width: 90%;
-
     max-width: 1100px;
-
     margin: 35px auto;
-
     padding: 35px;
 
-    background: rgba(30,41,59,0.85);
+    background: rgba(30,41,59,0.9);
 
     border-radius: 25px;
 
-    box-shadow: 0 0 25px rgba(103,232,249,0.15);
+    box-shadow: 0 0 25px rgba(34,211,238,0.15);
 
+    transition: 0.3s;
 }
 
 
 section:hover {
-
-    box-shadow: 0 0 35px rgba(167,139,250,0.3);
-
+    box-shadow: 0 0 35px rgba(167,139,250,0.35);
 }
-
-
 
 
 h2 {
-
-    color:#c4b5fd;
-
-    margin-bottom:20px;
-
+    color: #c4b5fd;
+    margin-bottom: 20px;
 }
-
 
 h3 {
-
-    color:#fde047;
-
+    color: #fde047;
 }
-
-
 
 
 
 /* Hero */
 
 .hero {
-
-    text-align:center;
-
+    text-align: center;
 }
 
 
 .hero h1 {
-
-    font-size:40px;
-
+    font-size: 40px;
 }
 
 
 .hero p {
-
-    margin:20px;
-
-    color:#cbd5e1;
-
+    color: #cbd5e1;
+    margin: 20px;
 }
 
 
 
+/* Dashboard */
+
+.dashboard {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
 
 
 /* Cards */
 
-.dashboard {
-
-    display:flex;
-
-    gap:20px;
-
-    flex-wrap:wrap;
-
-}
-
-
-
 .card {
 
-    flex:1;
+    flex: 1;
 
-    min-width:220px;
+    min-width: 220px;
 
-    padding:25px;
+    padding: 25px;
 
-    text-align:center;
+    text-align: center;
 
+    background: linear-gradient(145deg,#334155,#6366f1);
 
-    background:linear-gradient(135deg,#1d4ed8,#6d28d9);
+    border-radius: 20px;
 
+    border: 1px solid rgba(34,211,238,0.5);
 
-    border-radius:20px;
-
-
-    border:1px solid rgba(103,232,249,0.4);
-
-
-    transition:0.3s ease;
+    transition: 0.3s;
 
 }
-
 
 
 .card:hover {
 
-    transform:translateY(-10px);
+    transform: translateY(-10px);
 
-    box-shadow:0 0 30px rgba(103,232,249,0.5);
+    box-shadow: 0 0 30px rgba(34,211,238,0.5);
 
 }
-
 
 
 .card p {
 
-    color:#67e8f9;
+    color: #67e8f9;
 
-    font-size:22px;
+    font-size: 22px;
 
-    font-weight:bold;
+    font-weight: bold;
 
 }
-
 
 
 
@@ -209,39 +147,36 @@ h3 {
 
 button {
 
-    margin-top:15px;
+    margin-top: 15px;
 
-    padding:14px 35px;
+    padding: 14px 35px;
 
-    border:none;
+    border: none;
 
-    border-radius:30px;
+    border-radius: 30px;
 
-    background:linear-gradient(90deg,#22d3ee,#a78bfa);
+    background: linear-gradient(90deg,#22d3ee,#a78bfa);
 
-    color:#020617;
+    color: #020617;
 
-    font-weight:bold;
+    font-weight: bold;
 
-    font-size:16px;
+    font-size: 16px;
 
-    cursor:pointer;
+    cursor: pointer;
 
-    transition:0.3s;
+    transition: 0.3s;
 
 }
-
 
 
 button:hover {
 
-    transform:scale(1.08);
+    transform: scale(1.08);
 
-    box-shadow:0 0 25px #22d3ee;
+    box-shadow: 0 0 25px #22d3ee;
 
 }
-
-
 
 
 
@@ -250,64 +185,51 @@ button:hover {
 input,
 select {
 
-    width:90%;
+    width: 90%;
 
-    padding:15px;
+    padding: 15px;
 
-    margin:10px;
+    margin: 10px;
 
-    background:#172033;
+    background: #1e293b;
 
-    color:white;
+    color: white;
 
-    border:2px solid #22d3ee;
+    border: 2px solid #22d3ee;
 
-    border-radius:15px;
+    border-radius: 15px;
 
-    font-size:16px;
+    font-size: 16px;
 
 }
-
 
 
 input::placeholder {
 
-    color:#94a3b8;
+    color:#cbd5e1;
 
 }
 
 
 
-select {
-
-    cursor:pointer;
-
-}
-
-
-
-
-
-
-/* Expense History Table */
+/* Table */
 
 
 table {
 
     width:100%;
 
-    border-collapse:separate;
+    border-collapse: separate;
 
     border-spacing:0;
 
-    overflow:hidden;
-
     border-radius:15px;
 
-    background:rgba(255,255,255,0.05);
+    overflow:hidden;
+
+    background:rgba(255,255,255,0.08);
 
 }
-
 
 
 th {
@@ -318,10 +240,7 @@ th {
 
     color:white;
 
-    font-size:16px;
-
 }
-
 
 
 td {
@@ -330,12 +249,11 @@ td {
 
     text-align:center;
 
-    color:#e2e8f0;
+    color:#f1f5f9;
 
     border-bottom:1px solid rgba(34,211,238,0.3);
 
 }
-
 
 
 tr:hover td {
@@ -343,16 +261,6 @@ tr:hover td {
     background:rgba(34,211,238,0.15);
 
 }
-
-
-
-table tr:last-child td {
-
-    border-bottom:none;
-
-}
-
-
 
 
 
@@ -368,8 +276,6 @@ li {
 
 
 
-
-
 /* Footer */
 
 footer {
@@ -379,5 +285,28 @@ footer {
     padding:30px;
 
     color:#cbd5e1;
+
+}
+
+
+
+/* Mobile */
+
+@media(max-width:700px){
+
+    header h1{
+        font-size:32px;
+    }
+
+
+    .hero h1{
+        font-size:28px;
+    }
+
+
+    section{
+        width:95%;
+        padding:20px;
+    }
 
 }
