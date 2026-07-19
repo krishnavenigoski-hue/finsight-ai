@@ -6,38 +6,61 @@
 
 
 body {
+
     font-family: Arial, sans-serif;
-    background: #080c1f;
+
+    background: linear-gradient(135deg,#0f172a,#172554,#1e1b4b);
+
     color: white;
+
     line-height: 1.6;
+
 }
+
 
 
 /* Header */
 
 header {
+
     text-align: center;
+
     padding: 45px 20px;
-    background: linear-gradient(135deg, #111827, #312e81, #0f766e);
+
+    background: linear-gradient(135deg,#1e3a8a,#4c1d95,#0f766e);
+
+    border-bottom: 1px solid #22d3ee;
+
 }
 
 
 header h1 {
+
     font-size: 45px;
-    color: #22d3ee;
+
+    color: #67e8f9;
+
 }
 
 
 header p {
-    color: #e0f2fe;
+
     font-size: 18px;
+
+    color: #e0f2fe;
+
 }
 
 
 nav {
+
     margin-top: 20px;
-    color: #ffffff;
+
+    color: white;
+
 }
+
+
 
 
 
@@ -46,86 +69,87 @@ nav {
 section {
 
     width: 90%;
+
     max-width: 1100px;
 
     margin: 35px auto;
 
     padding: 35px;
 
-    background: rgba(17,24,39,0.9);
+    background: rgba(30,41,59,0.85);
 
     border-radius: 25px;
 
-    box-shadow: 0 0 25px rgba(139,92,246,0.2);
+    box-shadow: 0 0 25px rgba(103,232,249,0.15);
 
 }
-
 
 
 section:hover {
 
-    box-shadow: 0 0 35px rgba(34,211,238,0.25);
+    box-shadow: 0 0 35px rgba(167,139,250,0.3);
 
 }
+
 
 
 
 h2 {
 
-    color: #a78bfa;
+    color:#c4b5fd;
 
-    margin-bottom: 20px;
+    margin-bottom:20px;
 
 }
-
 
 
 h3 {
 
-    color: #facc15;
+    color:#fde047;
 
 }
+
+
 
 
 
 /* Hero */
 
-
 .hero {
 
-    text-align: center;
+    text-align:center;
 
 }
-
 
 
 .hero h1 {
 
-    font-size: 40px;
+    font-size:40px;
 
 }
-
 
 
 .hero p {
 
-    margin: 20px;
+    margin:20px;
 
-    color: #cbd5e1;
+    color:#cbd5e1;
 
 }
 
 
 
-/* Dashboard */
+
+
+/* Cards */
 
 .dashboard {
 
-    display: flex;
+    display:flex;
 
-    gap: 20px;
+    gap:20px;
 
-    flex-wrap: wrap;
+    flex-wrap:wrap;
 
 }
 
@@ -133,26 +157,25 @@ h3 {
 
 .card {
 
-    flex: 1;
+    flex:1;
 
-    min-width: 220px;
+    min-width:220px;
 
-    padding: 25px;
+    padding:25px;
 
-    text-align: center;
-
-
-    background: linear-gradient(135deg,#1e3a8a,#6d28d9);
+    text-align:center;
 
 
-    border-radius: 20px;
+    background:linear-gradient(135deg,#1d4ed8,#6d28d9);
 
 
-    border: 1px solid rgba(34,211,238,0.4);
+    border-radius:20px;
 
 
-    transition: 0.3s ease;
+    border:1px solid rgba(103,232,249,0.4);
 
+
+    transition:0.3s ease;
 
 }
 
@@ -160,9 +183,9 @@ h3 {
 
 .card:hover {
 
-    transform: translateY(-10px);
+    transform:translateY(-10px);
 
-    box-shadow: 0 0 30px rgba(34,211,238,0.5);
+    box-shadow:0 0 30px rgba(103,232,249,0.5);
 
 }
 
@@ -170,49 +193,41 @@ h3 {
 
 .card p {
 
-    color: #22d3ee;
+    color:#67e8f9;
 
-    font-size: 22px;
+    font-size:22px;
 
-    font-weight: bold;
+    font-weight:bold;
 
 }
 
 
 
 
-/* Buttons */
 
+/* Buttons */
 
 button {
 
-    margin-top: 15px;
+    margin-top:15px;
 
-    padding: 14px 35px;
+    padding:14px 35px;
 
+    border:none;
 
-    border: none;
+    border-radius:30px;
 
+    background:linear-gradient(90deg,#22d3ee,#a78bfa);
 
-    border-radius: 30px;
+    color:#020617;
 
+    font-weight:bold;
 
-    background: linear-gradient(90deg,#22d3ee,#a78bfa);
+    font-size:16px;
 
+    cursor:pointer;
 
-    color: black;
-
-
-    font-weight: bold;
-
-
-    cursor: pointer;
-
-
-    font-size: 16px;
-
-
-    transition: 0.3s;
+    transition:0.3s;
 
 }
 
@@ -220,45 +235,36 @@ button {
 
 button:hover {
 
-    transform: scale(1.08);
+    transform:scale(1.08);
 
-    box-shadow: 0 0 25px #22d3ee;
+    box-shadow:0 0 25px #22d3ee;
 
 }
 
 
 
 
-/* Expense Form */
 
+/* Expense Form */
 
 input,
 select {
 
+    width:90%;
 
-    width: 90%;
+    padding:15px;
 
+    margin:10px;
 
-    padding: 15px;
+    background:#172033;
 
+    color:white;
 
-    margin: 10px;
+    border:2px solid #22d3ee;
 
+    border-radius:15px;
 
-    background: #020617;
-
-
-    color: white;
-
-
-    border: 2px solid #22d3ee;
-
-
-    border-radius: 15px;
-
-
-    font-size: 16px;
-
+    font-size:16px;
 
 }
 
@@ -266,35 +272,112 @@ select {
 
 input::placeholder {
 
-    color: #94a3b8;
+    color:#94a3b8;
 
 }
+
+
+
+select {
+
+    cursor:pointer;
+
+}
+
+
+
+
+
+
+/* Expense History Table */
+
+
+table {
+
+    width:100%;
+
+    border-collapse:separate;
+
+    border-spacing:0;
+
+    overflow:hidden;
+
+    border-radius:15px;
+
+    background:rgba(255,255,255,0.05);
+
+}
+
+
+
+th {
+
+    padding:15px;
+
+    background:linear-gradient(90deg,#0891b2,#7c3aed);
+
+    color:white;
+
+    font-size:16px;
+
+}
+
+
+
+td {
+
+    padding:15px;
+
+    text-align:center;
+
+    color:#e2e8f0;
+
+    border-bottom:1px solid rgba(34,211,238,0.3);
+
+}
+
+
+
+tr:hover td {
+
+    background:rgba(34,211,238,0.15);
+
+}
+
+
+
+table tr:last-child td {
+
+    border-bottom:none;
+
+}
+
 
 
 
 
 /* Lists */
 
-
 li {
 
-    margin: 12px;
+    margin:12px;
 
-    color: #e2e8f0;
+    color:#e2e8f0;
 
 }
 
 
 
-/* Footer */
 
+
+/* Footer */
 
 footer {
 
-    text-align: center;
+    text-align:center;
 
-    padding: 30px;
+    padding:30px;
 
-    color: #94a3b8;
+    color:#cbd5e1;
 
 }
