@@ -70,6 +70,11 @@ function displayExpenses(){
 
         row.insertCell(2).innerHTML = expense.category;
 
+        function openDashboard(){
+
+    document.getElementById("advanced-dashboard")
+    .scrollIntoView({
+        behavior:"smooth"
 
     });
 
