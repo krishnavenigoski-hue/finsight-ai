@@ -50,6 +50,7 @@ function displayExpenses(){
     table.innerHTML = `
 
     <tr>
+    <th>S.No</th>
     <th>Name</th>
     <th>Amount</th>
     <th>Category</th>
@@ -58,32 +59,39 @@ function displayExpenses(){
     `;
 
 
-    expenses.forEach(function(expense){
+    expenses.forEach(function(expense, index){
 
 
         let row = table.insertRow();
 
 
-        row.insertCell(0).innerHTML = expense.name;
+        row.insertCell(0).innerHTML = index + 1;
 
-        row.insertCell(1).innerHTML = "₹" + expense.amount;
+        row.insertCell(1).innerHTML = expense.name;
 
-        row.insertCell(2).innerHTML = expense.category;
+        row.insertCell(2).innerHTML = "₹" + expense.amount;
 
-        function openDashboard(){
+        row.insertCell(3).innerHTML = expense.category;
 
-    document.getElementById("advanced-dashboard")
-    .scrollIntoView({
-        behavior:"smooth"
 
-        function openDashboard(){
+    });
+
+}
+
+
+
+
+function openDashboard(){
 
     let dashboard = document.getElementById("advanced-dashboard");
 
+
     dashboard.style.display = "block";
 
+
     dashboard.scrollIntoView({
-        behavior: "smooth"
+
+        behavior:"smooth"
 
     });
 
