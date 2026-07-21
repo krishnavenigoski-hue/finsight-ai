@@ -76,6 +76,15 @@ function displayExpenses(){
     .scrollIntoView({
         behavior:"smooth"
 
+        function openDashboard(){
+
+    let dashboard = document.getElementById("advanced-dashboard");
+
+    dashboard.style.display = "block";
+
+    dashboard.scrollIntoView({
+        behavior: "smooth"
+
     });
 
 
