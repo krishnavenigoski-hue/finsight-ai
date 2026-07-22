@@ -307,6 +307,37 @@ footer {
     section{
         width:95%;
         padding:20px;
+
+        .analytics-container{
+
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+
+}
+
+
+.chart-box{
+
+background:white;
+padding:20px;
+border-radius:20px;
+
+}
+
+
+.chart-box canvas{
+
+max-height:220px;
+
+}
+
+
+.full-chart{
+
+grid-column:span 2;
+
+}
     }
 
 }
