@@ -82,18 +82,5 @@ function displayExpenses(){
 
 
 function openDashboard(){
-
-    let dashboard = document.getElementById("advanced-dashboard");
-
-
-    dashboard.style.display = "block";
-
-
-    dashboard.scrollIntoView({
-
-        behavior:"smooth"
-
-    });
-
-
+    window.location.href = "dashboard.html";
 }
