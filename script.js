@@ -42,6 +42,7 @@ function addExpense(){
 
 
 
+
 function displayExpenses(){
 
     let table = document.getElementById("expenseTable");
@@ -73,12 +74,6 @@ function displayExpenses(){
 
         row.insertCell(3).innerHTML = expense.category;
 
-        function showFeature(feature){
-
-    alert(feature + " module opened 🚀");
-
-}
-
 
     });
 
@@ -87,6 +82,18 @@ function displayExpenses(){
 
 
 
+
 function openDashboard(){
+
     window.location.href = "dashboard.html";
+
+}
+
+
+
+
+function showFeature(feature){
+
+    alert(feature + " module opened 🚀");
+
 }
