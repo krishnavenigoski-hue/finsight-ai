@@ -3,174 +3,326 @@
 
 <head>
 
-    <title>FinSight AI - Financial Intelligence Platform</title>
+<title>FinSight AI - Financial Intelligence Platform</title>
 
-    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
 
 </head>
 
+
 <body>
+
 
 <header>
 
-    <h1>💰 FinSight AI</h1>
+<h1>💰 FinSight AI</h1>
 
-    <p>Your Personal Financial Intelligence Platform</p>
+<p>Your Personal Financial Intelligence Platform</p>
 
-    <nav>
-        Home |
-        AI Dashboard |
-        Expenses |
-        Contact
-    </nav>
+
+<nav>
+Home |
+AI Dashboard |
+Expenses |
+Analytics
+</nav>
+
 
 </header>
 
 
 
-<!-- HERO SECTION -->
+
+
+<!-- FINANCIAL OVERVIEW -->
+
+<section>
+
+
+<h2>💰 Financial Overview</h2>
+
+
+<div class="dashboard">
+
+
+<div class="card">
+
+<h3>💵 Income</h3>
+
+<h2>₹50,000</h2>
+
+<p>This Month</p>
+
+</div>
+
+
+
+
+<div class="card">
+
+<h3>💸 Spent Till Now</h3>
+
+<h2>₹18,000</h2>
+
+<p>Total expenses</p>
+
+</div>
+
+
+
+
+<div class="card">
+
+<h3>🏦 Savings</h3>
+
+<h2>₹32,000</h2>
+
+<p>Available savings</p>
+
+</div>
+
+
+
+
+<div class="card">
+
+<h3>❤️ Financial Health</h3>
+
+<h2>85/100</h2>
+
+<p>Good condition</p>
+
+</div>
+
+
+
+
+<div class="card">
+
+<h3>🎯 Safe Spending Limit</h3>
+
+<h2>₹15,000</h2>
+
+<p>Recommended</p>
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- HERO -->
+
 
 <section class="hero">
 
-    <h1>Manage Your Money Smarter With AI 🤖</h1>
 
-    <p>
-        Track expenses, understand your spending habits,
-        and receive personalized financial recommendations.
-    </p>
+<h1>
+Manage Your Money Smarter With AI 🤖
+</h1>
 
-    <div class="hero-points">
 
-        <p>✅ Track your daily expenses easily</p>
+<p>
+Track expenses, understand spending,
+and make better financial decisions.
+</p>
 
-        <p>✅ Understand where your money goes</p>
 
-        <p>✅ Get AI-powered saving suggestions</p>
 
-    </div>
+<button onclick="openDashboard()">
 
-    <button onclick="openDashboard()">
-        🚀 Explore AI Advanced Dashboard
-    </button>
+🚀 Explore AI Advanced Dashboard
+
+</button>
+
 
 </section>
+
+
+
+
 
 
 
 <!-- ADD EXPENSE -->
 
+
 <section>
 
-    <h2>➕ Add New Expense</h2>
 
-    <div class="card">
+<h2>➕ Add New Expense</h2>
 
-        <input
-            id="expenseName"
-            type="text"
-            placeholder="Expense Name">
 
-        <br><br>
+<div class="card">
 
-        <input
-            id="expenseAmount"
-            type="number"
-            placeholder="Amount">
 
-        <br><br>
+<input
+id="expenseName"
+type="text"
+placeholder="Expense Name">
 
-        <select id="expenseCategory">
 
-            <option>Food</option>
-            <option>Travel</option>
-            <option>Shopping</option>
-            <option>Education</option>
-            <option>Other</option>
+<br><br>
 
-        </select>
 
-        <br><br>
+<input
+id="expenseAmount"
+type="number"
+placeholder="Amount">
 
-        <button onclick="addExpense()">
-            Add Expense 🚀
-        </button>
 
-    </div>
+<br><br>
+
+
+<select id="expenseCategory">
+
+
+<option>Food</option>
+
+<option>Travel</option>
+
+<option>Shopping</option>
+
+<option>Education</option>
+
+<option>Other</option>
+
+
+</select>
+
+
+<br><br>
+
+
+<button onclick="addExpense()">
+
+Add Expense 🚀
+
+</button>
+
+
+</div>
+
 
 </section>
+
+
+
+
+
 
 
 
 <!-- RECENT EXPENSES -->
 
+
 <section>
 
-    <h2>📋 Recent Expenses</h2>
 
-    <div class="card">
+<h2>📋 Recent Expenses</h2>
 
-        <table id="expenseTable">
 
-            <tr>
-                <th>S.No</th>
-                <th>Name</th>
-                <th>Amount</th>
-                <th>Category</th>
-            </tr>
+<div class="card">
 
-        </table>
 
-    </div>
+<table id="expenseTable">
+
+
+<tr>
+
+<th>S.No</th>
+
+<th>Name</th>
+
+<th>Amount</th>
+
+<th>Category</th>
+
+
+</tr>
+
+
+</table>
+
+
+</div>
+
 
 </section>
 
 
 
-<!-- AI FINANCIAL COACH -->
+
+
+
+
+
+<!-- AI COACH -->
+
 
 <section>
 
-    <h2>🤖 AI Financial Coach</h2>
 
-    <div class="card">
+<h2>🤖 AI Financial Coach</h2>
 
-        <p>
-            🟢 Good:
-            Your spending pattern is improving.
-        </p>
 
-        <p>
-            🟡 Warning:
-            Your shopping expenses increased recently.
-        </p>
+<div class="card">
 
-        <p>
-            🔴 Alert:
-            Your expenses are crossing your planned budget.
-        </p>
 
-        <p>
-            💡 Recommendation:
-            Reduce unnecessary spending and increase savings.
-        </p>
+<p>
+🟢 Your savings habit is improving.
+</p>
 
-    </div>
+
+<p>
+🟡 Monitor shopping expenses this month.
+</p>
+
+
+<p>
+💡 Keep your spending below your safe limit.
+</p>
+
+
+</div>
+
 
 </section>
+
+
+
+
 
 
 
 <footer>
 
-    <p>
-        © 2026 FinSight AI | Building smarter financial habits
-    </p>
+
+<p>
+© 2026 FinSight AI | Building smarter financial habits
+</p>
+
 
 </footer>
 
 
 
+
+
+
+
 <script src="script.js"></script>
+
 
 </body>
 
