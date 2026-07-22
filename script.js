@@ -92,8 +92,19 @@ function openDashboard(){
 
 
 
+
 function showFeature(feature){
 
     alert(feature + " module opened 🚀");
+
+}
+
+
+
+
+
+function openFeature(page){
+
+    window.location.href = page;
 
 }
