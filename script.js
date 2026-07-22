@@ -73,6 +73,12 @@ function displayExpenses(){
 
         row.insertCell(3).innerHTML = expense.category;
 
+        function showFeature(feature){
+
+    alert(feature + " module opened 🚀");
+
+}
+
 
     });
 
