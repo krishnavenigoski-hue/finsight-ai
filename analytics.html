@@ -1,42 +1,264 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>FinSight AI - Smart Analytics</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<h1>📊 Smart Analytics</h1>
+
+<p>Understand your spending patterns with data</p>
+
+</header>
+
+
+
+
 <section>
 
-<h2>📊 Financial Analytics</h2>
-
-
-<div class="analytics-container">
-
+<h2>📈 Monthly Spending Trend</h2>
 
 <div class="chart-box">
-
-<h3>📈 Monthly Spending Trend</h3>
 
 <canvas id="monthlyChart"></canvas>
 
 </div>
 
+</section>
 
+
+
+
+
+<section>
+
+<h2>📊 This Month vs Last Month</h2>
 
 <div class="chart-box">
-
-<h3>🥧 Expense Categories</h3>
-
-<canvas id="categoryChart"></canvas>
-
-</div>
-
-
-
-<div class="chart-box full-chart">
-
-<h3>📊 Last Month vs This Month</h3>
 
 <canvas id="compareChart"></canvas>
 
 </div>
 
+</section>
+
+
+
+
+
+<section>
+
+<h2>🥧 Expense Category Analysis</h2>
+
+<div class="chart-box">
+
+<canvas id="categoryChart"></canvas>
+
+</div>
+
+</section>
+
+
+
+
+
+<section>
+
+<h2>💡 Financial Summary</h2>
+
+
+<div class="dashboard">
+
+
+<div class="card">
+
+<h3>🏆 Best Category</h3>
+
+<p>Education</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>💰 Savings Rate</h3>
+
+<p>64%</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>💸 Monthly Expense</h3>
+
+<p>₹18,000</p>
+
+</div>
 
 
 </div>
 
 
 </section>
+
+
+
+
+
+<button onclick="history.back()">
+
+⬅ Back To Dashboard
+
+</button>
+
+
+
+
+
+
+
+<script>
+
+
+new Chart(document.getElementById("monthlyChart"),{
+
+type:"line",
+
+data:{
+
+labels:[
+"Jan",
+"Feb",
+"Mar",
+"Apr",
+"May",
+"Jun"
+],
+
+datasets:[{
+
+label:"Monthly Spending",
+
+data:[
+12000,
+15000,
+13000,
+18000,
+16000,
+20000
+],
+
+borderWidth:3
+
+}]
+
+}
+
+});
+
+
+
+
+
+new Chart(document.getElementById("compareChart"),{
+
+type:"bar",
+
+data:{
+
+labels:[
+"Food",
+"Travel",
+"Shopping",
+"Education"
+],
+
+datasets:[
+
+{
+
+label:"Last Month",
+
+data:[
+4000,
+2000,
+3500,
+3000
+]
+
+},
+
+{
+
+label:"This Month",
+
+data:[
+5000,
+3000,
+6000,
+4000
+]
+
+}
+
+]
+
+}
+
+});
+
+
+
+
+
+new Chart(document.getElementById("categoryChart"),{
+
+type:"doughnut",
+
+data:{
+
+labels:[
+"Food",
+"Travel",
+"Shopping",
+"Education"
+],
+
+datasets:[{
+
+data:[
+5000,
+3000,
+6000,
+4000
+]
+
+}]
+
+}
+
+});
+
+
+</script>
+
+
+
+</body>
+
+</html>
