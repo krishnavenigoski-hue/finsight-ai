@@ -492,6 +492,20 @@ font-size:25px;
 
 font-weight:bold;
 
+    .chart-box{
+background:#1e293b;
+padding:20px;
+margin:20px auto;
+border-radius:20px;
+width:70%;
+}
+
+.chart-box canvas{
+max-height:250px !important;
+}
+
+
+
 }
 }
 
