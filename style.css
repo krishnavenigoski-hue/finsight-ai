@@ -428,6 +428,71 @@ transition:0.3s;
 
 .feature-card:hover{
 transform:translateY(-5px);
+
+    /* ===== ANALYTICS PAGE DESIGN ===== */
+
+.chart-box{
+
+background:#1e293b;
+
+padding:25px;
+
+margin:20px auto;
+
+border-radius:20px;
+
+width:80%;
+
+box-shadow:0 10px 30px rgba(0,0,0,0.3);
+
+}
+
+
+.chart-box canvas{
+
+max-height:280px !important;
+
+}
+
+
+
+.analytics-title{
+
+text-align:center;
+
+}
+
+
+
+.analytics-card{
+
+background:#1e293b;
+
+padding:20px;
+
+border-radius:18px;
+
+text-align:center;
+
+}
+
+
+
+.analytics-card h3{
+
+font-size:20px;
+
+}
+
+
+
+.analytics-card p{
+
+font-size:25px;
+
+font-weight:bold;
+
+}
 }
 
 }
