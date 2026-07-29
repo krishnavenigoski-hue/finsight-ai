@@ -1,3 +1,5 @@
+alert("JavaScript connected");
+
 // ===============================
 // FinSight AI - Main JavaScript
 // ===============================
