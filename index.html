@@ -32,8 +32,6 @@ Analytics
 
 
 
-<!-- HERO -->
-
 <section class="hero">
 
 
@@ -61,8 +59,10 @@ and make smarter financial decisions.
 
 
 
-<button onclick="openSetup()">
+<button id="profileButton" onclick="openProfile()">
+
 🚀 Create My Financial Profile
+
 </button>
 
 
@@ -72,9 +72,6 @@ and make smarter financial decisions.
 
 
 
-
-
-<!-- FINANCIAL OVERVIEW -->
 
 
 <section>
@@ -87,63 +84,42 @@ and make smarter financial decisions.
 
 
 <div class="card">
-
 <h3>💵 Monthly Salary</h3>
-
-<h2>₹50,000</h2>
-
+<h2 id="homeSalary">₹0</h2>
 <p>Current Income</p>
-
 </div>
 
 
 
 <div class="card">
-
 <h3>💸 Spent Till Now</h3>
-
-<h2>₹18,000</h2>
-
+<h2>₹0</h2>
 <p>Total Expenses</p>
-
 </div>
 
 
 
 <div class="card">
-
 <h3>🏦 Savings</h3>
-
-<h2>₹32,000</h2>
-
+<h2 id="homeSavings">₹0</h2>
 <p>Available Savings</p>
-
 </div>
 
 
 
 <div class="card">
-
 <h3>❤️ Financial Health</h3>
-
 <h2>85/100</h2>
-
 <p>Good Condition</p>
-
 </div>
 
 
 
 <div class="card">
-
 <h3>🎯 Safe Spending Limit</h3>
-
 <h2>₹20,000</h2>
-
 <p>Recommended</p>
-
 </div>
-
 
 
 </div>
@@ -155,9 +131,6 @@ and make smarter financial decisions.
 
 
 
-
-
-<!-- MONTHLY BUDGET PLANNER -->
 
 
 <section>
@@ -205,9 +178,6 @@ placeholder="Other Commitments">
 
 
 
-<br>
-
-
 <button onclick="calculateBudget()">
 
 Calculate Budget 🚀
@@ -219,50 +189,30 @@ Calculate Budget 🚀
 
 
 
-
-
 <div class="dashboard">
 
 
 <div class="card">
-
 <h3>📌 Total Commitments</h3>
-
-<h2 id="commitments">
-₹0
-</h2>
-
+<h2 id="commitments">₹0</h2>
 </div>
 
 
 
-
 <div class="card">
-
 <h3>💰 Remaining Money</h3>
-
-<h2 id="remaining">
-₹0
-</h2>
-
+<h2 id="remaining">₹0</h2>
 </div>
-
 
 
 
 <div class="card">
-
 <h3>🏦 Suggested Savings</h3>
-
-<h2 id="savingPlan">
-₹0
-</h2>
-
+<h2 id="savingPlan">₹0</h2>
 </div>
 
 
 </div>
-
 
 
 </section>
@@ -271,9 +221,6 @@ Calculate Budget 🚀
 
 
 
-
-
-<!-- ADD EXPENSE -->
 
 
 <section>
@@ -285,15 +232,13 @@ Calculate Budget 🚀
 <div class="card">
 
 
-<input
-id="expenseName"
+<input id="expenseName"
 type="text"
 placeholder="Expense Name">
 
 
 
-<input
-id="expenseAmount"
+<input id="expenseAmount"
 type="number"
 placeholder="Amount">
 
@@ -302,15 +247,10 @@ placeholder="Amount">
 <select id="expenseCategory">
 
 <option>Food</option>
-
 <option>Travel</option>
-
 <option>Shopping</option>
-
 <option>Education</option>
-
 <option>Other</option>
-
 
 </select>
 
@@ -334,10 +274,6 @@ Add Expense 🚀
 
 
 
-
-<!-- RECENT EXPENSES -->
-
-
 <section>
 
 
@@ -349,15 +285,11 @@ Add Expense 🚀
 
 <table id="expenseTable">
 
-
 <tr>
 
 <th>S.No</th>
-
 <th>Name</th>
-
 <th>Amount</th>
-
 <th>Category</th>
 
 </tr>
@@ -375,10 +307,6 @@ Add Expense 🚀
 
 
 
-
-
-
-<!-- AI RECOMMENDATIONS -->
 
 
 <section>
@@ -428,9 +356,9 @@ Add Expense 🚀
 
 
 
-<script src="script.js"></script>
 
-  <!-- AI FLOATING CHAT -->
+
+<!-- AI CHAT (will redesign next) -->
 
 <div class="ai-button" onclick="openAIChat()">
 
@@ -448,14 +376,13 @@ Add Expense 🚀
 
 <div id="chatMessages">
 
-<p>🤖 Hi! I can help you with your budget, expenses, savings and goals.</p>
+<p>🤖 Hi! I can help you with your budget.</p>
 
 </div>
 
 
 
-<input 
-id="aiInput"
+<input id="aiInput"
 type="text"
 placeholder="Ask about your money...">
 
@@ -468,10 +395,73 @@ Send
 </button>
 
 
-
 </div>
 
-  
+
+
+
+
+
+
+
+<script src="script.js"></script>
+
+
+<script>
+
+
+function openProfile(){
+
+let profile = localStorage.getItem("finSightProfile");
+
+
+if(profile){
+
+window.location.href="setup.html";
+
+}
+
+else{
+
+window.location.href="setup.html";
+
+}
+
+
+}
+
+
+
+window.onload=function(){
+
+let profile =
+JSON.parse(localStorage.getItem("finSightProfile"));
+
+
+let button =
+document.getElementById("profileButton");
+
+
+if(profile){
+
+button.innerHTML="✏️ Update Financial Profile";
+
+
+document.getElementById("homeSalary").innerHTML =
+"₹"+profile.salary;
+
+
+document.getElementById("homeSavings").innerHTML =
+"₹"+profile.currentSavings;
+
+
+}
+
+};
+
+
+</script>
+
 
 
 </body>
