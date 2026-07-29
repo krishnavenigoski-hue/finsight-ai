@@ -258,5 +258,23 @@ chat.appendChild(aiReply);
 
 input.value="";
 
+    function openAIChat(){
+
+let box=document.getElementById("aiChatBox");
+
+if(box.style.display==="block"){
+
+box.style.display="none";
+
+}
+
+else{
+
+box.style.display="block";
+
+}
+
+    }
+
 
 }
