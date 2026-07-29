@@ -29,52 +29,47 @@
 
 <section>
 
-<h2>📈 Monthly Spending Trend</h2>
+<h2>📈 Financial Analytics</h2>
+
+
+<div class="analytics-container">
+
 
 <div class="chart-box">
+
+<h3>📈 Monthly Spending Trend</h3>
 
 <canvas id="monthlyChart"></canvas>
 
 </div>
 
-</section>
 
 
-
-
-
-
-
-<section>
-
-<h2>📊 Last Month vs This Month</h2>
 
 <div class="chart-box">
 
-<canvas id="compareChart"></canvas>
-
-</div>
-
-</section>
-
-
-
-
-
-
-
-<section>
-
-<h2>🥧 Expense Category Breakdown</h2>
-
-<div class="chart-box">
+<h3>🥧 Expense Categories</h3>
 
 <canvas id="categoryChart"></canvas>
 
 </div>
 
-</section>
 
+
+
+<div class="chart-box full-chart">
+
+<h3>📊 Last Month vs This Month</h3>
+
+<canvas id="compareChart"></canvas>
+
+</div>
+
+
+</div>
+
+
+</section>
 
 
 
@@ -84,7 +79,7 @@
 
 <section>
 
-<h2>💡 Financial Overview</h2>
+<h2>💡 Financial Summary</h2>
 
 
 <div class="dashboard">
@@ -100,6 +95,7 @@
 
 
 
+
 <div class="card">
 
 <h3>💰 Savings Rate</h3>
@@ -107,6 +103,7 @@
 <p>64%</p>
 
 </div>
+
 
 
 
@@ -119,12 +116,11 @@
 </div>
 
 
+
 </div>
 
 
 </section>
-
-
 
 
 
@@ -143,9 +139,10 @@
 
 
 
-
 <script>
 
+
+// Monthly Spending Trend
 
 new Chart(document.getElementById("monthlyChart"),{
 
@@ -164,7 +161,7 @@ labels:[
 
 datasets:[{
 
-label:"Spending",
+label:"Spending (₹)",
 
 data:[
 12000,
@@ -175,9 +172,17 @@ data:[
 20000
 ],
 
-borderWidth:3
+borderWidth:2
 
 }]
+
+},
+
+options:{
+
+responsive:true,
+
+maintainAspectRatio:true
 
 }
 
@@ -188,6 +193,55 @@ borderWidth:3
 
 
 
+
+
+// Expense Category Chart
+
+new Chart(document.getElementById("categoryChart"),{
+
+type:"doughnut",
+
+data:{
+
+labels:[
+"Food",
+"Travel",
+"Shopping",
+"Education"
+],
+
+datasets:[{
+
+data:[
+5000,
+3000,
+6000,
+4000
+]
+
+}]
+
+},
+
+options:{
+
+responsive:true,
+
+maintainAspectRatio:true
+
+}
+
+});
+
+
+
+
+
+
+
+
+
+// Comparison Chart
 
 new Chart(document.getElementById("compareChart"),{
 
@@ -217,6 +271,7 @@ data:[
 
 },
 
+
 {
 
 label:"This Month",
@@ -232,39 +287,13 @@ data:[
 
 ]
 
-}
+},
 
-});
+options:{
 
+responsive:true,
 
-
-
-
-
-
-new Chart(document.getElementById("categoryChart"),{
-
-type:"doughnut",
-
-data:{
-
-labels:[
-"Food",
-"Travel",
-"Shopping",
-"Education"
-],
-
-datasets:[{
-
-data:[
-5000,
-3000,
-6000,
-4000
-]
-
-}]
+maintainAspectRatio:true
 
 }
 
