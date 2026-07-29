@@ -17,18 +17,15 @@
 
 <h1>🤖 FinSight AI Advisor</h1>
 
-<p>Your personal financial intelligence assistant</p>
+<p id="welcomeAI">
+Your personal financial intelligence assistant
+</p>
 
 </header>
 
 
 
-
-
-
-
 <section>
-
 
 <h2>❤️ Financial Health</h2>
 
@@ -40,9 +37,23 @@
 
 <h3>Financial Score</h3>
 
-<h2>85/100</h2>
+<h2 id="score">0/100</h2>
 
-<p>Excellent financial health</p>
+<p id="healthText">
+Calculating...
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>💰 Saving Behaviour</h3>
+
+<p id="savingAdvice">
+Loading...
+</p>
 
 </div>
 
@@ -51,28 +62,34 @@
 
 <div class="card">
 
-<h3>Saving Behaviour</h3>
+<h3>⚠️ Spending Risk</h3>
 
-<p>Good progress</p>
-
-<p>You are saving consistently.</p>
+<p id="riskAdvice">
+Loading...
+</p>
 
 </div>
 
 
+</div>
+
+</section>
+
+
+
+
+
+
+<section>
+
+<h2>🧠 Personal AI Insights</h2>
 
 
 <div class="card">
 
-<h3>Spending Risk</h3>
-
-<p>Medium</p>
-
-<p>Shopping expenses need attention.</p>
-
-</div>
-
-
+<p id="aiAdvice">
+Analysing your financial profile...
+</p>
 
 </div>
 
@@ -85,51 +102,7 @@
 
 
 
-
 <section>
-
-
-<h2>🧠 Important Things You Should Know</h2>
-
-
-<div class="card">
-
-
-<p>
-🟢 Your savings increased compared to last month.
-</p>
-
-
-<p>
-🟡 Shopping expenses increased by 18%.
-</p>
-
-
-<p>
-🔵 Food spending is currently your highest category.
-</p>
-
-
-<p>
-🟢 Your budget management is improving.
-</p>
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<section>
-
 
 <h2>📄 Monthly AI Report</h2>
 
@@ -137,24 +110,23 @@
 <div class="card">
 
 
-<p>
-Total Income: ₹50,000
+<p id="incomeReport">
+Total Income:
 </p>
 
 
-<p>
-Total Expenses: ₹18,000
+<p id="expenseReport">
+Total Expenses:
 </p>
 
 
-<p>
-Potential Saving: ₹5,000 more
+<p id="savingReport">
+Potential Savings:
 </p>
 
 
-<p>
+<p id="actionReport">
 Next Action:
-Create a strict shopping budget.
 </p>
 
 
@@ -164,53 +136,6 @@ Create a strict shopping budget.
 </section>
 
 
-
-
-
-
-
-<section>
-
-
-<h2>💬 Ask FinSight AI</h2>
-
-
-<div class="card">
-
-
-<p>
-Ask questions about your money:
-</p>
-
-
-<p>
-Example:
-"How can I save more?"
-</p>
-
-
-<p>
-Example:
-"Can I afford a laptop?"
-</p>
-
-
-<input 
-type="text"
-placeholder="Type your question here">
-
-
-<button>
-
-Ask AI 🚀
-
-</button>
-
-
-</div>
-
-
-</section>
 
 
 
@@ -227,6 +152,68 @@ Ask AI 🚀
 
 
 
-</body>
 
-</html>
+<script src="script.js"></script>
+
+
+<script>
+
+
+let profile =
+JSON.parse(localStorage.getItem("finSightProfile"));
+
+
+
+if(profile){
+
+
+document.getElementById("welcomeAI").innerHTML =
+"Welcome "+profile.name+" 👋";
+
+
+
+let totalExpense =
+profile.rent +
+profile.emi +
+profile.bills +
+profile.food +
+profile.travel +
+profile.shopping +
+profile.otherExpense;
+
+
+
+let saving =
+profile.salary - totalExpense;
+
+
+
+let score = 70;
+
+
+if(saving > profile.salary*0.2){
+
+score = 90;
+
+}
+
+else if(saving > 0){
+
+score = 80;
+
+}
+
+
+
+document.getElementById("score").innerHTML =
+score+"/100";
+
+
+
+document.getElementById("healthText").innerHTML =
+"Based on your income and spending";
+
+
+
+document.getElementById("savingAdvice").innerHTML =
+"Monthly saving target: ₹"+profile.savingTarget
