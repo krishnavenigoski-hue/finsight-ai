@@ -418,10 +418,22 @@ function openAIChat(){
 
 function openDashboard(){
 
-    window.location.href = "dashboard.html";
+let profile = localStorage.getItem("finSightProfile");
+
+if(profile){
+
+    window.location.href="dashboard.html";
+
+}
+else{
+
+    alert("Please complete your financial profile first.");
+
+    window.location.href="setup.html";
 
 }
 
+}
 function openSetup(){
 
     window.location.href = "setup.html";
