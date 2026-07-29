@@ -16,15 +16,17 @@
 
 <h1>🤖 FinSight AI Advanced Dashboard</h1>
 
-<p>Your intelligent financial control center</p>
+<p id="welcomeUser">Your intelligent financial control center</p>
 
 </header>
+
 
 <section>
 
 <h2>✨ Powerful Features</h2>
 
 <div class="dashboard">
+
 
 <div class="card feature-card" onclick="openFeature('expense-tracking.html')">
 
@@ -34,6 +36,7 @@
 
 </div>
 
+
 <div class="card feature-card" onclick="openFeature('analytics.html')">
 
 <h3>📊 Smart Analytics</h3>
@@ -41,6 +44,7 @@
 <p>Understand your financial trends</p>
 
 </div>
+
 
 <div class="card feature-card" onclick="openFeature('goals.html')">
 
@@ -50,6 +54,7 @@
 
 </div>
 
+
 <div class="card feature-card" onclick="openFeature('ai-insights.html')">
 
 <h3>🤖 AI Advisor</h3>
@@ -58,69 +63,81 @@
 
 </div>
 
+
 </div>
 
 </section>
 
+
+
 <section>
 
-<h2>📈 Spending Insights</h2>
+<h2>📈 Personal Spending Insights</h2>
+
 
 <div class="dashboard">
 
-<div class="card">
-
-<h3>🍔 Highest Expense</h3>
-
-<p>Food</p>
-
-</div>
 
 <div class="card">
 
-<h3>📅 Daily Spending</h3>
+<h3>💰 Monthly Salary</h3>
 
-<p>₹620/day</p>
+<p id="dashSalary">₹0</p>
 
 </div>
+
+
 
 <div class="card">
 
-<h3>📊 Monthly Growth</h3>
+<h3>🏦 Savings Target</h3>
 
-<p>+8%</p>
+<p id="dashSaving">₹0</p>
 
 </div>
+
+
 
 <div class="card">
 
-<h3>💰 Savings Rate</h3>
+<h3>🎯 Short Goal</h3>
 
-<p>64%</p>
+<p id="dashGoal">No goal</p>
 
 </div>
+
+
+
+<div class="card">
+
+<h3>🏡 Long Goal</h3>
+
+<p id="dashLongGoal">No goal</p>
+
+</div>
+
 
 </div>
 
 </section>
+
+
 
 <section>
 
-<h2>🕒 Recent Activity</h2>
+<h2>🤖 Personal AI Summary</h2>
 
 <div class="card">
 
-<p>✅ Added Food expense ₹500</p>
-
-<p>✅ Added Travel expense ₹1200</p>
-
-<p>✅ Saved money for Laptop Goal</p>
-
-<p>✅ AI analysed spending pattern</p>
+<p id="dashboardAI">
+Loading your financial analysis...
+</p>
 
 </div>
 
 </section>
+
+
 
 <button onclick="history.back()">
 
@@ -128,7 +145,56 @@
 
 </button>
 
+
+
 <script src="script.js"></script>
+
+
+<script>
+
+let profile = JSON.parse(localStorage.getItem("finSightProfile"));
+
+
+if(profile){
+
+
+document.getElementById("welcomeUser").innerHTML =
+"Welcome "+profile.name+" 👋";
+
+
+document.getElementById("dashSalary").innerHTML =
+"₹"+profile.salary;
+
+
+document.getElementById("dashSaving").innerHTML =
+"₹"+profile.savingTarget;
+
+
+document.getElementById("dashGoal").innerHTML =
+profile.shortGoal;
+
+
+document.getElementById("dashLongGoal").innerHTML =
+profile.longGoal;
+
+
+document.getElementById("dashboardAI").innerHTML =
+"Your AI is analysing your income, expenses and goals.";
+
+
+}
+
+else{
+
+
+document.getElementById("dashboardAI").innerHTML =
+"Please complete your profile first.";
+
+}
+
+
+</script>
+
 
 </body>
 
