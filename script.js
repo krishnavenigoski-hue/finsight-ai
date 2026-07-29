@@ -15,6 +15,8 @@ let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
 
 function saveProfile(){
 
+    alert("Save Profile clicked");
+
     let profile = {
 
         name: document.getElementById("userName").value,
