@@ -1,21 +1,18 @@
-alert("JavaScript connected");
-
-// ===============================
-// FinSight AI - Main JavaScript
-// ===============================
+// =====================================
+// FinSight AI - Main Script
+// =====================================
 
 
 // Store expenses
 let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
 
 
-// ===============================
-// SAVE USER PROFILE
-// ===============================
+
+// =====================================
+// SAVE PROFILE FROM SETUP PAGE
+// =====================================
 
 function saveProfile(){
-
-    alert("Save Profile clicked");
 
     let profile = {
 
@@ -63,7 +60,7 @@ function saveProfile(){
     alert("✅ Financial Profile Created Successfully");
 
 
-    window.location.href="index.html";
+    window.location.href = "index.html";
 
 }
 
@@ -71,23 +68,24 @@ function saveProfile(){
 
 
 
-// ===============================
+
+// =====================================
 // ADD EXPENSE
-// ===============================
+// =====================================
 
 function addExpense(){
 
-    let name=document.getElementById("expenseName").value;
+    let name = document.getElementById("expenseName").value;
 
-    let amount=Number(
+    let amount = Number(
         document.getElementById("expenseAmount").value
     );
 
-    let category=document.getElementById("expenseCategory").value;
+    let category = document.getElementById("expenseCategory").value;
 
 
 
-    if(name==="" || amount===""){
+    if(name === "" || amount <= 0){
 
         alert("Please enter expense details");
 
@@ -97,7 +95,7 @@ function addExpense(){
 
 
 
-    let expense={
+    let expense = {
 
         name:name,
 
@@ -122,8 +120,7 @@ function addExpense(){
     displayExpenses();
 
 
-    alert("Expense Added Successfully");
-
+    alert("✅ Expense Added Successfully");
 
 }
 
@@ -132,21 +129,20 @@ function addExpense(){
 
 
 
-// ===============================
-// DISPLAY EXPENSE TABLE
-// ===============================
+// =====================================
+// DISPLAY EXPENSES
+// =====================================
 
 function displayExpenses(){
 
-
-    let table=document.getElementById("expenseTable");
+    let table = document.getElementById("expenseTable");
 
 
     if(!table) return;
 
 
 
-    table.innerHTML=`
+    table.innerHTML = `
 
     <tr>
     <th>S.No</th>
@@ -159,23 +155,22 @@ function displayExpenses(){
 
 
 
-    expenses.forEach((expense,index)=>{
+    expenses.forEach(function(expense,index){
 
 
-        let row=table.insertRow();
+        let row = table.insertRow();
 
 
-        row.insertCell(0).innerHTML=index+1;
+        row.insertCell(0).innerHTML = index + 1;
 
-        row.insertCell(1).innerHTML=expense.name;
+        row.insertCell(1).innerHTML = expense.name;
 
-        row.insertCell(2).innerHTML="₹"+expense.amount;
+        row.insertCell(2).innerHTML = "₹" + expense.amount;
 
-        row.insertCell(3).innerHTML=expense.category;
+        row.insertCell(3).innerHTML = expense.category;
 
 
     });
-
 
 }
 
@@ -184,10 +179,9 @@ function displayExpenses(){
 
 
 
-
-// ===============================
-// GET PROFILE DATA
-// ===============================
+// =====================================
+// GET PROFILE
+// =====================================
 
 function getProfile(){
 
@@ -202,178 +196,179 @@ function getProfile(){
 
 
 
-
-// ===============================
+// =====================================
 // AI SUGGESTIONS
-// ===============================
+// =====================================
 
 function generateAIAdvice(){
 
 
-let profile=getProfile();
+    let profile = getProfile();
 
 
-if(!profile) return "Please complete your financial profile first.";
+    if(!profile){
 
+        return "Please complete your financial profile.";
 
-
-let advice=[];
-
-
-
-let totalFixed =
-profile.rent+
-profile.emi+
-profile.bills;
+    }
 
 
 
-if(totalFixed > profile.salary*0.5){
+    let advice = [];
 
-advice.push(
-"⚠️ Your fixed commitments are high compared to your income."
-);
+
+
+    let totalExpense =
+    profile.rent +
+    profile.emi +
+    profile.bills +
+    profile.food +
+    profile.travel +
+    profile.shopping +
+    profile.otherExpense;
+
+
+
+    if(totalExpense > profile.salary * 0.7){
+
+        advice.push(
+        "⚠️ You are spending more than 70% of your income."
+        );
+
+    }
+
+
+
+    if(profile.shopping > profile.salary * 0.15){
+
+        advice.push(
+        "🛒 Reduce shopping expenses to improve savings."
+        );
+
+    }
+
+
+
+    if(profile.savingTarget < profile.salary * 0.2){
+
+        advice.push(
+        "💰 Try saving at least 20% of your income."
+        );
+
+    }
+
+
+
+    if(advice.length === 0){
+
+        advice.push(
+        "✅ Your financial planning looks healthy."
+        );
+
+    }
+
+
+    return advice.join("<br>");
 
 }
 
 
 
-if(profile.shopping > profile.salary*0.15){
-
-advice.push(
-"🛒 Your shopping budget is high. Try reducing unnecessary purchases."
-);
-
-}
 
 
 
-if(profile.savingTarget < profile.salary*0.2){
-
-advice.push(
-"💰 Try increasing your monthly savings goal."
-);
-
-}
-
-
-
-if(advice.length===0){
-
-advice.push(
-"✅ Your financial planning looks healthy. Keep maintaining your budget."
-);
-
-}
-
-
-
-return advice.join("<br>");
-
-}
-
-
-
-
-
-
-
-
-// ===============================
+// =====================================
 // AI CHAT
-// ===============================
-
+// =====================================
 
 function sendMessage(){
 
 
-let input=document.getElementById("aiInput");
+    let input = document.getElementById("aiInput");
 
-let chat=document.getElementById("chatMessages");
-
-
-if(!input || input.value==="")
-return;
+    let chat = document.getElementById("chatMessages");
 
 
+    if(!input || input.value.trim() === ""){
 
-let userText=input.value;
+        return;
 
-
-chat.innerHTML +=
-"<p>👤 "+userText+"</p>";
+    }
 
 
 
-let profile=getProfile();
+    let message = input.value;
 
 
-let reply="";
-
-
-
-if(profile){
-
-
-if(userText.toLowerCase().includes("salary")){
-
-reply=
-"Your monthly salary is ₹"+profile.salary+
-". I can help you plan your budget.";
-
-}
-
-
-else if(userText.toLowerCase().includes("save")){
-
-reply=
-"Your saving target is ₹"+
-profile.savingTarget+
-" per month. Try saving consistently.";
-
-}
-
-
-else if(userText.toLowerCase().includes("goal")){
-
-reply=
-"Your current goal is "+
-profile.shortGoal+
-" and target amount is ₹"+
-profile.shortAmount;
-
-}
-
-
-else{
-
-reply=
-"I know your income, expenses and goals. Ask me about budget, savings, expenses or goals.";
-
-}
-
-
-}
-
-else{
-
-reply=
-"Please complete your financial profile first.";
-
-}
+    chat.innerHTML += 
+    "<p>👤 " + message + "</p>";
 
 
 
-chat.innerHTML +=
-"<p>🤖 "+reply+"</p>";
+    let profile = getProfile();
+
+
+    let reply;
 
 
 
-input.value="";
+    if(profile){
 
 
-chat.scrollTop=chat.scrollHeight;
+        if(message.toLowerCase().includes("salary")){
 
+            reply =
+            "Your salary is ₹" + profile.salary +
+            ". I can help you plan your budget.";
+
+        }
+
+
+        else if(message.toLowerCase().includes("goal")){
+
+            reply =
+            "Your short-term goal is " +
+            profile.shortGoal +
+            " and target is ₹" +
+            profile.shortAmount;
+
+        }
+
+
+        else if(message.toLowerCase().includes("save")){
+
+            reply =
+            "Your monthly saving target is ₹" +
+            profile.savingTarget;
+
+        }
+
+
+        else{
+
+            reply =
+            "I can help you with salary, budget, expenses, savings and goals.";
+
+        }
+
+
+    }
+
+    else{
+
+        reply =
+        "Please complete your financial profile first.";
+
+    }
+
+
+
+    chat.innerHTML +=
+    "<p>🤖 " + reply + "</p>";
+
+
+
+    input.value = "";
 
 }
 
@@ -382,62 +377,66 @@ chat.scrollTop=chat.scrollHeight;
 
 
 
-
-// ===============================
-// AI CHAT OPEN/CLOSE
-// ===============================
+// =====================================
+// OPEN / CLOSE AI CHAT
+// =====================================
 
 function openAIChat(){
 
 
-let box=document.getElementById("aiChatBox");
+    let box = document.getElementById("aiChatBox");
 
 
-if(box.style.display==="block"){
+    if(!box) return;
 
-box.style.display="none";
+
+
+    if(box.style.display === "block"){
+
+        box.style.display = "none";
+
+    }
+
+    else{
+
+        box.style.display = "block";
+
+    }
 
 }
 
-else{
-
-box.style.display="block";
-
-}
-
-
-}
 
 
 
 
 
-
-
-// ===============================
-// PAGE NAVIGATION
-// ===============================
-
+// =====================================
+// NAVIGATION
+// =====================================
 
 function openDashboard(){
 
-window.location.href="dashboard.html";
+    window.location.href = "dashboard.html";
 
 }
+
 
 
 function openFeature(page){
 
-window.location.href=page;
+    window.location.href = page;
 
 }
 
 
 
-// Load expenses automatically
 
-window.onload=function(){
 
-displayExpenses();
 
-}
+// Load expenses
+
+window.onload = function(){
+
+    displayExpenses();
+
+};
