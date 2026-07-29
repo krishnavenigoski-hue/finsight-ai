@@ -389,6 +389,12 @@ width:20%;
 
 padding:10px;
 
+  button{
+    position: relative;
+    z-index: 9999;
+    pointer-events: auto;
+  }
+
 }
 }
 
