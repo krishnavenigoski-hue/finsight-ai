@@ -422,6 +422,12 @@ function openDashboard(){
 
 }
 
+function openSetup(){
+
+    window.location.href = "setup.html";
+
+}
+
 
 
 function openFeature(page){
