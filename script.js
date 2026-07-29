@@ -62,7 +62,7 @@ function saveProfile(){
     alert("✅ Financial Profile Created Successfully");
 
 
-    window.location.href = "index.html";
+    window.location.href = "dashboard.html";
 
 }
 
