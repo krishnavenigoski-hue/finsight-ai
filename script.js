@@ -272,6 +272,56 @@ else{
 
 box.style.display="block";
 
+    function saveProfile(){
+
+let profile = {
+
+name: document.getElementById("userName").value,
+
+salary: Number(document.getElementById("salary").value),
+
+otherIncome: Number(document.getElementById("otherIncome").value),
+
+rent: Number(document.getElementById("rent").value),
+
+emi: Number(document.getElementById("emi").value),
+
+bills: Number(document.getElementById("bills").value),
+
+food: Number(document.getElementById("food").value),
+
+travel: Number(document.getElementById("travel").value),
+
+shopping: Number(document.getElementById("shopping").value),
+
+otherExpense: Number(document.getElementById("otherExpense").value),
+
+shortGoal: document.getElementById("shortGoal").value,
+
+shortAmount: Number(document.getElementById("shortAmount").value),
+
+longGoal: document.getElementById("longGoal").value,
+
+longAmount: Number(document.getElementById("longAmount").value),
+
+currentSavings: Number(document.getElementById("currentSavings").value),
+
+savingTarget: Number(document.getElementById("savingTarget").value)
+
+};
+
+
+localStorage.setItem("finSightProfile", JSON.stringify(profile));
+
+
+alert("✅ Your financial profile is created!");
+
+
+window.location.href="index.html";
+
+
+      }
+
 }
 
     }
