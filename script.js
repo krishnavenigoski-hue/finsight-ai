@@ -459,4 +459,22 @@ window.onload = function(){
 
     displayExpenses();
 
+
+    // =====================================
+// HIDE PROFILE BUTTON AFTER PROFILE CREATED
+// =====================================
+
+window.addEventListener("load", function(){
+
+    let profile = localStorage.getItem("finSightProfile");
+
+    let btn = document.getElementById("profileBtn");
+
+    if(profile && btn){
+
+        btn.style.display = "none";
+
+    }
+
+});
 };
