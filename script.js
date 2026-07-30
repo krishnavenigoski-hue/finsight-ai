@@ -14,8 +14,6 @@ let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
 
 function saveProfile(){
 
-    alert("Button working");
-
     let profile = {
 
         name: document.getElementById("userName").value,
@@ -38,19 +36,59 @@ function saveProfile(){
 
         otherExpense: Number(document.getElementById("otherExpense").value),
 
-        shortGoal: document.getElementById("shortGoal").value,
 
-        shortAmount: Number(document.getElementById("shortAmount").value),
 
-        longGoal: document.getElementById("longGoal").value,
+        // NEW 3 SHORT TERM GOALS
 
-        longAmount: Number(document.getElementById("longAmount").value),
+        shortGoals:[
+            {
+                goal: document.getElementById("shortGoal1").value,
+                amount: Number(document.getElementById("shortAmount1").value)
+            },
 
-        currentSavings: Number(document.getElementById("currentSavings").value),
+            {
+                goal: document.getElementById("shortGoal2").value,
+                amount: Number(document.getElementById("shortAmount2").value)
+            },
 
-        savingTarget: Number(document.getElementById("savingTarget").value)
+            {
+                goal: document.getElementById("shortGoal3").value,
+                amount: Number(document.getElementById("shortAmount3").value)
+            }
+        ],
+
+
+
+        // NEW 3 LONG TERM GOALS
+
+        longGoals:[
+            {
+                goal: document.getElementById("longGoal1").value,
+                amount: Number(document.getElementById("longAmount1").value)
+            },
+
+            {
+                goal: document.getElementById("longGoal2").value,
+                amount: Number(document.getElementById("longAmount2").value)
+            },
+
+            {
+                goal: document.getElementById("longGoal3").value,
+                amount: Number(document.getElementById("longAmount3").value)
+            }
+        ],
+
+
+
+        currentSavings:
+        Number(document.getElementById("currentSavings").value),
+
+
+        savingTarget:
+        Number(document.getElementById("savingTarget").value)
 
     };
+
 
 
     localStorage.setItem(
@@ -62,7 +100,7 @@ function saveProfile(){
     alert("✅ Financial Profile Created Successfully");
 
 
-    window.location.href = "dashboard.html";
+    window.location.href="dashboard.html";
 
 }
 
@@ -77,17 +115,17 @@ function saveProfile(){
 
 function addExpense(){
 
-    let name = document.getElementById("expenseName").value;
+    let name=document.getElementById("expenseName").value;
 
-    let amount = Number(
+    let amount=Number(
         document.getElementById("expenseAmount").value
     );
 
-    let category = document.getElementById("expenseCategory").value;
+    let category=document.getElementById("expenseCategory").value;
 
 
 
-    if(name === "" || amount <= 0){
+    if(name==="" || amount<=0){
 
         alert("Please enter expense details");
 
@@ -97,7 +135,7 @@ function addExpense(){
 
 
 
-    let expense = {
+    let expense={
 
         name:name,
 
@@ -110,7 +148,9 @@ function addExpense(){
     };
 
 
+
     expenses.push(expense);
+
 
 
     localStorage.setItem(
@@ -137,14 +177,14 @@ function addExpense(){
 
 function displayExpenses(){
 
-    let table = document.getElementById("expenseTable");
+    let table=document.getElementById("expenseTable");
 
 
     if(!table) return;
 
 
 
-    table.innerHTML = `
+    table.innerHTML=`
 
     <tr>
     <th>S.No</th>
@@ -160,16 +200,16 @@ function displayExpenses(){
     expenses.forEach(function(expense,index){
 
 
-        let row = table.insertRow();
+        let row=table.insertRow();
 
 
-        row.insertCell(0).innerHTML = index + 1;
+        row.insertCell(0).innerHTML=index+1;
 
-        row.insertCell(1).innerHTML = expense.name;
+        row.insertCell(1).innerHTML=expense.name;
 
-        row.insertCell(2).innerHTML = "₹" + expense.amount;
+        row.insertCell(2).innerHTML="₹"+expense.amount;
 
-        row.insertCell(3).innerHTML = expense.category;
+        row.insertCell(3).innerHTML=expense.category;
 
 
     });
@@ -204,8 +244,7 @@ function getProfile(){
 
 function generateAIAdvice(){
 
-
-    let profile = getProfile();
+    let profile=getProfile();
 
 
     if(!profile){
@@ -215,53 +254,41 @@ function generateAIAdvice(){
     }
 
 
-
-    let advice = [];
-
+    let advice=[];
 
 
     let totalExpense =
-    profile.rent +
-    profile.emi +
-    profile.bills +
-    profile.food +
-    profile.travel +
-    profile.shopping +
+    profile.rent+
+    profile.emi+
+    profile.bills+
+    profile.food+
+    profile.travel+
+    profile.shopping+
     profile.otherExpense;
 
 
 
-    if(totalExpense > profile.salary * 0.7){
+    if(totalExpense > profile.salary*0.7){
 
         advice.push(
-        "⚠️ You are spending more than 70% of your income."
+        "⚠️ Your expenses are above 70% of income."
         );
 
     }
 
 
 
-    if(profile.shopping > profile.salary * 0.15){
+    if(profile.shopping > profile.salary*0.15){
 
         advice.push(
-        "🛒 Reduce shopping expenses to improve savings."
+        "🛒 Reduce shopping expenses."
         );
 
     }
 
 
 
-    if(profile.savingTarget < profile.salary * 0.2){
-
-        advice.push(
-        "💰 Try saving at least 20% of your income."
-        );
-
-    }
-
-
-
-    if(advice.length === 0){
+    if(advice.length===0){
 
         advice.push(
         "✅ Your financial planning looks healthy."
@@ -286,91 +313,71 @@ function generateAIAdvice(){
 function sendMessage(){
 
 
-    let input = document.getElementById("aiInput");
+    let input=document.getElementById("aiInput");
 
-    let chat = document.getElementById("chatMessages");
+    let chat=document.getElementById("chatMessages");
 
 
-    if(!input || input.value.trim() === ""){
-
-        return;
-
-    }
+    if(!input || input.value.trim()==="") return;
 
 
 
-    let message = input.value;
+    let message=input.value;
 
 
-    chat.innerHTML += 
-    "<p>👤 " + message + "</p>";
+    chat.innerHTML +=
+    "<p>👤 "+message+"</p>";
 
 
 
-    let profile = getProfile();
-
+    let profile=getProfile();
 
     let reply;
 
 
 
-    if(profile){
+    if(message.toLowerCase().includes("salary")){
 
-
-        if(message.toLowerCase().includes("salary")){
-
-            reply =
-            "Your salary is ₹" + profile.salary +
-            ". I can help you plan your budget.";
-
-        }
-
-
-        else if(message.toLowerCase().includes("goal")){
-
-            reply =
-            "Your short-term goal is " +
-            profile.shortGoal +
-            " and target is ₹" +
-            profile.shortAmount;
-
-        }
-
-
-        else if(message.toLowerCase().includes("save")){
-
-            reply =
-            "Your monthly saving target is ₹" +
-            profile.savingTarget;
-
-        }
-
-
-        else{
-
-            reply =
-            "I can help you with salary, budget, expenses, savings and goals.";
-
-        }
-
+        reply="Your salary is ₹"+profile.salary;
 
     }
 
+
+    else if(message.toLowerCase().includes("goal")){
+
+
+        reply="Your goals are: ";
+
+        profile.shortGoals.forEach(g=>{
+
+            reply += g.goal+" - ₹"+g.amount+"<br>";
+
+        });
+
+    }
+
+
+    else if(message.toLowerCase().includes("save")){
+
+        reply="Your saving target is ₹"+profile.savingTarget;
+
+    }
+
+
     else{
 
-        reply =
-        "Please complete your financial profile first.";
+        reply="I can help you with salary, savings, goals, expenses and budgeting.";
 
     }
 
 
 
     chat.innerHTML +=
-    "<p>🤖 " + reply + "</p>";
+    "<p>🤖 "+reply+"</p>";
 
 
 
-    input.value = "";
+    input.value="";
 
 }
 
@@ -380,28 +387,27 @@ function sendMessage(){
 
 
 // =====================================
-// OPEN / CLOSE AI CHAT
+// AI CHAT POPUP
 // =====================================
 
 function openAIChat(){
 
-
-    let box = document.getElementById("aiChatBox");
+    let box=document.getElementById("aiChatBox");
 
 
     if(!box) return;
 
 
 
-    if(box.style.display === "block"){
+    if(box.style.display==="block"){
 
-        box.style.display = "none";
+        box.style.display="none";
 
     }
 
     else{
 
-        box.style.display = "block";
+        box.style.display="block";
 
     }
 
@@ -418,25 +424,31 @@ function openAIChat(){
 
 function openDashboard(){
 
-let profile = localStorage.getItem("finSightProfile");
+    let profile=
+    localStorage.getItem("finSightProfile");
 
-if(profile){
 
-    window.location.href="dashboard.html";
+    if(profile){
+
+        window.location.href="dashboard.html";
+
+    }
+
+    else{
+
+        alert("Please complete your financial profile first.");
+
+        window.location.href="setup.html";
+
+    }
 
 }
-else{
 
-    alert("Please complete your financial profile first.");
 
-    window.location.href="setup.html";
 
-}
-
-}
 function openSetup(){
 
-    window.location.href = "setup.html";
+    window.location.href="setup.html";
 
 }
 
@@ -444,7 +456,7 @@ function openSetup(){
 
 function openFeature(page){
 
-    window.location.href = page;
+    window.location.href=page;
 
 }
 
@@ -453,28 +465,26 @@ function openFeature(page){
 
 
 
-// Load expenses
+// =====================================
+// LOAD
+// =====================================
 
-window.onload = function(){
+window.onload=function(){
 
     displayExpenses();
 
 
-    // =====================================
-// HIDE PROFILE BUTTON AFTER PROFILE CREATED
-// =====================================
+    let profile=
+    localStorage.getItem("finSightProfile");
 
-window.addEventListener("load", function(){
 
-    let profile = localStorage.getItem("finSightProfile");
+    let btn=document.getElementById("profileBtn");
 
-    let btn = document.getElementById("profileBtn");
 
     if(profile && btn){
 
-        btn.style.display = "none";
+        btn.style.display="none";
 
     }
 
-});
 };
