@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
 
 <head>
@@ -17,7 +18,9 @@
 
 <h1>🎯 Financial Goals</h1>
 
-<p>Plan your dreams and track your progress</p>
+<p id="goalWelcome">
+Plan your dreams and track your progress
+</p>
 
 </header>
 
@@ -25,71 +28,16 @@
 
 
 
-<!-- SHORT TERM GOALS -->
+
 
 <section>
 
 <h2>⚡ Short-Term Goals</h2>
 
-<p>Goals you can achieve within 1-2 years</p>
+<p>Goals you want to achieve in the near future</p>
 
 
-<div class="dashboard">
-
-
-<div class="card">
-
-<h3>💻 Laptop</h3>
-
-<p>Target: ₹70,000</p>
-
-<p>Saved: ₹30,000</p>
-
-<p>Progress: 45%</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h3>📱 Smartphone</h3>
-
-<p>Target: ₹40,000</p>
-
-<p>Saved: ₹15,000</p>
-
-<p>Progress: 37%</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h3>🎓 Course</h3>
-
-<p>Target: ₹20,000</p>
-
-<p>Saved: ₹8,000</p>
-
-<p>Progress: 40%</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h3>✈️ Vacation</h3>
-
-<p>Target: ₹50,000</p>
-
-<p>Saved: ₹10,000</p>
-
-<p>Progress: 20%</p>
-
-</div>
+<div class="dashboard" id="shortGoalsContainer">
 
 
 </div>
@@ -102,8 +50,6 @@
 
 
 
-
-<!-- LONG TERM GOALS -->
 
 
 <section>
@@ -115,69 +61,7 @@
 
 
 
-<div class="dashboard">
-
-
-
-<div class="card">
-
-<h3>🏠 Dream House</h3>
-
-<p>Target: ₹80 Lakhs</p>
-
-<p>Saved: ₹5 Lakhs</p>
-
-<p>Progress: 6%</p>
-
-</div>
-
-
-
-
-<div class="card">
-
-<h3>🏡 Luxury Villa</h3>
-
-<p>Target: ₹2 Crore</p>
-
-<p>Saved: ₹15 Lakhs</p>
-
-<p>Progress: 7%</p>
-
-</div>
-
-
-
-
-
-<div class="card">
-
-<h3>🚗 Dream Car</h3>
-
-<p>Target: ₹50 Lakhs</p>
-
-<p>Saved: ₹8 Lakhs</p>
-
-<p>Progress: 16%</p>
-
-</div>
-
-
-
-
-
-<div class="card">
-
-<h3>💰 Financial Freedom</h3>
-
-<p>Target: ₹1 Crore</p>
-
-<p>Saved: ₹10 Lakhs</p>
-
-<p>Progress: 10%</p>
-
-</div>
-
+<div class="dashboard" id="longGoalsContainer">
 
 
 </div>
@@ -191,7 +75,6 @@
 
 
 
-<!-- GOAL AI ADVISOR -->
 
 
 <section>
@@ -203,18 +86,10 @@
 <div class="card">
 
 
-<p>
-💡 Based on your savings, your laptop goal can be achieved faster by saving ₹8,000/month.
-</p>
+<p id="goalAI">
 
+Analysing your goals...
 
-<p>
-📈 Long-term goals require consistent investing and planning.
-</p>
-
-
-<p>
-🎯 Keep tracking your progress every month.
 </p>
 
 
@@ -222,6 +97,7 @@
 
 
 </section>
+
 
 
 
@@ -235,6 +111,16 @@
 
 </button>
 
+
+
+
+
+
+
+
+<!-- AI CHAT -->
+
+
 <div class="ai-button" onclick="openAIChat()">
 
 🤖
@@ -242,19 +128,29 @@
 </div>
 
 
+
+
+
 <div class="ai-chat-box" id="aiChatBox">
 
-<h3>🤖 FinSight AI Assistant</h3>
+
+<h3>
+🤖 FinSight AI Assistant
+</h3>
 
 
 <div id="chatMessages">
 
-<p>🤖 Hi! Ask me about your finance.</p>
+<p>
+🤖 Hi! Ask me about your finance.
+</p>
 
 </div>
 
 
+
 <input id="aiInput" placeholder="Ask about your money">
+
 
 
 <button onclick="sendMessage()">
@@ -264,7 +160,128 @@ Send
 </button>
 
 
+
 </div>
+
+
+
+
+
+
+
+
+<script src="script.js"></script>
+
+
+
+<script>
+
+
+let profile =
+JSON.parse(localStorage.getItem("finSightProfile"));
+
+
+
+
+if(profile){
+
+
+
+document.getElementById("goalWelcome").innerHTML =
+"Welcome "+profile.name+" 👋 Track your financial dreams";
+
+
+
+
+
+let shortContainer =
+document.getElementById("shortGoalsContainer");
+
+
+
+profile.shortGoals.forEach(function(goal){
+
+
+
+shortContainer.innerHTML += `
+
+<div class="card">
+
+<h3>🎯 ${goal.goal}</h3>
+
+<p>Target Amount: ₹${goal.amount}</p>
+
+<p>Saved: ₹0</p>
+
+<p>Progress: 0%</p>
+
+</div>
+
+`;
+
+});
+
+
+
+
+
+
+
+let longContainer =
+document.getElementById("longGoalsContainer");
+
+
+
+profile.longGoals.forEach(function(goal){
+
+
+
+longContainer.innerHTML += `
+
+<div class="card">
+
+<h3>🏡 ${goal.goal}</h3>
+
+<p>Target Amount: ₹${goal.amount}</p>
+
+<p>Saved: ₹0</p>
+
+<p>Progress: 0%</p>
+
+</div>
+
+`;
+
+});
+
+
+
+
+
+
+document.getElementById("goalAI").innerHTML =
+
+"💡 Your AI recommends focusing on one goal at a time and maintaining regular savings towards your targets.";
+
+
+
+
+
+}
+
+else{
+
+
+document.getElementById("goalAI").innerHTML =
+
+"Please complete your financial profile first.";
+
+}
+
+
+
+</script>
+
 
 
 </body>
