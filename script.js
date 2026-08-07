@@ -318,6 +318,471 @@ function longGoalsToInputs(goals){
         if(amount)
         amount.value=g.amount;
 
+        // ===============================
+// EXPENSE MANAGEMENT
+// ===============================
+
+
+function addExpense(){
+
+
+    let name =
+    document.getElementById("expenseName")?.value;
+
+
+    let amount =
+    Number(document.getElementById("expenseAmount")?.value);
+
+
+    let category =
+    document.getElementById("expenseCategory")?.value;
+
+
+
+    if(!name || amount<=0){
+
+        alert("Please enter valid expense details");
+
+        return;
+
+    }
+
+
+
+    let expense={
+
+        name:name,
+
+        amount:amount,
+
+        category:category,
+
+        date:new Date().toLocaleDateString()
+
+    };
+
+
+
+    expenses.push(expense);
+
+
+
+    localStorage.setItem(
+        "expenses",
+        JSON.stringify(expenses)
+    );
+
+
+
+    displayExpenses();
+
+
+
+    alert("✅ Expense Added Successfully");
+
+
+
+}
+
+
+
+
+function displayExpenses(){
+
+
+    let table =
+    document.getElementById("expenseTable");
+
+
+
+    if(!table)
+    return;
+
+
+
+    table.innerHTML=`
+
+    <tr>
+
+    <th>S.No</th>
+
+    <th>Name</th>
+
+    <th>Amount</th>
+
+    <th>Category</th>
+
+    </tr>
+
+    `;
+
+
+
+    expenses.forEach(function(expense,index){
+
+
+        let row=table.insertRow();
+
+
+
+        row.insertCell(0).innerHTML=index+1;
+
+
+        row.insertCell(1).innerHTML=
+        expense.name;
+
+
+
+        row.insertCell(2).innerHTML=
+        "₹"+expense.amount;
+
+
+
+        row.insertCell(3).innerHTML=
+        expense.category;
+
+
+
+    });
+
+
+
+}
+
+
+
+
+
+// ===============================
+// DASHBOARD DATA DISPLAY
+// ===============================
+
+
+function loadDashboard(){
+
+
+    let profile=getProfile();
+
+
+
+    if(!profile)
+    return;
+
+
+
+    let elements={
+
+
+        dashName:
+        profile.name,
+
+
+        dashSalary:
+        "₹"+profile.salary,
+
+
+        dashSaving:
+        "₹"+profile.savingTarget,
+
+
+        dashCurrentSavings:
+        "₹"+profile.currentSavings
+
+
+    };
+
+
+
+    Object.keys(elements).forEach(function(id){
+
+
+        let element=document.getElementById(id);
+
+
+        if(element){
+
+            element.innerHTML=elements[id];
+
+        }
+
+
+    });
+
+
+
+
+    // Goals
+
+
+    if(profile.shortGoals){
+
+
+        let short=document.getElementById(
+            "dashboardShortGoals"
+        );
+
+
+        if(short){
+
+
+            short.innerHTML="";
+
+
+            profile.shortGoals.forEach(function(goal){
+
+
+                if(goal.goal){
+
+
+                    short.innerHTML +=
+
+                    `
+                    <p>
+                    🎯 ${goal.goal}
+                    - ₹${goal.amount}
+                    </p>
+                    `;
+
+                }
+
+
+            });
+
+
+        }
+
+
+    }
+
+
+
+
+
+    if(profile.longGoals){
+
+
+        let long=document.getElementById(
+            "dashboardLongGoals"
+        );
+
+
+        if(long){
+
+
+            long.innerHTML="";
+
+
+            profile.longGoals.forEach(function(goal){
+
+
+                if(goal.goal){
+
+
+                    long.innerHTML +=
+
+                    `
+                    <p>
+                    🏡 ${goal.goal}
+                    - ₹${goal.amount}
+                    </p>
+                    `;
+
+
+                }
+
+
+            });
+
+
+        }
+
+
+    }
+
+
+
+
+}
+
+
+
+
+
+// ===============================
+// AI FINANCIAL RECOMMENDATION
+// ===============================
+
+
+function generateAIAdvice(){
+
+
+    let profile=getProfile();
+
+
+
+    if(!profile){
+
+        return "Please complete your financial profile.";
+
+    }
+
+
+
+
+    let advice=[];
+
+
+
+    let totalIncome =
+    profile.salary +
+    profile.otherIncome;
+
+
+
+
+    let totalExpense =
+
+    profile.rent +
+
+    profile.emi +
+
+    profile.bills +
+
+    profile.food +
+
+    profile.travel +
+
+    profile.shopping +
+
+    profile.otherExpense;
+
+
+
+
+    let savings =
+    totalIncome-totalExpense;
+
+
+
+
+
+
+    if(totalExpense > totalIncome*0.7){
+
+
+        advice.push(
+
+        "⚠️ Your expenses are more than 70% of income. Try reducing unnecessary spending."
+
+        );
+
+
+    }
+
+
+
+
+
+
+
+    if(profile.shopping > totalIncome*0.15){
+
+
+        advice.push(
+
+        "🛒 Shopping expenses are high. Consider reducing them."
+
+        );
+
+
+    }
+
+
+
+
+
+
+
+    if(savings > totalIncome*0.3){
+
+
+        advice.push(
+
+        "🌟 Excellent! You are maintaining a strong saving habit."
+
+        );
+
+
+    }
+
+    else if(savings>0){
+
+
+        advice.push(
+
+        "💰 Good start. Try increasing your monthly savings."
+
+        );
+
+
+    }
+
+    else{
+
+
+        advice.push(
+
+        "🚨 Your expenses are higher than income. Create a strict budget."
+
+        );
+
+
+    }
+
+
+
+
+
+
+
+    if(profile.shortGoals){
+
+
+        advice.push(
+
+        "🎯 Your short-term goals should be planned with monthly saving targets."
+
+        );
+
+
+    }
+
+
+
+
+
+    if(profile.longGoals){
+
+
+        advice.push(
+
+        "🏡 Long-term goals require consistent investment and patience."
+
+        );
+
+
+    }
+
+
+
+
+
+    return advice.join("<br><br>");
+
+
+
+}
+
 
     });
 
