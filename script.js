@@ -779,6 +779,503 @@ function generateAIAdvice(){
 
     return advice.join("<br><br>");
 
+    
+// ===============================
+// AI CHAT POPUP
+// ===============================
+
+
+function openAIChat(){
+
+
+    let box =
+    document.getElementById("aiChatBox");
+
+
+
+    if(!box)
+    return;
+
+
+
+    if(box.style.display==="block"){
+
+        box.style.display="none";
+
+    }
+
+    else{
+
+        box.style.display="block";
+
+    }
+
+
+}
+
+
+
+
+
+
+
+// ===============================
+// AI CHAT ASSISTANT
+// ===============================
+
+
+function sendMessage(){
+
+
+    let input =
+    document.getElementById("aiInput");
+
+
+    let chat =
+    document.getElementById("chatMessages");
+
+
+
+    if(!input || input.value.trim()==="")
+
+    return;
+
+
+
+    let message =
+    input.value;
+
+
+
+    chat.innerHTML +=
+
+    `
+    <p>👤 ${message}</p>
+    `;
+
+
+
+    let reply =
+    getAIChatReply(message);
+
+
+
+    chat.innerHTML +=
+
+    `
+    <p>🤖 ${reply}</p>
+    `;
+
+
+
+    input.value="";
+
+
+
+    chat.scrollTop =
+    chat.scrollHeight;
+
+
+}
+
+
+
+
+
+
+
+function getAIChatReply(message){
+
+
+    let profile =
+    getProfile();
+
+
+
+    if(!profile){
+
+
+        return "Please complete your financial profile first.";
+
+    }
+
+
+
+
+
+    let text =
+    message.toLowerCase();
+
+
+
+
+
+
+    if(text.includes("salary") || text.includes("income")){
+
+
+        return
+
+        "Your monthly income is ₹"
+
+        + profile.salary
+
+        +
+
+        ". I can help you create a better budget.";
+
+
+
+    }
+
+
+
+
+
+
+
+    if(text.includes("saving")){
+
+
+        return
+
+        "Your current saving target is ₹"
+
+        +
+
+        profile.savingTarget
+
+        +
+
+        ". Try saving regularly every month.";
+
+
+
+    }
+
+
+
+
+
+
+
+    if(text.includes("expense") || text.includes("spending")){
+
+
+        let total =
+
+        profile.rent +
+
+        profile.emi +
+
+        profile.bills +
+
+        profile.food +
+
+        profile.travel +
+
+        profile.shopping +
+
+        profile.otherExpense;
+
+
+
+        return
+
+        "Your planned monthly expenses are around ₹"
+
+        +
+
+        total
+
+        +
+
+        ". I suggest tracking unnecessary spending.";
+
+
+
+    }
+
+
+
+
+
+
+
+    if(text.includes("goal")){
+
+
+        let goals="";
+
+
+
+        profile.shortGoals.forEach(function(g){
+
+
+            if(g.goal){
+
+                goals +=
+
+                "🎯 "+g.goal+
+
+                " - ₹"+g.amount+
+
+                "<br>";
+
+            }
+
+
+        });
+
+
+
+
+        profile.longGoals.forEach(function(g){
+
+
+            if(g.goal){
+
+                goals +=
+
+                "🏡 "+g.goal+
+
+                " - ₹"+g.amount+
+
+                "<br>";
+
+            }
+
+
+        });
+
+
+
+        return goals || "No goals added yet.";
+
+    }
+
+
+
+
+
+
+
+    if(text.includes("advice") || text.includes("recommend")){
+
+
+        return generateAIAdvice();
+
+
+    }
+
+
+
+
+
+
+
+    return
+
+    "I can help you with income, expenses, savings, goals, budgeting and financial planning.";
+
+}
+
+
+
+
+
+
+
+// ===============================
+// PROFILE EDIT SYSTEM
+// ===============================
+
+
+function editProfile(){
+
+
+    window.location.href="setup.html";
+
+
+}
+
+
+
+
+
+
+
+
+// ===============================
+// PREVENT DIRECT SETUP PAGE AFTER CREATION
+// ===============================
+
+
+function checkSetupAccess(){
+
+
+    let profile =
+    localStorage.getItem("finSightProfile");
+
+
+
+    let currentPage =
+    window.location.pathname;
+
+
+
+    if(profile && currentPage.includes("setup.html")){
+
+
+        alert(
+        "Profile already created. Use Edit Profile to modify your data."
+        );
+
+
+        window.location.href="dashboard.html";
+
+
+    }
+
+
+}
+
+
+
+
+
+
+
+
+// ===============================
+// NAVIGATION
+// ===============================
+
+
+function openDashboard(){
+
+
+    let profile =
+    localStorage.getItem("finSightProfile");
+
+
+
+    if(profile){
+
+
+        window.location.href="dashboard.html";
+
+
+    }
+
+    else{
+
+
+        window.location.href="setup.html";
+
+
+    }
+
+
+}
+
+
+
+
+
+
+function openSetup(){
+
+
+    window.location.href="setup.html";
+
+
+}
+
+
+
+
+
+function openFeature(page){
+
+
+    window.location.href=page;
+
+
+}
+
+
+
+
+
+
+
+
+// ===============================
+// PAGE LOAD
+// ===============================
+
+
+window.addEventListener("load",function(){
+
+
+
+    displayExpenses();
+
+
+
+    checkSetupAccess();
+
+
+
+    loadDashboard();
+
+
+
+
+
+    let profile =
+    localStorage.getItem("finSightProfile");
+
+
+
+    let button =
+    document.getElementById("profileButton");
+
+
+
+    if(profile && button){
+
+
+        button.innerHTML=
+
+        "✏️ Edit Financial Profile";
+
+
+    }
+
+
+
+
+
+    let aiBox =
+    document.getElementById("dashboardAI");
+
+
+
+    if(aiBox){
+
+
+        aiBox.innerHTML =
+        generateAIAdvice();
+
+
+    }
+
+
+
+});
+
 
 
 }
