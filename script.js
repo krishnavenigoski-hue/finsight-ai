@@ -1,229 +1,20 @@
 // =====================================
-// FinSight AI - Main Script
+// FinSight AI - Main Script (New Version)
 // =====================================
 
 
-// Store expenses
-let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
+// ===============================
+// STORAGE
+// ===============================
 
+let expenses = JSON.parse(
+    localStorage.getItem("expenses")
+) || [];
 
 
-// =====================================
-// SAVE PROFILE FROM SETUP PAGE
-// =====================================
-
-function saveProfile(){
-
-    let profile = {
-
-        name: document.getElementById("userName").value,
-
-        salary: Number(document.getElementById("salary").value),
-
-        otherIncome: Number(document.getElementById("otherIncome").value),
-
-        rent: Number(document.getElementById("rent").value),
-
-        emi: Number(document.getElementById("emi").value),
-
-        bills: Number(document.getElementById("bills").value),
-
-        food: Number(document.getElementById("food").value),
-
-        travel: Number(document.getElementById("travel").value),
-
-        shopping: Number(document.getElementById("shopping").value),
-
-        otherExpense: Number(document.getElementById("otherExpense").value),
-
-
-
-        // NEW 3 SHORT TERM GOALS
-
-        shortGoals:[
-            {
-                goal: document.getElementById("shortGoal1").value,
-                amount: Number(document.getElementById("shortAmount1").value)
-            },
-
-            {
-                goal: document.getElementById("shortGoal2").value,
-                amount: Number(document.getElementById("shortAmount2").value)
-            },
-
-            {
-                goal: document.getElementById("shortGoal3").value,
-                amount: Number(document.getElementById("shortAmount3").value)
-            }
-        ],
-
-
-
-        // NEW 3 LONG TERM GOALS
-
-        longGoals:[
-            {
-                goal: document.getElementById("longGoal1").value,
-                amount: Number(document.getElementById("longAmount1").value)
-            },
-
-            {
-                goal: document.getElementById("longGoal2").value,
-                amount: Number(document.getElementById("longAmount2").value)
-            },
-
-            {
-                goal: document.getElementById("longGoal3").value,
-                amount: Number(document.getElementById("longAmount3").value)
-            }
-        ],
-
-
-
-        currentSavings:
-        Number(document.getElementById("currentSavings").value),
-
-
-        savingTarget:
-        Number(document.getElementById("savingTarget").value)
-
-    };
-
-
-
-    localStorage.setItem(
-        "finSightProfile",
-        JSON.stringify(profile)
-    );
-
-
-    alert("✅ Financial Profile Created Successfully");
-
-
-    window.location.href="dashboard.html";
-
-}
-
-
-
-
-
-
-// =====================================
-// ADD EXPENSE
-// =====================================
-
-function addExpense(){
-
-    let name=document.getElementById("expenseName").value;
-
-    let amount=Number(
-        document.getElementById("expenseAmount").value
-    );
-
-    let category=document.getElementById("expenseCategory").value;
-
-
-
-    if(name==="" || amount<=0){
-
-        alert("Please enter expense details");
-
-        return;
-
-    }
-
-
-
-    let expense={
-
-        name:name,
-
-        amount:amount,
-
-        category:category,
-
-        date:new Date().toLocaleDateString()
-
-    };
-
-
-
-    expenses.push(expense);
-
-
-
-    localStorage.setItem(
-        "expenses",
-        JSON.stringify(expenses)
-    );
-
-
-    displayExpenses();
-
-
-    alert("✅ Expense Added Successfully");
-
-}
-
-
-
-
-
-
-// =====================================
-// DISPLAY EXPENSES
-// =====================================
-
-function displayExpenses(){
-
-    let table=document.getElementById("expenseTable");
-
-
-    if(!table) return;
-
-
-
-    table.innerHTML=`
-
-    <tr>
-    <th>S.No</th>
-    <th>Name</th>
-    <th>Amount</th>
-    <th>Category</th>
-    </tr>
-
-    `;
-
-
-
-    expenses.forEach(function(expense,index){
-
-
-        let row=table.insertRow();
-
-
-        row.insertCell(0).innerHTML=index+1;
-
-        row.insertCell(1).innerHTML=expense.name;
-
-        row.insertCell(2).innerHTML="₹"+expense.amount;
-
-        row.insertCell(3).innerHTML=expense.category;
-
-
-    });
-
-}
-
-
-
-
-
-
-// =====================================
+// ===============================
 // GET PROFILE
-// =====================================
+// ===============================
 
 function getProfile(){
 
@@ -235,256 +26,300 @@ function getProfile(){
 
 
 
+// ===============================
+// SAVE / UPDATE PROFILE
+// ===============================
+
+function saveProfile(){
+
+
+    let profile = {
+
+
+        name:
+        document.getElementById("userName")?.value || "",
+
+
+        salary:
+        Number(document.getElementById("salary")?.value || 0),
+
+
+        otherIncome:
+        Number(document.getElementById("otherIncome")?.value || 0),
 
 
 
-// =====================================
-// AI SUGGESTIONS
-// =====================================
+        rent:
+        Number(document.getElementById("rent")?.value || 0),
 
-function generateAIAdvice(){
+
+        emi:
+        Number(document.getElementById("emi")?.value || 0),
+
+
+        bills:
+        Number(document.getElementById("bills")?.value || 0),
+
+
+
+        food:
+        Number(document.getElementById("food")?.value || 0),
+
+
+        travel:
+        Number(document.getElementById("travel")?.value || 0),
+
+
+        shopping:
+        Number(document.getElementById("shopping")?.value || 0),
+
+
+        otherExpense:
+        Number(document.getElementById("otherExpense")?.value || 0),
+
+
+
+        // 3 SHORT TERM GOALS
+
+        shortGoals:[
+
+            {
+                goal:
+                document.getElementById("shortGoal1")?.value || "",
+
+                amount:
+                Number(document.getElementById("shortAmount1")?.value || 0)
+            },
+
+
+            {
+                goal:
+                document.getElementById("shortGoal2")?.value || "",
+
+                amount:
+                Number(document.getElementById("shortAmount2")?.value || 0)
+            },
+
+
+            {
+                goal:
+                document.getElementById("shortGoal3")?.value || "",
+
+                amount:
+                Number(document.getElementById("shortAmount3")?.value || 0)
+            }
+
+        ],
+
+
+
+
+        // 3 LONG TERM GOALS
+
+        longGoals:[
+
+            {
+                goal:
+                document.getElementById("longGoal1")?.value || "",
+
+                amount:
+                Number(document.getElementById("longAmount1")?.value || 0)
+            },
+
+
+            {
+                goal:
+                document.getElementById("longGoal2")?.value || "",
+
+                amount:
+                Number(document.getElementById("longAmount2")?.value || 0)
+            },
+
+
+            {
+                goal:
+                document.getElementById("longGoal3")?.value || "",
+
+                amount:
+                Number(document.getElementById("longAmount3")?.value || 0)
+            }
+
+        ],
+
+
+
+
+        currentSavings:
+        Number(document.getElementById("currentSavings")?.value || 0),
+
+
+
+        savingTarget:
+        Number(document.getElementById("savingTarget")?.value || 0)
+
+    };
+
+
+
+    localStorage.setItem(
+        "finSightProfile",
+        JSON.stringify(profile)
+    );
+
+
+
+    alert("✅ Financial Profile Saved Successfully");
+
+
+    window.location.href="dashboard.html";
+
+}
+
+
+
+
+
+// ===============================
+// LOAD PROFILE INTO EDIT PAGE
+// ===============================
+
+
+function loadProfileForEdit(){
+
 
     let profile=getProfile();
 
 
-    if(!profile){
+    if(!profile) return;
 
-        return "Please complete your financial profile.";
+
+
+    let fields=[
+
+        "userName",
+        "salary",
+        "otherIncome",
+        "rent",
+        "emi",
+        "bills",
+        "food",
+        "travel",
+        "shopping",
+        "otherExpense",
+        "currentSavings",
+        "savingTarget"
+
+    ];
+
+
+
+    fields.forEach(function(id){
+
+
+        let element=document.getElementById(id);
+
+
+        if(element){
+
+            let key=id;
+
+
+            element.value=profile[key] || "";
+
+        }
+
+
+    });
+
+
+
+    if(profile.shortGoals){
+
+
+        shortGoalsToInputs(profile.shortGoals);
 
     }
 
 
-    let advice=[];
+
+    if(profile.longGoals){
 
 
-    let totalExpense =
-    profile.rent+
-    profile.emi+
-    profile.bills+
-    profile.food+
-    profile.travel+
-    profile.shopping+
-    profile.otherExpense;
+        longGoalsToInputs(profile.longGoals);
+
+    }
 
 
 
-    if(totalExpense > profile.salary*0.7){
+}
 
-        advice.push(
-        "⚠️ Your expenses are above 70% of income."
+
+
+
+
+function shortGoalsToInputs(goals){
+
+
+    goals.forEach(function(g,index){
+
+
+        let number=index+1;
+
+
+        let goal=document.getElementById(
+            "shortGoal"+number
         );
 
-    }
 
-
-
-    if(profile.shopping > profile.salary*0.15){
-
-        advice.push(
-        "🛒 Reduce shopping expenses."
+        let amount=document.getElementById(
+            "shortAmount"+number
         );
 
-    }
+
+        if(goal)
+        goal.value=g.goal;
+
+
+        if(amount)
+        amount.value=g.amount;
+
+
+    });
+
+
+}
 
 
 
-    if(advice.length===0){
 
-        advice.push(
-        "✅ Your financial planning looks healthy."
+function longGoalsToInputs(goals){
+
+
+    goals.forEach(function(g,index){
+
+
+        let number=index+1;
+
+
+        let goal=document.getElementById(
+            "longGoal"+number
         );
 
-    }
+
+        let amount=document.getElementById(
+            "longAmount"+number
+        );
 
 
-    return advice.join("<br>");
+        if(goal)
+        goal.value=g.goal;
+
+
+        if(amount)
+        amount.value=g.amount;
+
+
+    });
+
 
 }
-
-
-
-
-
-
-// =====================================
-// AI CHAT
-// =====================================
-
-function sendMessage(){
-
-
-    let input=document.getElementById("aiInput");
-
-    let chat=document.getElementById("chatMessages");
-
-
-    if(!input || input.value.trim()==="") return;
-
-
-
-    let message=input.value;
-
-
-    chat.innerHTML +=
-    "<p>👤 "+message+"</p>";
-
-
-
-    let profile=getProfile();
-
-    let reply;
-
-
-
-    if(message.toLowerCase().includes("salary")){
-
-        reply="Your salary is ₹"+profile.salary;
-
-    }
-
-
-    else if(message.toLowerCase().includes("goal")){
-
-
-        reply="Your goals are: ";
-
-        profile.shortGoals.forEach(g=>{
-
-            reply += g.goal+" - ₹"+g.amount+"<br>";
-
-        });
-
-    }
-
-
-    else if(message.toLowerCase().includes("save")){
-
-        reply="Your saving target is ₹"+profile.savingTarget;
-
-    }
-
-
-    else{
-
-        reply="I can help you with salary, savings, goals, expenses and budgeting.";
-
-    }
-
-
-
-    chat.innerHTML +=
-    "<p>🤖 "+reply+"</p>";
-
-
-
-    input.value="";
-
-}
-
-
-
-
-
-
-// =====================================
-// AI CHAT POPUP
-// =====================================
-
-function openAIChat(){
-
-    let box=document.getElementById("aiChatBox");
-
-
-    if(!box) return;
-
-
-
-    if(box.style.display==="block"){
-
-        box.style.display="none";
-
-    }
-
-    else{
-
-        box.style.display="block";
-
-    }
-
-}
-
-
-
-
-
-
-// =====================================
-// NAVIGATION
-// =====================================
-
-function openDashboard(){
-
-    let profile=
-    localStorage.getItem("finSightProfile");
-
-
-    if(profile){
-
-        window.location.href="dashboard.html";
-
-    }
-
-    else{
-
-        alert("Please complete your financial profile first.");
-
-        window.location.href="setup.html";
-
-    }
-
-}
-
-
-
-function openSetup(){
-
-    window.location.href="setup.html";
-
-}
-
-
-
-function openFeature(page){
-
-    window.location.href=page;
-
-}
-
-
-
-
-
-
-// =====================================
-// LOAD
-// =====================================
-
-window.onload=function(){
-
-    displayExpenses();
-
-
-    let profile=
-    localStorage.getItem("finSightProfile");
-
-
-    let btn=document.getElementById("profileBtn");
-
-
-    if(profile && btn){
-
-        btn.style.display="none";
-
-    }
-
-};
