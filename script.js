@@ -1,6 +1,5 @@
 // ============================================================
-// FinSight AI - Main Script
-// Complete Application Logic
+// FinSight AI - Master JavaScript
 // ============================================================
 
 
@@ -16,35 +15,28 @@ let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
 // ============================================================
 
 function getProfile() {
-
-    return JSON.parse(
-        localStorage.getItem("finSightProfile")
-    );
-
+    return JSON.parse(localStorage.getItem("finSightProfile"));
 }
 
 
 function saveProfileData(profile) {
-
     localStorage.setItem(
         "finSightProfile",
         JSON.stringify(profile)
     );
-
 }
 
 
 function formatMoney(amount) {
-
     amount = Number(amount) || 0;
 
-    return "₹" + amount.toLocaleString("en-IN");
-
+    return "₹" + amount.toLocaleString("en-IN", {
+        maximumFractionDigits: 0
+    });
 }
 
 
 function getNumber(id) {
-
     const element = document.getElementById(id);
 
     if (!element) {
@@ -52,12 +44,10 @@ function getNumber(id) {
     }
 
     return Number(element.value) || 0;
-
 }
 
 
 function escapeHTML(text) {
-
     if (text === null || text === undefined) {
         return "";
     }
@@ -68,7 +58,6 @@ function escapeHTML(text) {
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
-
 }
 
 
@@ -83,10 +72,9 @@ function getTotalIncome(profile) {
     }
 
     return (
-        Number(profile.salary) +
-        Number(profile.otherIncome)
+        Number(profile.salary || 0) +
+        Number(profile.otherIncome || 0)
     );
-
 }
 
 
@@ -97,11 +85,10 @@ function getFixedCommitments(profile) {
     }
 
     return (
-        Number(profile.rent) +
-        Number(profile.emi) +
-        Number(profile.bills)
+        Number(profile.rent || 0) +
+        Number(profile.emi || 0) +
+        Number(profile.bills || 0)
     );
-
 }
 
 
@@ -112,12 +99,11 @@ function getPlannedSpending(profile) {
     }
 
     return (
-        Number(profile.food) +
-        Number(profile.travel) +
-        Number(profile.shopping) +
-        Number(profile.otherExpense)
+        Number(profile.food || 0) +
+        Number(profile.travel || 0) +
+        Number(profile.shopping || 0) +
+        Number(profile.otherExpense || 0)
     );
-
 }
 
 
@@ -131,51 +117,30 @@ function getProfileMonthlyExpense(profile) {
         getFixedCommitments(profile) +
         getPlannedSpending(profile)
     );
-
 }
 
 
 function getTrackedExpenseTotal() {
 
     return expenses.reduce(
-        function(total, expense) {
-
+        (total, expense) => {
             return total + Number(expense.amount || 0);
-
         },
         0
     );
-
-}
-
-
-function getAvailableMonthlyMoney(profile) {
-
-    if (!profile) {
-        return 0;
-    }
-
-    return (
-        getTotalIncome(profile) -
-        getProfileMonthlyExpense(profile)
-    );
-
 }
 
 
 // ============================================================
-// SAVE PROFILE
+// PROFILE SAVE
 // ============================================================
 
 function saveProfile() {
 
-    const nameElement =
-        document.getElementById("userName");
-
     const name =
-        nameElement
-            ? nameElement.value.trim()
-            : "";
+        document.getElementById("userName")
+            ?.value.trim() || "";
+
 
     const profile = {
 
@@ -267,10 +232,8 @@ function saveProfile() {
         currentSavings:
             getNumber("currentSavings"),
 
-
         savingTarget:
             getNumber("savingTarget"),
-
 
         updatedAt:
             new Date().toISOString()
@@ -300,46 +263,16 @@ function saveProfile() {
 
 
     alert(
-        "✅ Financial profile saved successfully!"
+        "✅ Your financial profile has been saved successfully!"
     );
 
 
     window.location.href = "index.html";
-
 }
 
 
 // ============================================================
-// EDIT PROFILE
-// ============================================================
-
-function editProfile() {
-
-    const profile = getProfile();
-
-
-    if (!profile) {
-
-        window.location.href = "setup.html";
-
-        return;
-
-    }
-
-
-    localStorage.setItem(
-        "editingProfile",
-        "true"
-    );
-
-
-    window.location.href = "setup.html";
-
-}
-
-
-// ============================================================
-// LOAD PROFILE INTO SETUP PAGE
+// LOAD PROFILE INTO SETUP
 // ============================================================
 
 function loadProfileIntoSetup() {
@@ -380,16 +313,14 @@ function loadProfileIntoSetup() {
     };
 
 
-    Object.keys(fields).forEach(function(id) {
+    Object.keys(fields).forEach(id => {
 
         const element =
             document.getElementById(id);
 
         if (element) {
-
             element.value =
                 fields[id] ?? "";
-
         }
 
     });
@@ -398,14 +329,17 @@ function loadProfileIntoSetup() {
     const shortGoals =
         profile.shortGoals || [];
 
-    shortGoals.forEach(function(goal, index) {
+
+    shortGoals.forEach((goal, index) => {
 
         const number = index + 1;
+
 
         const goalElement =
             document.getElementById(
                 "shortGoal" + number
             );
+
 
         const amountElement =
             document.getElementById(
@@ -414,18 +348,14 @@ function loadProfileIntoSetup() {
 
 
         if (goalElement) {
-
             goalElement.value =
                 goal.goal || "";
-
         }
 
 
         if (amountElement) {
-
             amountElement.value =
-                goal.amount || 0;
-
+                goal.amount || "";
         }
 
     });
@@ -434,14 +364,17 @@ function loadProfileIntoSetup() {
     const longGoals =
         profile.longGoals || [];
 
-    longGoals.forEach(function(goal, index) {
+
+    longGoals.forEach((goal, index) => {
 
         const number = index + 1;
+
 
         const goalElement =
             document.getElementById(
                 "longGoal" + number
             );
+
 
         const amountElement =
             document.getElementById(
@@ -450,32 +383,28 @@ function loadProfileIntoSetup() {
 
 
         if (goalElement) {
-
             goalElement.value =
                 goal.goal || "";
-
         }
 
 
         if (amountElement) {
-
             amountElement.value =
-                goal.amount || 0;
-
+                goal.amount || "";
         }
 
     });
 
 
-    const button =
+    const saveButton =
         document.querySelector(
             'button[onclick="saveProfile()"]'
         );
 
 
-    if (button) {
+    if (saveButton) {
 
-        button.innerHTML =
+        saveButton.innerHTML =
             "💾 Update Financial Profile";
 
     }
@@ -492,8 +421,10 @@ function addExpense() {
     const nameElement =
         document.getElementById("expenseName");
 
+
     const amountElement =
         document.getElementById("expenseAmount");
+
 
     const categoryElement =
         document.getElementById("expenseCategory");
@@ -504,17 +435,17 @@ function addExpense() {
         !amountElement ||
         !categoryElement
     ) {
-
         return;
-
     }
 
 
     const name =
         nameElement.value.trim();
 
+
     const amount =
         Number(amountElement.value);
+
 
     const category =
         categoryElement.value;
@@ -533,17 +464,13 @@ function addExpense() {
 
     const expense = {
 
-        id:
-            Date.now(),
+        id: Date.now(),
 
-        name:
-            name,
+        name: name,
 
-        amount:
-            amount,
+        amount: amount,
 
-        category:
-            category,
+        category: category,
 
         date:
             new Date().toLocaleDateString("en-IN")
@@ -560,12 +487,17 @@ function addExpense() {
     );
 
 
-    displayExpenses();
-
-
     nameElement.value = "";
 
     amountElement.value = "";
+
+
+    displayExpenses();
+
+
+    loadHomeData();
+
+    loadExpenseTrackingPage();
 
 
     alert(
@@ -583,11 +515,8 @@ function deleteExpense(id) {
 
     expenses =
         expenses.filter(
-            function(expense) {
-
-                return expense.id !== id;
-
-            }
+            expense =>
+                expense.id !== id
         );
 
 
@@ -598,6 +527,10 @@ function deleteExpense(id) {
 
 
     displayExpenses();
+
+    loadHomeData();
+
+    loadExpenseTrackingPage();
 
 }
 
@@ -660,7 +593,7 @@ function displayExpenses() {
 
 
     expenses.forEach(
-        function(expense, index) {
+        (expense, index) => {
 
             const row =
                 table.insertRow();
@@ -703,7 +636,7 @@ function displayExpenses() {
 
 
 // ============================================================
-// AI FINANCIAL ANALYSIS
+// FINANCIAL HEALTH
 // ============================================================
 
 function analyzeFinancialHealth() {
@@ -718,7 +651,7 @@ function analyzeFinancialHealth() {
             score: 0,
 
             health:
-                "Please complete your financial profile.",
+                "Profile not completed",
 
             income: 0,
 
@@ -766,27 +699,26 @@ function analyzeFinancialHealth() {
             : 0;
 
 
-    let score = 100;
-
-    let advice = [];
-
-
-    // --------------------------------------------------------
-    // EXPENSE RATIO
-    // --------------------------------------------------------
-
     const expenseRatio =
         income > 0
             ? (expense / income) * 100
             : 100;
 
 
+    let score = 100;
+
+
+    const advice = [];
+
+
+    // Expense ratio
+
     if (expenseRatio > 90) {
 
         score -= 35;
 
         advice.push(
-            "⚠️ Your monthly expenses are extremely high compared with your income."
+            "🚨 Your expenses are extremely high compared with your income."
         );
 
     }
@@ -796,7 +728,7 @@ function analyzeFinancialHealth() {
         score -= 25;
 
         advice.push(
-            "⚠️ A large portion of your income is going toward expenses."
+            "⚠️ A large portion of your income is being spent."
         );
 
     }
@@ -806,7 +738,7 @@ function analyzeFinancialHealth() {
         score -= 15;
 
         advice.push(
-            "🟡 Your spending is moderate, but there is room to improve."
+            "🟡 Your spending is moderate, but there is room for improvement."
         );
 
     }
@@ -814,22 +746,18 @@ function analyzeFinancialHealth() {
     else {
 
         advice.push(
-            "🟢 Your overall expense level is under control."
+            "🟢 Your overall spending is under control."
         );
 
     }
 
 
-    // --------------------------------------------------------
-    // SAVINGS
-    // --------------------------------------------------------
+    // Savings
 
     if (savingRate >= 30) {
 
-        score += 0;
-
         advice.push(
-            "💰 Excellent saving behaviour. You are saving at least 30% of your income."
+            "💰 Excellent! You are saving at least 30% of your income."
         );
 
     }
@@ -837,7 +765,7 @@ function analyzeFinancialHealth() {
     else if (savingRate >= 20) {
 
         advice.push(
-            "💰 Your savings rate is healthy. Try to gradually move toward 30%."
+            "💰 Your savings rate is healthy. Try to move gradually toward 30%."
         );
 
     }
@@ -847,7 +775,7 @@ function analyzeFinancialHealth() {
         score -= 10;
 
         advice.push(
-            "💡 Your savings are positive, but increasing your monthly savings would strengthen your financial position."
+            "💡 You have positive savings, but increasing them would strengthen your finances."
         );
 
     }
@@ -857,33 +785,13 @@ function analyzeFinancialHealth() {
         score -= 25;
 
         advice.push(
-            "🚨 Your current expenses are equal to or greater than your income."
+            "🚨 Your expenses are currently equal to or greater than your income."
         );
 
     }
 
 
-    // --------------------------------------------------------
-    // SHOPPING
-    // --------------------------------------------------------
-
-    if (
-        profile.shopping >
-        income * 0.15
-    ) {
-
-        score -= 8;
-
-        advice.push(
-            "🛒 Shopping is taking a relatively large share of your income. Consider setting a monthly shopping limit."
-        );
-
-    }
-
-
-    // --------------------------------------------------------
     // EMI
-    // --------------------------------------------------------
 
     if (
         profile.emi >
@@ -893,15 +801,13 @@ function analyzeFinancialHealth() {
         score -= 12;
 
         advice.push(
-            "🏦 Your EMI burden is high. Avoid taking on unnecessary new loans."
+            "🏦 Your EMI is high compared with your income. Avoid unnecessary new loans."
         );
 
     }
 
 
-    // --------------------------------------------------------
-    // RENT
-    // --------------------------------------------------------
+    // Rent
 
     if (
         profile.rent >
@@ -911,95 +817,62 @@ function analyzeFinancialHealth() {
         score -= 8;
 
         advice.push(
-            "🏠 Your rent is taking a significant portion of your income."
+            "🏠 Your rent takes a significant portion of your income."
         );
 
     }
 
 
-    // --------------------------------------------------------
-    // SAVING TARGET
-    // --------------------------------------------------------
+    // Shopping
 
     if (
-        profile.savingTarget > 0 &&
-        savings >= profile.savingTarget
+        profile.shopping >
+        income * 0.15
     ) {
 
+        score -= 8;
+
         advice.push(
-            "🎯 You are currently meeting your monthly savings target."
+            "🛒 Shopping expenses are relatively high. Consider setting a fixed shopping limit."
         );
 
     }
 
-    else if (
+
+    // Savings target
+
+    if (
         profile.savingTarget > 0
     ) {
 
-        const shortage =
-            profile.savingTarget -
-            Math.max(savings, 0);
+        if (
+            savings >=
+            profile.savingTarget
+        ) {
 
-
-        advice.push(
-            "🎯 You are approximately " +
-            formatMoney(shortage) +
-            " away from your monthly savings target."
-        );
-
-    }
-
-
-    // --------------------------------------------------------
-    // GOALS
-    // --------------------------------------------------------
-
-    const allGoals =
-        [
-            ...(profile.shortGoals || []),
-            ...(profile.longGoals || [])
-        ].filter(
-            function(goal) {
-
-                return (
-                    goal.goal &&
-                    Number(goal.amount) > 0
-                );
-
-            }
-        );
-
-
-    if (allGoals.length > 0) {
-
-        const totalGoalAmount =
-            allGoals.reduce(
-                function(total, goal) {
-
-                    return (
-                        total +
-                        Number(goal.amount)
-                    );
-
-                },
-                0
+            advice.push(
+                "🎯 You are currently meeting your monthly savings target."
             );
 
+        }
 
-        advice.push(
-            "🎯 You have " +
-            allGoals.length +
-            " active financial goal" +
-            (allGoals.length > 1 ? "s" : "") +
-            " with a combined target of " +
-            formatMoney(totalGoalAmount) +
-            "."
-        );
+        else {
+
+            const shortage =
+                profile.savingTarget -
+                Math.max(savings, 0);
+
+
+            advice.push(
+                "🎯 You need approximately " +
+                formatMoney(shortage) +
+                " more to reach your monthly savings target."
+            );
+
+        }
 
     }
 
-
-    // Keep score between 0 and 100.
 
     score =
         Math.max(
@@ -1011,7 +884,7 @@ function analyzeFinancialHealth() {
         );
 
 
-    let health;
+    let health = "";
 
 
     if (score >= 85) {
@@ -1043,7 +916,7 @@ function analyzeFinancialHealth() {
     }
 
 
-    let risk;
+    let risk = "";
 
 
     if (expenseRatio > 90) {
@@ -1073,55 +946,23 @@ function analyzeFinancialHealth() {
 
     return {
 
-        score:
-            score,
+        score,
 
-        health:
-            health,
+        health,
 
-        income:
-            income,
+        income,
 
-        expense:
-            expense,
+        expense,
 
-        savings:
-            savings,
+        savings,
 
-        savingRate:
-            savingRate,
+        savingRate,
 
-        risk:
-            risk,
+        risk,
 
-        advice:
-            advice
+        advice
 
     };
-
-}
-
-
-// ============================================================
-// GENERATE AI ADVICE
-// ============================================================
-
-function generateAIAdvice() {
-
-    const analysis =
-        analyzeFinancialHealth();
-
-
-    if (
-        !getProfile()
-    ) {
-
-        return "Please complete your financial profile first.";
-
-    }
-
-
-    return analysis.advice.join("<br><br>");
 
 }
 
@@ -1159,9 +1000,7 @@ function getPersonalizedRecommendations() {
         analysis.savings;
 
 
-    // --------------------------------------------------------
-    // SAVINGS RECOMMENDATION
-    // --------------------------------------------------------
+    // Savings
 
     if (income > 0) {
 
@@ -1172,9 +1011,9 @@ function getPersonalizedRecommendations() {
         if (savings < idealSavings) {
 
             recommendations.push(
-                "💰 Try to save at least " +
+                "💰 Aim to save around " +
                 formatMoney(idealSavings) +
-                " per month, which is around 20% of your income."
+                " per month, approximately 20% of your income."
             );
 
         }
@@ -1182,7 +1021,7 @@ function getPersonalizedRecommendations() {
         else {
 
             recommendations.push(
-                "💚 Your current savings are on a healthy track. Try to maintain this consistency."
+                "💚 Your savings are on a healthy track. Maintain this consistency."
             );
 
         }
@@ -1190,9 +1029,7 @@ function getPersonalizedRecommendations() {
     }
 
 
-    // --------------------------------------------------------
-    // SHOPPING
-    // --------------------------------------------------------
+    // Shopping
 
     if (
         profile.shopping >
@@ -1200,15 +1037,13 @@ function getPersonalizedRecommendations() {
     ) {
 
         recommendations.push(
-            "🛒 Your shopping budget is relatively high. Consider reducing it and redirecting the difference toward your savings or goals."
+            "🛒 Your shopping budget is relatively high. Consider redirecting some of it toward savings."
         );
 
     }
 
 
-    // --------------------------------------------------------
-    // FOOD
-    // --------------------------------------------------------
+    // Food
 
     if (
         profile.food >
@@ -1216,15 +1051,13 @@ function getPersonalizedRecommendations() {
     ) {
 
         recommendations.push(
-            "🍱 Food spending is taking a noticeable share of your income. Planning meals and limiting unnecessary food purchases could help."
+            "🍱 Food spending is taking a noticeable share of your income. Planning meals may help reduce unnecessary spending."
         );
 
     }
 
 
-    // --------------------------------------------------------
-    // TRAVEL
-    // --------------------------------------------------------
+    // Travel
 
     if (
         profile.travel >
@@ -1232,15 +1065,13 @@ function getPersonalizedRecommendations() {
     ) {
 
         recommendations.push(
-            "🚗 Your travel spending is relatively high. Look for cheaper transport options or set a fixed monthly travel budget."
+            "🚗 Your travel budget is relatively high. Consider cheaper transportation options where possible."
         );
 
     }
 
 
-    // --------------------------------------------------------
     // EMI
-    // --------------------------------------------------------
 
     if (
         profile.emi >
@@ -1248,111 +1079,60 @@ function getPersonalizedRecommendations() {
     ) {
 
         recommendations.push(
-            "🏦 Your EMI is above 30% of income. Avoid additional debt until your current loan burden becomes more manageable."
+            "🏦 Your EMI is above 30% of income. Avoid taking on additional debt if possible."
         );
 
     }
 
 
-    // --------------------------------------------------------
-    // GOALS
-    // --------------------------------------------------------
+    // Goals
 
-    const goals =
-        [
-            ...(profile.shortGoals || []),
-            ...(profile.longGoals || [])
-        ].filter(
-            function(goal) {
+    const goals = [
 
-                return (
-                    goal.goal &&
-                    Number(goal.amount) > 0
-                );
+        ...(profile.shortGoals || []),
 
-            }
-        );
+        ...(profile.longGoals || [])
+
+    ].filter(
+        goal =>
+            goal.goal &&
+            Number(goal.amount) > 0
+    );
 
 
     if (goals.length > 0) {
 
-        const firstGoal =
-            goals[0];
-
-
-        if (savings > 0) {
-
-            recommendations.push(
-                "🎯 Based on your current surplus, prioritize your goal \"" +
-                escapeHTML(firstGoal.goal) +
-                "\" before spreading your savings across too many goals."
-            );
-
-        }
-
-    }
-
-
-    // --------------------------------------------------------
-    // SAVING TARGET
-    // --------------------------------------------------------
-
-    if (
-        profile.savingTarget > 0
-    ) {
-
-        if (
-            savings >=
-            profile.savingTarget
-        ) {
-
-            recommendations.push(
-                "🎯 You are currently able to meet your monthly savings target of " +
-                formatMoney(profile.savingTarget) +
-                ". Keep the habit consistent."
-            );
-
-        }
-
-        else {
-
-            recommendations.push(
-                "📌 Your planned savings target is " +
-                formatMoney(profile.savingTarget) +
-                ". Reduce discretionary spending if you want to reach this target."
-            );
-
-        }
-
-    }
-
-
-    // --------------------------------------------------------
-    // EMERGENCY SAVINGS
-    // --------------------------------------------------------
-
-    if (
-        profile.currentSavings <
-        getProfileMonthlyExpense(profile) * 3
-    ) {
-
         recommendations.push(
-            "🛡️ Your current savings may not cover three months of planned expenses. Building an emergency fund should be one of your priorities."
+            "🎯 Prioritize one financial goal at a time instead of spreading your savings too thin."
         );
 
     }
 
 
-    // --------------------------------------------------------
-    // GENERAL POSITIVE MESSAGE
-    // --------------------------------------------------------
+    // Emergency fund
+
+    const monthlyExpense =
+        getProfileMonthlyExpense(profile);
+
+
+    if (
+        profile.currentSavings <
+        monthlyExpense * 3
+    ) {
+
+        recommendations.push(
+            "🛡️ Consider building an emergency fund covering approximately three months of expenses."
+        );
+
+    }
+
 
     if (
         recommendations.length === 0
     ) {
 
         recommendations.push(
-            "✅ Your financial profile currently looks balanced. Continue tracking expenses and reviewing your goals every month."
+            "✅ Your financial profile currently looks balanced. Continue tracking expenses and reviewing your goals regularly."
         );
 
     }
@@ -1364,486 +1144,7 @@ function getPersonalizedRecommendations() {
 
 
 // ============================================================
-// AI CHAT
-// ============================================================
-
-function sendMessage() {
-
-    const input =
-        document.getElementById("aiInput");
-
-    const chat =
-        document.getElementById("chatMessages");
-
-
-    if (
-        !input ||
-        !chat ||
-        input.value.trim() === ""
-    ) {
-
-        return;
-
-    }
-
-
-    const message =
-        input.value.trim();
-
-
-    const lowerMessage =
-        message.toLowerCase();
-
-
-    const profile =
-        getProfile();
-
-
-    if (!profile) {
-
-        chat.innerHTML += `
-
-            <p>
-                👤 ${escapeHTML(message)}
-            </p>
-
-            <p>
-                🤖 Please complete your financial profile first so I can give you personalized answers.
-            </p>
-
-        `;
-
-        input.value = "";
-
-        return;
-
-    }
-
-
-    chat.innerHTML += `
-
-        <p>
-            👤 ${escapeHTML(message)}
-        </p>
-
-    `;
-
-
-    let reply = "";
-
-
-    const analysis =
-        analyzeFinancialHealth();
-
-
-    // --------------------------------------------------------
-    // SALARY
-    // --------------------------------------------------------
-
-    if (
-        lowerMessage.includes("salary") ||
-        lowerMessage.includes("income")
-    ) {
-
-        reply =
-            "💰 Your total monthly income is " +
-            formatMoney(analysis.income) +
-            ".";
-
-    }
-
-
-    // --------------------------------------------------------
-    // EXPENSE
-    // --------------------------------------------------------
-
-    else if (
-        lowerMessage.includes("expense") ||
-        lowerMessage.includes("spending")
-    ) {
-
-        reply =
-            "💸 Your estimated monthly expenses are " +
-            formatMoney(analysis.expense) +
-            ". Your tracked expenses currently total " +
-            formatMoney(getTrackedExpenseTotal()) +
-            ".";
-
-    }
-
-
-    // --------------------------------------------------------
-    // SAVINGS
-    // --------------------------------------------------------
-
-    else if (
-        lowerMessage.includes("saving") ||
-        lowerMessage.includes("save")
-    ) {
-
-        reply =
-            "🏦 Your estimated monthly surplus is " +
-            formatMoney(Math.max(analysis.savings, 0)) +
-            ". Your monthly saving target is " +
-            formatMoney(profile.savingTarget) +
-            ".";
-
-    }
-
-
-    // --------------------------------------------------------
-    // GOALS
-    // --------------------------------------------------------
-
-    else if (
-        lowerMessage.includes("goal")
-    ) {
-
-        const goals =
-            [
-                ...(profile.shortGoals || []),
-                ...(profile.longGoals || [])
-            ].filter(
-                function(goal) {
-
-                    return (
-                        goal.goal &&
-                        Number(goal.amount) > 0
-                    );
-
-                }
-            );
-
-
-        if (goals.length === 0) {
-
-            reply =
-                "🎯 You haven't added any financial goals yet.";
-
-        }
-
-        else {
-
-            reply =
-                "🎯 Your current goals:<br><br>" +
-                goals.map(
-                    function(goal) {
-
-                        return (
-                            "• " +
-                            escapeHTML(goal.goal) +
-                            " — " +
-                            formatMoney(goal.amount)
-                        );
-
-                    }
-                ).join("<br>");
-
-        }
-
-    }
-
-
-    // --------------------------------------------------------
-    // SCORE
-    // --------------------------------------------------------
-
-    else if (
-        lowerMessage.includes("score") ||
-        lowerMessage.includes("health")
-    ) {
-
-        reply =
-            "❤️ Your current financial health score is " +
-            analysis.score +
-            "/100 — " +
-            analysis.health +
-            ".";
-
-    }
-
-
-    // --------------------------------------------------------
-    // BUDGET
-    // --------------------------------------------------------
-
-    else if (
-        lowerMessage.includes("budget")
-    ) {
-
-        const safeLimit =
-            Math.max(
-                0,
-                analysis.income * 0.60 -
-                getFixedCommitments(profile)
-            );
-
-
-        reply =
-            "📊 Based on your profile, after fixed commitments, try to keep discretionary spending around " +
-            formatMoney(safeLimit) +
-            " or below.";
-
-    }
-
-
-    // --------------------------------------------------------
-    // RECOMMENDATION
-    // --------------------------------------------------------
-
-    else if (
-        lowerMessage.includes("recommend") ||
-        lowerMessage.includes("advice") ||
-        lowerMessage.includes("suggest") ||
-        lowerMessage.includes("what should")
-    ) {
-
-        reply =
-            "🧠 Here are my recommendations based on your data:<br><br>" +
-            getPersonalizedRecommendations()
-                .slice(0, 4)
-                .join("<br><br>");
-
-    }
-
-
-    // --------------------------------------------------------
-    // HELP
-    // --------------------------------------------------------
-
-    else if (
-        lowerMessage.includes("help") ||
-        lowerMessage.includes("what can")
-    ) {
-
-        reply =
-            "🤖 I can analyse your salary, expenses, savings, goals, budget, financial health and spending behaviour. Try asking:<br><br>" +
-            "• How much do I earn?<br>" +
-            "• How much am I spending?<br>" +
-            "• How much can I save?<br>" +
-            "• What are my goals?<br>" +
-            "• How is my financial health?<br>" +
-            "• Give me recommendations.";
-
-    }
-
-
-    // --------------------------------------------------------
-    // DEFAULT
-    // --------------------------------------------------------
-
-    else {
-
-        reply =
-            "🤖 Based on your current profile, your financial health score is " +
-            analysis.score +
-            "/100. " +
-            "I can analyse your income, spending, savings and goals. Ask me for a recommendation if you'd like personalized advice.";
-
-    }
-
-
-    chat.innerHTML += `
-
-        <p>
-            🤖 ${reply}
-        </p>
-
-    `;
-
-
-    chat.scrollTop =
-        chat.scrollHeight;
-
-
-    input.value = "";
-
-}
-
-
-// ============================================================
-// AI CHAT POPUP
-// ============================================================
-
-function openAIChat() {
-
-    const box =
-        document.getElementById("aiChatBox");
-
-
-    if (!box) {
-        return;
-    }
-
-
-    if (
-        box.style.display === "block"
-    ) {
-
-        box.style.display = "none";
-
-    }
-
-    else {
-
-        box.style.display = "block";
-
-        const input =
-            document.getElementById("aiInput");
-
-        if (input) {
-
-            input.focus();
-
-        }
-
-    }
-
-}
-
-
-// ============================================================
-// BUDGET CALCULATOR
-// ============================================================
-
-function calculateBudget() {
-
-    const salary =
-        getNumber("salary");
-
-
-    const rent =
-        getNumber("rent");
-
-
-    const food =
-        getNumber("food");
-
-
-    const travel =
-        getNumber("travel");
-
-
-    const emi =
-        getNumber("emi");
-
-
-    const other =
-        getNumber("other");
-
-
-    const commitments =
-        rent +
-        food +
-        travel +
-        emi +
-        other;
-
-
-    const remaining =
-        salary -
-        commitments;
-
-
-    const suggestedSavings =
-        Math.max(
-            0,
-            salary * 0.20
-        );
-
-
-    const commitmentsElement =
-        document.getElementById("commitments");
-
-
-    const remainingElement =
-        document.getElementById("remaining");
-
-
-    const savingPlanElement =
-        document.getElementById("savingPlan");
-
-
-    if (commitmentsElement) {
-
-        commitmentsElement.innerHTML =
-            formatMoney(commitments);
-
-    }
-
-
-    if (remainingElement) {
-
-        remainingElement.innerHTML =
-            formatMoney(remaining);
-
-    }
-
-
-    if (savingPlanElement) {
-
-        savingPlanElement.innerHTML =
-            formatMoney(suggestedSavings);
-
-    }
-
-}
-
-
-// ============================================================
-// NAVIGATION
-// ============================================================
-
-function openDashboard() {
-
-    const profile =
-        localStorage.getItem(
-            "finSightProfile"
-        );
-
-
-    if (profile) {
-
-        // dashboard.html is not required.
-        // The main financial page is index.html.
-
-        window.location.href =
-            "index.html";
-
-    }
-
-    else {
-
-        alert(
-            "Please complete your financial profile first."
-        );
-
-        window.location.href =
-            "setup.html";
-
-    }
-
-}
-
-
-function openSetup() {
-
-    window.location.href =
-        "setup.html";
-
-}
-
-
-function openFeature(page) {
-
-    window.location.href =
-        page;
-
-}
-
-
-// ============================================================
-// HOME PAGE DATA
+// HOME PAGE
 // ============================================================
 
 function loadHomeData() {
@@ -1857,30 +1158,6 @@ function loadHomeData() {
     }
 
 
-    const income =
-        getTotalIncome(profile);
-
-
-    const expense =
-        getProfileMonthlyExpense(profile);
-
-
-    const trackedExpense =
-        getTrackedExpenseTotal();
-
-
-    const actualExpense =
-        Math.max(
-            expense,
-            trackedExpense
-        );
-
-
-    const savings =
-        income -
-        actualExpense;
-
-
     const analysis =
         analyzeFinancialHealth();
 
@@ -1891,57 +1168,62 @@ function loadHomeData() {
         );
 
 
+    if (salaryElement) {
+
+        salaryElement.innerHTML =
+            formatMoney(
+                analysis.income
+            );
+
+    }
+
+
     const savingsElement =
         document.getElementById(
             "homeSavings"
         );
 
 
-    if (salaryElement) {
-
-        salaryElement.innerHTML =
-            formatMoney(income);
-
-    }
-
-
     if (savingsElement) {
 
         savingsElement.innerHTML =
             formatMoney(
-                Math.max(savings, 0)
+                Math.max(
+                    analysis.savings,
+                    0
+                )
             );
 
     }
 
 
-    // Update static overview cards
-    // when matching IDs are added later.
-
-    const homeHealth =
-        document.getElementById(
-            "homeHealth"
-        );
-
-
-    if (homeHealth) {
-
-        homeHealth.innerHTML =
-            analysis.score + "/100";
-
-    }
-
-
-    const homeExpense =
+    const expenseElement =
         document.getElementById(
             "homeExpense"
         );
 
 
-    if (homeExpense) {
+    if (expenseElement) {
 
-        homeExpense.innerHTML =
-            formatMoney(actualExpense);
+        expenseElement.innerHTML =
+            formatMoney(
+                analysis.expense
+            );
+
+    }
+
+
+    const healthElement =
+        document.getElementById(
+            "homeHealth"
+        );
+
+
+    if (healthElement) {
+
+        healthElement.innerHTML =
+            analysis.score +
+            "/100";
 
     }
 
@@ -1958,7 +1240,7 @@ function loadHomeData() {
             formatMoney(
                 Math.max(
                     0,
-                    income * 0.60
+                    analysis.income * 0.60
                 )
             );
 
@@ -2041,314 +1323,95 @@ function loadGoalsPage() {
     }
 
 
+    const currentSavings =
+        Number(profile.currentSavings || 0);
+
+
+    function createGoalCard(goal, icon) {
+
+        if (
+            !goal.goal &&
+            Number(goal.amount) <= 0
+        ) {
+
+            return "";
+
+        }
+
+
+        const target =
+            Number(goal.amount || 0);
+
+
+        const progress =
+            target > 0
+                ? Math.min(
+                    100,
+                    (currentSavings / target) * 100
+                )
+                : 0;
+
+
+        return `
+
+            <div class="card">
+
+                <h3>
+                    ${icon} ${escapeHTML(goal.goal)}
+                </h3>
+
+                <p>
+                    Target:
+                    ${formatMoney(target)}
+                </p>
+
+                <p>
+                    Current Savings:
+                    ${formatMoney(currentSavings)}
+                </p>
+
+                <p>
+                    Progress:
+                    ${progress.toFixed(0)}%
+                </p>
+
+            </div>
+
+        `;
+
+    }
+
+
     if (shortContainer) {
 
-        shortContainer.innerHTML = "";
-
-
-        (profile.shortGoals || []).forEach(
-            function(goal, index) {
-
-                if (
-                    !goal.goal &&
-                    Number(goal.amount) <= 0
-                ) {
-
-                    return;
-
-                }
-
-
-                shortContainer.innerHTML += `
-
-                    <div class="card">
-
-                        <h3>
-                            🎯 ${escapeHTML(goal.goal)}
-                        </h3>
-
-                        <p>
-                            Target Amount:
-                            ${formatMoney(goal.amount)}
-                        </p>
-
-                        <p>
-                            Current Savings:
-                            ${formatMoney(profile.currentSavings)}
-                        </p>
-
-                    </div>
-
-                `;
-
-            }
-        );
+        shortContainer.innerHTML =
+            (profile.shortGoals || [])
+                .map(goal =>
+                    createGoalCard(goal, "🎯")
+                )
+                .join("");
 
     }
 
 
     if (longContainer) {
 
-        longContainer.innerHTML = "";
-
-
-        (profile.longGoals || []).forEach(
-            function(goal, index) {
-
-                if (
-                    !goal.goal &&
-                    Number(goal.amount) <= 0
-                ) {
-
-                    return;
-
-                }
-
-
-                longContainer.innerHTML += `
-
-                    <div class="card">
-
-                        <h3>
-                            🏆 ${escapeHTML(goal.goal)}
-                        </h3>
-
-                        <p>
-                            Target Amount:
-                            ${formatMoney(goal.amount)}
-                        </p>
-
-                        <p>
-                            Current Savings:
-                            ${formatMoney(profile.currentSavings)}
-                        </p>
-
-                    </div>
-
-                `;
-
-            }
-        );
+        longContainer.innerHTML =
+            (profile.longGoals || [])
+                .map(goal =>
+                    createGoalCard(goal, "🏆")
+                )
+                .join("");
 
     }
 
 
     if (goalAI) {
 
-        const recommendations =
-            getPersonalizedRecommendations();
-
-
         goalAI.innerHTML =
-            recommendations
+            getPersonalizedRecommendations()
                 .slice(0, 4)
                 .join("<br><br>");
-
-    }
-
-}
-
-
-// ============================================================
-// AI INSIGHTS PAGE
-// ============================================================
-
-function loadAIInsightsPage() {
-
-    const profile =
-        getProfile();
-
-
-    if (!profile) {
-
-        const aiAdvice =
-            document.getElementById(
-                "aiAdvice"
-            );
-
-
-        if (aiAdvice) {
-
-            aiAdvice.innerHTML =
-                "Please complete your financial profile first.";
-
-        }
-
-        return;
-
-    }
-
-
-    const analysis =
-        analyzeFinancialHealth();
-
-
-    const welcome =
-        document.getElementById(
-            "welcomeAI"
-        );
-
-
-    if (welcome) {
-
-        welcome.innerHTML =
-            "Welcome " +
-            escapeHTML(profile.name) +
-            " 👋";
-
-    }
-
-
-    const score =
-        document.getElementById(
-            "score"
-        );
-
-
-    if (score) {
-
-        score.innerHTML =
-            analysis.score +
-            "/100";
-
-    }
-
-
-    const healthText =
-        document.getElementById(
-            "healthText"
-        );
-
-
-    if (healthText) {
-
-        healthText.innerHTML =
-            analysis.health +
-            " based on your current financial data.";
-
-    }
-
-
-    const savingAdvice =
-        document.getElementById(
-            "savingAdvice"
-        );
-
-
-    if (savingAdvice) {
-
-        savingAdvice.innerHTML =
-            "Your estimated monthly surplus is " +
-            formatMoney(
-                Math.max(
-                    analysis.savings,
-                    0
-                )
-            ) +
-            ". Your target is " +
-            formatMoney(
-                profile.savingTarget
-            ) +
-            ".";
-
-    }
-
-
-    const riskAdvice =
-        document.getElementById(
-            "riskAdvice"
-        );
-
-
-    if (riskAdvice) {
-
-        riskAdvice.innerHTML =
-            analysis.risk +
-            " spending risk.";
-
-    }
-
-
-    const aiAdvice =
-        document.getElementById(
-            "aiAdvice"
-        );
-
-
-    if (aiAdvice) {
-
-        aiAdvice.innerHTML =
-            getPersonalizedRecommendations()
-                .join("<br><br>");
-
-    }
-
-
-    const incomeReport =
-        document.getElementById(
-            "incomeReport"
-        );
-
-
-    const expenseReport =
-        document.getElementById(
-            "expenseReport"
-        );
-
-
-    const savingReport =
-        document.getElementById(
-            "savingReport"
-        );
-
-
-    const actionReport =
-        document.getElementById(
-            "actionReport"
-        );
-
-
-    if (incomeReport) {
-
-        incomeReport.innerHTML =
-            "Total Income: " +
-            formatMoney(
-                analysis.income
-            );
-
-    }
-
-
-    if (expenseReport) {
-
-        expenseReport.innerHTML =
-            "Total Expenses: " +
-            formatMoney(
-                analysis.expense
-            );
-
-    }
-
-
-    if (savingReport) {
-
-        savingReport.innerHTML =
-            "Potential Savings: " +
-            formatMoney(
-                Math.max(
-                    analysis.savings,
-                    0
-                )
-            );
-
-    }
-
-
-    if (actionReport) {
-
-        actionReport.innerHTML =
-            "Next Action: " +
-            getPersonalizedRecommendations()[0];
 
     }
 
@@ -2400,14 +1463,11 @@ function loadExpenseTrackingPage() {
 
             const highest =
                 expenses.reduce(
-                    function(max, expense) {
-
-                        return Number(expense.amount) >
-                            Number(max.amount)
+                    (max, expense) =>
+                        Number(expense.amount) >
+                        Number(max.amount)
                             ? expense
-                            : max;
-
-                    }
+                            : max
                 );
 
 
@@ -2441,52 +1501,481 @@ function loadExpenseTrackingPage() {
 
 
 // ============================================================
-// ANALYTICS DATA
+// BUDGET CALCULATOR
 // ============================================================
 
-function getCategoryTotals() {
+function calculateBudget() {
 
-    const categories = {};
-
-
-    expenses.forEach(
-        function(expense) {
-
-            const category =
-                expense.category ||
-                "Other";
+    const salary =
+        getNumber("salary");
 
 
-            if (!categories[category]) {
-
-                categories[category] =
-                    0;
-
-            }
+    const rent =
+        getNumber("rent");
 
 
-            categories[category] +=
-                Number(expense.amount) || 0;
-
-        }
-    );
+    const food =
+        getNumber("food");
 
 
-    return categories;
+    const travel =
+        getNumber("travel");
+
+
+    const emi =
+        getNumber("emi");
+
+
+    const other =
+        getNumber("other");
+
+
+    const commitments =
+        rent +
+        food +
+        travel +
+        emi +
+        other;
+
+
+    const remaining =
+        salary -
+        commitments;
+
+
+    const suggestedSavings =
+        Math.max(
+            0,
+            salary * 0.20
+        );
+
+
+    const commitmentsElement =
+        document.getElementById(
+            "commitments"
+        );
+
+
+    const remainingElement =
+        document.getElementById(
+            "remaining"
+        );
+
+
+    const savingElement =
+        document.getElementById(
+            "savingPlan"
+        );
+
+
+    if (commitmentsElement) {
+
+        commitmentsElement.innerHTML =
+            formatMoney(commitments);
+
+    }
+
+
+    if (remainingElement) {
+
+        remainingElement.innerHTML =
+            formatMoney(remaining);
+
+    }
+
+
+    if (savingElement) {
+
+        savingElement.innerHTML =
+            formatMoney(
+                suggestedSavings
+            );
+
+    }
 
 }
 
 
 // ============================================================
-// GLOBAL PAGE INITIALIZATION
+// AI CHAT
+// ============================================================
+
+function sendMessage() {
+
+    const input =
+        document.getElementById("aiInput");
+
+
+    const chat =
+        document.getElementById("chatMessages");
+
+
+    if (
+        !input ||
+        !chat ||
+        !input.value.trim()
+    ) {
+
+        return;
+
+    }
+
+
+    const message =
+        input.value.trim();
+
+
+    const lower =
+        message.toLowerCase();
+
+
+    const profile =
+        getProfile();
+
+
+    chat.innerHTML += `
+
+        <p>
+            👤 ${escapeHTML(message)}
+        </p>
+
+    `;
+
+
+    if (!profile) {
+
+        chat.innerHTML += `
+
+            <p>
+                🤖 Please complete your financial profile first so I can provide personalized financial insights.
+            </p>
+
+        `;
+
+
+        input.value = "";
+
+        return;
+
+    }
+
+
+    const analysis =
+        analyzeFinancialHealth();
+
+
+    let reply = "";
+
+
+    if (
+        lower.includes("salary") ||
+        lower.includes("income")
+    ) {
+
+        reply =
+            "💰 Your total monthly income is " +
+            formatMoney(
+                analysis.income
+            ) +
+            ".";
+
+    }
+
+
+    else if (
+        lower.includes("expense") ||
+        lower.includes("spending")
+    ) {
+
+        reply =
+            "💸 Your estimated monthly expenses are " +
+            formatMoney(
+                analysis.expense
+            ) +
+            ". Your tracked expenses total " +
+            formatMoney(
+                getTrackedExpenseTotal()
+            ) +
+            ".";
+
+    }
+
+
+    else if (
+        lower.includes("saving") ||
+        lower.includes("save")
+    ) {
+
+        reply =
+            "🏦 Your estimated monthly surplus is " +
+            formatMoney(
+                Math.max(
+                    analysis.savings,
+                    0
+                )
+            ) +
+            ". Your monthly savings target is " +
+            formatMoney(
+                profile.savingTarget
+            ) +
+            ".";
+
+    }
+
+
+    else if (
+        lower.includes("goal")
+    ) {
+
+        const goals = [
+
+            ...(profile.shortGoals || []),
+
+            ...(profile.longGoals || [])
+
+        ].filter(
+            goal =>
+                goal.goal &&
+                Number(goal.amount) > 0
+        );
+
+
+        if (!goals.length) {
+
+            reply =
+                "🎯 You haven't added any financial goals yet.";
+
+        }
+
+        else {
+
+            reply =
+                "🎯 Your financial goals:<br><br>" +
+
+                goals
+                    .map(
+                        goal =>
+                            "• " +
+                            escapeHTML(goal.goal) +
+                            " — " +
+                            formatMoney(
+                                goal.amount
+                            )
+                    )
+                    .join("<br>");
+
+        }
+
+    }
+
+
+    else if (
+        lower.includes("score") ||
+        lower.includes("health")
+    ) {
+
+        reply =
+            "❤️ Your financial health score is " +
+            analysis.score +
+            "/100 — " +
+            analysis.health +
+            ".";
+
+    }
+
+
+    else if (
+        lower.includes("budget")
+    ) {
+
+        const safeLimit =
+            Math.max(
+                0,
+                analysis.income * 0.60 -
+                getFixedCommitments(profile)
+            );
+
+
+        reply =
+            "📊 Based on your profile, try to keep discretionary spending around " +
+            formatMoney(safeLimit) +
+            " or below.";
+
+    }
+
+
+    else if (
+        lower.includes("recommend") ||
+        lower.includes("advice") ||
+        lower.includes("suggest")
+    ) {
+
+        reply =
+            "🧠 Here are my recommendations:<br><br>" +
+
+            getPersonalizedRecommendations()
+                .slice(0, 4)
+                .join("<br><br>");
+
+    }
+
+
+    else if (
+        lower.includes("help") ||
+        lower.includes("what can")
+    ) {
+
+        reply =
+            "🤖 I can help you analyse:<br><br>" +
+
+            "• Income<br>" +
+            "• Expenses<br>" +
+            "• Savings<br>" +
+            "• Financial goals<br>" +
+            "• Budget<br>" +
+            "• Financial health<br>" +
+            "• Spending behaviour<br><br>" +
+
+            "Try asking: <br>" +
+
+            "How much can I save?";
+
+    }
+
+
+    else {
+
+        reply =
+            "🤖 Your current financial health score is " +
+            analysis.score +
+            "/100. Ask me about your income, expenses, savings, goals, budget or recommendations.";
+
+    }
+
+
+    chat.innerHTML += `
+
+        <p>
+            🤖 ${reply}
+        </p>
+
+    `;
+
+
+    chat.scrollTop =
+        chat.scrollHeight;
+
+
+    input.value = "";
+
+}
+
+
+// ============================================================
+// AI CHAT POPUP
+// ============================================================
+
+function openAIChat() {
+
+    const box =
+        document.getElementById(
+            "aiChatBox"
+        );
+
+
+    if (!box) {
+        return;
+    }
+
+
+    if (
+        box.style.display === "block"
+    ) {
+
+        box.style.display =
+            "none";
+
+    }
+
+    else {
+
+        box.style.display =
+            "block";
+
+
+        document.getElementById(
+            "aiInput"
+        )?.focus();
+
+    }
+
+}
+
+
+// ============================================================
+// NAVIGATION
+// ============================================================
+
+function openProfile() {
+
+    window.location.href =
+        "setup.html";
+
+}
+
+
+function openDashboard() {
+
+    if (getProfile()) {
+
+        window.location.href =
+            "index.html";
+
+    }
+
+    else {
+
+        alert(
+            "Please complete your financial profile first."
+        );
+
+
+        window.location.href =
+            "setup.html";
+
+    }
+
+}
+
+
+function openSetup() {
+
+    window.location.href =
+        "setup.html";
+
+}
+
+
+function openFeature(page) {
+
+    window.location.href =
+        page;
+
+}
+
+
+// ============================================================
+// PAGE INITIALIZATION
 // ============================================================
 
 function initializePage() {
 
-    // Setup page
+    // Setup
 
     if (
-        document.getElementById("userName")
+        document.getElementById(
+            "userName"
+        )
     ) {
 
         loadProfileIntoSetup();
@@ -2494,7 +1983,7 @@ function initializePage() {
     }
 
 
-    // Home / index
+    // Home
 
     loadHomeData();
 
@@ -2515,23 +2004,7 @@ function initializePage() {
     }
 
 
-    // AI Insights
-
-    if (
-        document.getElementById(
-            "aiAdvice"
-        ) ||
-        document.getElementById(
-            "score"
-        )
-    ) {
-
-        loadAIInsightsPage();
-
-    }
-
-
-    // Expense tracking
+    // Expense Tracking
 
     if (
         document.getElementById(
@@ -2544,7 +2017,7 @@ function initializePage() {
     }
 
 
-    // Normal expense table
+    // Expense table
 
     displayExpenses();
 
@@ -2580,9 +2053,8 @@ document.addEventListener(
 
         if (
             event.key === "Enter" &&
-            document.activeElement &&
-            document.activeElement.id ===
-                "aiInput"
+            document.activeElement?.id ===
+            "aiInput"
         ) {
 
             sendMessage();
@@ -2594,7 +2066,7 @@ document.addEventListener(
 
 
 // ============================================================
-// START APPLICATION
+// START
 // ============================================================
 
 window.addEventListener(
