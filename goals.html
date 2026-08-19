@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 
 <head>
 
-<title>Financial Goals - FinSight AI</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="style.css">
+    <title>FinSight AI | Financial Goals</title>
+
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
@@ -14,274 +16,1276 @@
 <body>
 
 
+<!-- =====================================
+     HEADER
+===================================== -->
+
 <header>
 
-<h1>🎯 Financial Goals</h1>
+    <div class="header-content">
 
-<p id="goalWelcome">
-Plan your dreams and track your progress
-</p>
+        <div class="brand">
+
+            <div class="brand-icon">
+                🎯
+            </div>
+
+            <div>
+
+                <h1>FinSight AI</h1>
+
+                <p>Financial Goals</p>
+
+            </div>
+
+        </div>
+
+
+        <div class="header-badge">
+            🎯 Goal Planning
+        </div>
+
+    </div>
 
 </header>
 
 
 
+<!-- =====================================
+     PAGE INTRO
+===================================== -->
 
+<section class="page-intro">
 
+    <div>
 
+        <span class="eyebrow">
+            YOUR FINANCIAL FUTURE
+        </span>
 
-<section>
+        <h2 id="goalWelcome">
+            Plan your dreams and track your progress
+        </h2>
 
-<h2>⚡ Short-Term Goals</h2>
+        <p>
+            FinSight AI uses your financial profile to help you
+            understand your goals, prioritize them and create
+            a realistic savings strategy.
+        </p>
 
-<p>Goals you want to achieve in the near future</p>
-
-
-<div class="dashboard" id="shortGoalsContainer">
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-
-<section>
-
-
-<h2>🏆 Long-Term Goals</h2>
-
-<p>Big dreams for your future</p>
-
-
-
-<div class="dashboard" id="longGoalsContainer">
-
-
-</div>
-
+    </div>
 
 </section>
 
 
 
-
-
-
-
-
+<!-- =====================================
+     GOALS SUMMARY
+===================================== -->
 
 <section>
 
+    <div class="section-heading">
 
-<h2>🤖 Goal AI Advisor</h2>
+        <div class="section-icon">
+            📊
+        </div>
+
+        <div>
+
+            <h2>Goal Overview</h2>
+
+            <p>
+                A quick view of your financial targets.
+            </p>
+
+        </div>
+
+    </div>
 
 
-<div class="card">
+    <div class="dashboard">
 
 
-<p id="goalAI">
+        <div class="card">
 
-Analysing your goals...
+            <span class="card-icon">
+                ⚡
+            </span>
 
-</p>
+            <h3>
+                Short-Term Goals
+            </h3>
+
+            <h2 id="shortGoalCount">
+                0
+            </h2>
+
+            <p>
+                Goals to focus on soon
+            </p>
+
+        </div>
 
 
-</div>
 
+        <div class="card">
+
+            <span class="card-icon">
+                🏆
+            </span>
+
+            <h3>
+                Long-Term Goals
+            </h3>
+
+            <h2 id="longGoalCount">
+                0
+            </h2>
+
+            <p>
+                Future financial goals
+            </p>
+
+        </div>
+
+
+
+        <div class="card">
+
+            <span class="card-icon">
+                💰
+            </span>
+
+            <h3>
+                Total Target
+            </h3>
+
+            <h2 id="totalGoalAmount">
+                ₹0
+            </h2>
+
+            <p>
+                Combined goal amount
+            </p>
+
+        </div>
+
+
+
+        <div class="card">
+
+            <span class="card-icon">
+                🏦
+            </span>
+
+            <h3>
+                Current Savings
+            </h3>
+
+            <h2 id="goalCurrentSavings">
+                ₹0
+            </h2>
+
+            <p>
+                Starting savings
+            </p>
+
+        </div>
+
+
+    </div>
 
 </section>
 
 
 
+<!-- =====================================
+     SHORT-TERM GOALS
+===================================== -->
+
+<section>
+
+    <div class="section-heading">
+
+        <div class="section-icon">
+            ⚡
+        </div>
+
+        <div>
+
+            <h2>Short-Term Goals</h2>
+
+            <p>
+                Goals you want to achieve in the near future.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div
+        class="dashboard"
+        id="shortGoalsContainer"
+    >
+
+    </div>
+
+</section>
 
 
 
+<!-- =====================================
+     LONG-TERM GOALS
+===================================== -->
+
+<section>
+
+    <div class="section-heading">
+
+        <div class="section-icon">
+            🏆
+        </div>
+
+        <div>
+
+            <h2>Long-Term Goals</h2>
+
+            <p>
+                Bigger dreams that require long-term planning.
+            </p>
+
+        </div>
+
+    </div>
 
 
-<button onclick="history.back()">
+    <div
+        class="dashboard"
+        id="longGoalsContainer"
+    >
 
-⬅ Back To Dashboard
+    </div>
 
-</button>
-
-
-
-
-
+</section>
 
 
 
-<!-- AI CHAT -->
+<!-- =====================================
+     AI GOAL ADVISOR
+===================================== -->
+
+<section>
+
+    <div class="section-heading">
+
+        <div class="section-icon">
+            🤖
+        </div>
+
+        <div>
+
+            <h2>AI Goal Advisor</h2>
+
+            <p>
+                Personalized recommendations based on your financial data.
+            </p>
+
+        </div>
+
+    </div>
 
 
-<div class="ai-button" onclick="openAIChat()">
+    <div class="ai-insight-card">
 
-🤖
+        <div class="ai-insight-header">
+
+            <span class="ai-avatar">
+                🤖
+            </span>
+
+            <div>
+
+                <h3>
+                    FinSight AI Recommendation
+                </h3>
+
+                <p>
+                    Personalized for your financial profile
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div id="goalAI">
+
+            Analysing your goals...
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================
+     GOAL STRATEGY
+===================================== -->
+
+<section>
+
+    <div class="section-heading">
+
+        <div class="section-icon">
+            🧠
+        </div>
+
+        <div>
+
+            <h2>Goal Strategy</h2>
+
+            <p>
+                See how your current savings compare with your targets.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="dashboard">
+
+
+        <div class="card">
+
+            <h3>
+                💵 Monthly Saving Target
+            </h3>
+
+            <h2 id="goalSavingTarget">
+                ₹0
+            </h2>
+
+            <p>
+                Your planned monthly contribution
+            </p>
+
+        </div>
+
+
+
+        <div class="card">
+
+            <h3>
+                📌 Remaining Goal Amount
+            </h3>
+
+            <h2 id="remainingGoalAmount">
+                ₹0
+            </h2>
+
+            <p>
+                Amount still required for your goals
+            </p>
+
+        </div>
+
+
+
+        <div class="card">
+
+            <h3>
+                📈 Overall Progress
+            </h3>
+
+            <h2 id="overallGoalProgress">
+                0%
+            </h2>
+
+            <p>
+                Based on current savings
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================
+     BACK BUTTON
+===================================== -->
+
+<section class="page-actions">
+
+    <button
+        class="secondary-button"
+        onclick="history.back()"
+    >
+
+        ← Back To Dashboard
+
+    </button>
+
+</section>
+
+
+
+<!-- =====================================
+     AI CHAT BUTTON
+===================================== -->
+
+<div
+    class="ai-button"
+    onclick="openAIChat()"
+    aria-label="Open FinSight AI Assistant"
+>
+
+    🤖
 
 </div>
 
 
 
+<!-- =====================================
+     AI CHAT BOX
+===================================== -->
+
+<div
+    class="ai-chat-box"
+    id="aiChatBox"
+>
+
+    <div class="chat-header">
+
+        <div>
+
+            <h3>
+                🤖 FinSight AI
+            </h3>
+
+            <p>
+                Personal Financial Assistant
+            </p>
+
+        </div>
+
+        <button
+            class="chat-close"
+            onclick="openAIChat()"
+        >
+
+            ×
+
+        </button>
+
+    </div>
 
 
-<div class="ai-chat-box" id="aiChatBox">
+    <div id="chatMessages">
+
+        <p class="ai-message">
+            🤖 Hi! I know your financial profile.
+            Ask me about your goals, savings, expenses,
+            salary or budget.
+        </p>
+
+    </div>
 
 
-<h3>
-🤖 FinSight AI Assistant
-</h3>
+    <div class="chat-input-area">
+
+        <input
+            id="aiInput"
+            type="text"
+            placeholder="Ask about your money..."
+            onkeydown="if(event.key==='Enter') sendMessage()"
+        >
 
 
-<div id="chatMessages">
+        <button
+            onclick="sendMessage()"
+        >
 
-<p>
-🤖 Hi! Ask me about your finance.
-</p>
+            Send
+
+        </button>
+
+    </div>
 
 </div>
 
 
 
-<input id="aiInput" placeholder="Ask about your money">
+<!-- =====================================
+     FOOTER
+===================================== -->
+
+<footer>
+
+    <p>
+        © 2026 FinSight AI
+    </p>
+
+    <p>
+        Plan today. Build your financial future.
+    </p>
+
+</footer>
 
 
 
-<button onclick="sendMessage()">
-
-Send
-
-</button>
-
-
-
-</div>
-
-
-
-
-
-
-
+<!-- =====================================
+     MAIN SCRIPT
+===================================== -->
 
 <script src="script.js"></script>
 
 
 
+<!-- =====================================
+     GOAL PAGE LOGIC
+===================================== -->
+
 <script>
 
-
-let profile =
-JSON.parse(localStorage.getItem("finSightProfile"));
+document.addEventListener("DOMContentLoaded", function () {
 
 
+    const profile =
+        JSON.parse(localStorage.getItem("finSightProfile"));
 
 
-if(profile){
+    if (!profile) {
+
+        document.getElementById("goalAI").innerHTML = `
+            <div class="empty-state">
+                <h3>⚠️ Financial profile not found</h3>
+                <p>
+                    Please create your financial profile first
+                    to receive personalized goal recommendations.
+                </p>
+
+                <button
+                    onclick="window.location.href='setup.html'"
+                >
+                    Create Financial Profile
+                </button>
+            </div>
+        `;
+
+        return;
+
+    }
 
 
 
-document.getElementById("goalWelcome").innerHTML =
-"Welcome "+profile.name+" 👋 Track your financial dreams";
+    /* =====================================
+       WELCOME
+    ===================================== */
+
+    document.getElementById("goalWelcome").innerHTML =
+        "Welcome " +
+        escapeHTML(profile.name || "there") +
+        " 👋 Let's build your financial future";
 
 
 
+    /* =====================================
+       GET GOALS SAFELY
+    ===================================== */
+
+    const shortGoals =
+        Array.isArray(profile.shortGoals)
+            ? profile.shortGoals
+            : [];
 
 
-let shortContainer =
-document.getElementById("shortGoalsContainer");
+    const longGoals =
+        Array.isArray(profile.longGoals)
+            ? profile.longGoals
+            : [];
 
 
 
-profile.shortGoals.forEach(function(goal){
+    /* =====================================
+       SUMMARY
+    ===================================== */
+
+    document.getElementById("shortGoalCount").innerText =
+        shortGoals.filter(g => g.goal && Number(g.amount) > 0).length;
+
+
+    document.getElementById("longGoalCount").innerText =
+        longGoals.filter(g => g.goal && Number(g.amount) > 0).length;
 
 
 
-shortContainer.innerHTML += `
+    let totalGoalAmount = 0;
 
-<div class="card">
 
-<h3>🎯 ${goal.goal}</h3>
+    shortGoals.forEach(function (goal) {
 
-<p>Target Amount: ₹${goal.amount}</p>
+        totalGoalAmount += Number(goal.amount) || 0;
 
-<p>Saved: ₹0</p>
+    });
 
-<p>Progress: 0%</p>
 
-</div>
+    longGoals.forEach(function (goal) {
 
-`;
+        totalGoalAmount += Number(goal.amount) || 0;
+
+    });
+
+
+
+    const currentSavings =
+        Number(profile.currentSavings) || 0;
+
+
+    const savingTarget =
+        Number(profile.savingTarget) || 0;
+
+
+
+    document.getElementById("totalGoalAmount").innerText =
+        formatCurrency(totalGoalAmount);
+
+
+    document.getElementById("goalCurrentSavings").innerText =
+        formatCurrency(currentSavings);
+
+
+    document.getElementById("goalSavingTarget").innerText =
+        formatCurrency(savingTarget);
+
+
+
+    /* =====================================
+       REMAINING GOAL AMOUNT
+    ===================================== */
+
+    const remainingAmount =
+        Math.max(totalGoalAmount - currentSavings, 0);
+
+
+    document.getElementById("remainingGoalAmount").innerText =
+        formatCurrency(remainingAmount);
+
+
+
+    /* =====================================
+       OVERALL PROGRESS
+    ===================================== */
+
+    let progress = 0;
+
+
+    if (totalGoalAmount > 0) {
+
+        progress =
+            Math.min(
+                Math.round(
+                    (currentSavings / totalGoalAmount) * 100
+                ),
+                100
+            );
+
+    }
+
+
+    document.getElementById("overallGoalProgress").innerText =
+        progress + "%";
+
+
+
+    /* =====================================
+       DISPLAY SHORT GOALS
+    ===================================== */
+
+    const shortContainer =
+        document.getElementById("shortGoalsContainer");
+
+
+    shortContainer.innerHTML = "";
+
+
+    shortGoals.forEach(function (goal, index) {
+
+        if (!goal.goal || Number(goal.amount) <= 0) {
+            return;
+        }
+
+
+        shortContainer.innerHTML +=
+            createGoalCard(
+                goal,
+                "🎯",
+                "Short-Term Goal",
+                index
+            );
+
+    });
+
+
+
+    if (shortContainer.innerHTML === "") {
+
+        shortContainer.innerHTML = `
+            <div class="empty-state">
+
+                <h3>
+                    No short-term goals added
+                </h3>
+
+                <p>
+                    Add your goals from your financial profile.
+                </p>
+
+            </div>
+        `;
+
+    }
+
+
+
+    /* =====================================
+       DISPLAY LONG GOALS
+    ===================================== */
+
+    const longContainer =
+        document.getElementById("longGoalsContainer");
+
+
+    longContainer.innerHTML = "";
+
+
+    longGoals.forEach(function (goal, index) {
+
+        if (!goal.goal || Number(goal.amount) <= 0) {
+            return;
+        }
+
+
+        longContainer.innerHTML +=
+            createGoalCard(
+                goal,
+                "🏆",
+                "Long-Term Goal",
+                index
+            );
+
+    });
+
+
+
+    if (longContainer.innerHTML === "") {
+
+        longContainer.innerHTML = `
+            <div class="empty-state">
+
+                <h3>
+                    No long-term goals added
+                </h3>
+
+                <p>
+                    Add your goals from your financial profile.
+                </p>
+
+            </div>
+        `;
+
+    }
+
+
+
+    /* =====================================
+       AI GOAL RECOMMENDATION
+    ===================================== */
+
+    generateGoalAI(
+        profile,
+        totalGoalAmount,
+        currentSavings,
+        savingTarget,
+        shortGoals,
+        longGoals
+    );
 
 });
 
 
 
+/* =====================================
+   CREATE GOAL CARD
+===================================== */
+
+function createGoalCard(
+    goal,
+    icon,
+    type,
+    index
+) {
+
+
+    const target =
+        Number(goal.amount) || 0;
+
+
+    const currentSavings =
+        Number(
+            JSON.parse(
+                localStorage.getItem("finSightProfile")
+            ).currentSavings
+        ) || 0;
+
+
+    let progress = 0;
+
+
+    if (target > 0) {
+
+        progress =
+            Math.min(
+                Math.round(
+                    (currentSavings / target) * 100
+                ),
+                100
+            );
+
+    }
+
+
+    const remaining =
+        Math.max(
+            target - currentSavings,
+            0
+        );
+
+
+    let status = "";
+
+
+    if (progress >= 100) {
+
+        status =
+            `<span class="goal-status success">
+                ✓ Target Covered
+             </span>`;
+
+    }
+
+    else if (progress >= 50) {
+
+        status =
+            `<span class="goal-status progress-status">
+                ● Good Progress
+             </span>`;
+
+    }
+
+    else {
+
+        status =
+            `<span class="goal-status warning">
+                ● Needs Planning
+             </span>`;
+
+    }
 
 
 
+    return `
 
-let longContainer =
-document.getElementById("longGoalsContainer");
+        <div class="goal-card">
 
+            <div class="goal-card-header">
 
+                <div class="goal-icon">
+                    ${icon}
+                </div>
 
-profile.longGoals.forEach(function(goal){
+                <div>
 
+                    <span class="goal-type">
+                        ${type}
+                    </span>
 
+                    <h3>
+                        ${escapeHTML(goal.goal)}
+                    </h3>
 
-longContainer.innerHTML += `
+                </div>
 
-<div class="card">
-
-<h3>🏡 ${goal.goal}</h3>
-
-<p>Target Amount: ₹${goal.amount}</p>
-
-<p>Saved: ₹0</p>
-
-<p>Progress: 0%</p>
-
-</div>
-
-`;
-
-});
+            </div>
 
 
+            <div class="goal-amount">
+
+                <span>
+                    Target
+                </span>
+
+                <strong>
+                    ${formatCurrency(target)}
+                </strong>
+
+            </div>
 
 
+            <div class="goal-progress-info">
+
+                <span>
+                    Current savings
+                </span>
+
+                <strong>
+                    ${formatCurrency(currentSavings)}
+                </strong>
+
+            </div>
 
 
-document.getElementById("goalAI").innerHTML =
+            <div class="progress-bar">
 
-"💡 Your AI recommends focusing on one goal at a time and maintaining regular savings towards your targets.";
+                <div
+                    class="progress-fill"
+                    style="width:${progress}%"
+                ></div>
+
+            </div>
 
 
+            <div class="goal-progress-info">
+
+                <span>
+                    Progress
+                </span>
+
+                <strong>
+                    ${progress}%
+                </strong>
+
+            </div>
 
 
+            <div class="goal-bottom">
+
+                <span>
+                    Remaining: ${formatCurrency(remaining)}
+                </span>
+
+                ${status}
+
+            </div>
+
+        </div>
+
+    `;
 
 }
 
-else{
 
 
-document.getElementById("goalAI").innerHTML =
+/* =====================================
+   PERSONALIZED AI GOAL ADVISOR
+===================================== */
 
-"Please complete your financial profile first.";
+function generateGoalAI(
+    profile,
+    totalGoalAmount,
+    currentSavings,
+    savingTarget,
+    shortGoals,
+    longGoals
+) {
+
+
+    const salary =
+        Number(profile.salary) || 0;
+
+
+    const otherIncome =
+        Number(profile.otherIncome) || 0;
+
+
+    const totalIncome =
+        salary + otherIncome;
+
+
+    const expenses =
+        (Number(profile.rent) || 0) +
+        (Number(profile.emi) || 0) +
+        (Number(profile.bills) || 0) +
+        (Number(profile.food) || 0) +
+        (Number(profile.travel) || 0) +
+        (Number(profile.shopping) || 0) +
+        (Number(profile.otherExpense) || 0);
+
+
+    const monthlySurplus =
+        Math.max(
+            totalIncome - expenses,
+            0
+        );
+
+
+    const activeShortGoals =
+        shortGoals.filter(
+            g => g.goal && Number(g.amount) > 0
+        );
+
+
+    const activeLongGoals =
+        longGoals.filter(
+            g => g.goal && Number(g.amount) > 0
+        );
+
+
+    let messages = [];
+
+
+
+    /* =====================================
+       NO GOALS
+    ===================================== */
+
+    if (
+        activeShortGoals.length === 0 &&
+        activeLongGoals.length === 0
+    ) {
+
+        messages.push(
+            "You haven't added any financial goals yet."
+        );
+
+        messages.push(
+            "Consider starting with one realistic short-term goal."
+        );
+
+    }
+
+
+
+    /* =====================================
+       SAVINGS ANALYSIS
+    ===================================== */
+
+    if (savingTarget > 0 && monthlySurplus > 0) {
+
+        if (savingTarget <= monthlySurplus) {
+
+            messages.push(
+                `Your monthly saving target of ${formatCurrency(savingTarget)}
+                 appears achievable based on your current estimated surplus
+                 of ${formatCurrency(monthlySurplus)}.`
+            );
+
+        }
+
+        else {
+
+            messages.push(
+                `Your saving target of ${formatCurrency(savingTarget)}
+                 is higher than your estimated monthly surplus of
+                 ${formatCurrency(monthlySurplus)}. Consider reducing the target
+                 or your discretionary spending.`
+            );
+
+        }
+
+    }
+
+
+
+    /* =====================================
+       GOAL PRIORITY
+    ===================================== */
+
+    if (activeShortGoals.length > 0) {
+
+        const firstGoal =
+            activeShortGoals[0];
+
+
+        messages.push(
+            `Your first priority could be "${firstGoal.goal}"
+             with a target of ${formatCurrency(firstGoal.amount)}.
+             Focus on building this goal consistently before spreading
+             your savings too thin.`
+        );
+
+    }
+
+
+
+    /* =====================================
+       CURRENT SAVINGS
+    ===================================== */
+
+    if (totalGoalAmount > 0) {
+
+        const progress =
+            Math.round(
+                (currentSavings / totalGoalAmount) * 100
+            );
+
+
+        if (progress >= 100) {
+
+            messages.push(
+                "Your current savings are enough to cover the combined
+                 target amount shown here. You are in a strong position."
+            );
+
+        }
+
+        else if (progress >= 50) {
+
+            messages.push(
+                `You have already covered approximately ${progress}%
+                 of your combined goal targets. Keep the momentum going.`
+            );
+
+        }
+
+        else {
+
+            messages.push(
+                `You have covered approximately ${progress}%
+                 of your combined goal targets. A consistent monthly
+                 saving habit will help you close the gap.`
+            );
+
+        }
+
+    }
+
+
+
+    /* =====================================
+       LONG-TERM GOALS
+    ===================================== */
+
+    if (activeLongGoals.length > 0) {
+
+        messages.push(
+            `For your long-term goals, avoid trying to fund everything
+             at once. Allocate a fixed portion of your monthly surplus
+             and increase it when your income grows.`
+        );
+
+    }
+
+
+
+    /* =====================================
+       HIGH EXPENSE WARNING
+    ===================================== */
+
+    if (
+        totalIncome > 0 &&
+        expenses > totalIncome * 0.7
+    ) {
+
+        messages.push(
+            "Your estimated monthly expenses are above 70% of your income.
+             Before aggressively increasing goal contributions, work on
+             reducing unnecessary spending."
+        );
+
+    }
+
+
+
+    /* =====================================
+       EMPTY FALLBACK
+    ===================================== */
+
+    if (messages.length === 0) {
+
+        messages.push(
+            "Your financial profile has been analysed.
+             Continue tracking expenses and saving consistently
+             towards your goals."
+        );
+
+    }
+
+
+
+    const aiBox =
+        document.getElementById("goalAI");
+
+
+    aiBox.innerHTML = `
+
+        <div class="ai-recommendations">
+
+            ${messages.map(function (message, index) {
+
+                return `
+
+                    <div class="ai-recommendation">
+
+                        <span class="recommendation-number">
+                            ${index + 1}
+                        </span>
+
+                        <p>
+                            ${message}
+                        </p>
+
+                    </div>
+
+                `;
+
+            }).join("")}
+
+        </div>
+
+    `;
 
 }
 
 
+
+/* =====================================
+   FORMAT CURRENCY
+===================================== */
+
+function formatCurrency(amount) {
+
+    return "₹" +
+        Number(amount || 0).toLocaleString("en-IN");
+
+}
+
+
+
+/* =====================================
+   BASIC HTML SAFETY
+===================================== */
+
+function escapeHTML(value) {
+
+    return String(value || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
 
 </script>
-
 
 
 </body>
