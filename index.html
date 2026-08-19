@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 
-<title>FinSight AI - Financial Intelligence Platform</title>
+    <meta charset="UTF-8">
 
-<link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FinSight AI - Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
@@ -13,396 +17,614 @@
 <body>
 
 
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
 <header>
 
-<h1>💰 FinSight AI</h1>
+    <h1>💰 FinSight AI</h1>
 
-<p>Your Personal Financial Intelligence Platform</p>
+    <p id="welcomeMessage">
+        Your Personal Financial Intelligence Platform
+    </p>
 
-<nav>
-Home |
-AI Dashboard |
-Expenses |
-Analytics
-</nav>
+    <nav>
+
+        <button onclick="window.location.href='index.html'">
+            🏠 Dashboard
+        </button>
+
+        <button onclick="window.location.href='expense-tracking.html'">
+            💳 Expenses
+        </button>
+
+        <button onclick="window.location.href='analytics.html'">
+            📊 Analytics
+        </button>
+
+        <button onclick="window.location.href='goals.html'">
+            🎯 Goals
+        </button>
+
+        <button onclick="window.location.href='ai.insights.html'">
+            🤖 AI Advisor
+        </button>
+
+    </nav>
 
 </header>
 
 
 
+<!-- =====================================================
+     PROFILE STATUS
+===================================================== -->
+
+<section id="profileSection">
+
+    <div class="card">
+
+        <div>
+
+            <h2 id="dashboardTitle">
+                Welcome to FinSight AI 👋
+            </h2>
+
+            <p id="profileStatus">
+                Create your financial profile to get started.
+            </p>
+
+        </div>
 
 
-<section class="hero">
+        <button
+            id="profileButton"
+            onclick="openProfile()"
+        >
+            🚀 Create Financial Profile
+        </button>
 
-
-<h1>
-Manage Your Money Smarter With AI 🤖
-</h1>
-
-
-<p>
-Track expenses, understand spending habits,
-and make smarter financial decisions.
-</p>
-
-
-
-<div class="hero-points">
-
-<p>✅ Track your daily expenses easily</p>
-
-<p>✅ Plan your monthly budget</p>
-
-<p>✅ Get AI-powered financial insights</p>
-
-</div>
-
-
-
-<button id="profileButton" onclick="openProfile()">
-
-🚀 Create My Financial Profile
-
-</button>
-
+    </div>
 
 </section>
 
 
 
-
-
-
+<!-- =====================================================
+     FINANCIAL OVERVIEW
+===================================================== -->
 
 <section>
 
-
-<h2>💰 Financial Overview</h2>
-
-
-<div class="dashboard">
+    <h2>💰 Financial Overview</h2>
 
 
-<div class="card">
-<h3>💵 Monthly Salary</h3>
-<h2 id="homeSalary">₹0</h2>
-<p>Current Income</p>
-</div>
+    <div class="dashboard">
 
 
+        <!-- INCOME -->
 
-<div class="card">
-<h3>💸 Spent Till Now</h3>
-<h2>₹0</h2>
-<p>Total Expenses</p>
-</div>
+        <div class="card">
 
+            <h3>💵 Monthly Income</h3>
 
+            <h2 id="dashboardIncome">
+                ₹0
+            </h2>
 
-<div class="card">
-<h3>🏦 Savings</h3>
-<h2 id="homeSavings">₹0</h2>
-<p>Available Savings</p>
-</div>
+            <p>
+                Salary + Other Income
+            </p>
+
+        </div>
 
 
 
-<div class="card">
-<h3>❤️ Financial Health</h3>
-<h2>85/100</h2>
-<p>Good Condition</p>
-</div>
+        <!-- EXPENSE -->
+
+        <div class="card">
+
+            <h3>💸 Monthly Expenses</h3>
+
+            <h2 id="dashboardExpense">
+                ₹0
+            </h2>
+
+            <p>
+                Planned monthly expenses
+            </p>
+
+        </div>
 
 
 
-<div class="card">
-<h3>🎯 Safe Spending Limit</h3>
-<h2>₹20,000</h2>
-<p>Recommended</p>
-</div>
+        <!-- SAVINGS -->
+
+        <div class="card">
+
+            <h3>🏦 Available Savings</h3>
+
+            <h2 id="dashboardSavings">
+                ₹0
+            </h2>
+
+            <p>
+                Current savings
+            </p>
+
+        </div>
 
 
-</div>
 
+        <!-- REMAINING -->
+
+        <div class="card">
+
+            <h3>💰 Monthly Balance</h3>
+
+            <h2 id="dashboardBalance">
+                ₹0
+            </h2>
+
+            <p>
+                Income after expenses
+            </p>
+
+        </div>
+
+
+
+        <!-- HEALTH -->
+
+        <div class="card">
+
+            <h3>❤️ Financial Health</h3>
+
+            <h2 id="dashboardHealth">
+                --/100
+            </h2>
+
+            <p id="dashboardHealthText">
+                Complete your profile
+            </p>
+
+        </div>
+
+
+
+        <!-- SAFE LIMIT -->
+
+        <div class="card">
+
+            <h3>🎯 Safe Spending Limit</h3>
+
+            <h2 id="safeSpending">
+                ₹0
+            </h2>
+
+            <p>
+                Recommended monthly limit
+            </p>
+
+        </div>
+
+
+    </div>
 
 </section>
 
 
 
-
-
-
+<!-- =====================================================
+     MONTHLY FINANCIAL BREAKDOWN
+===================================================== -->
 
 <section>
 
-
-<h2>💼 Monthly Budget Planner</h2>
-
-
-<div class="card">
+    <h2>📋 Your Monthly Financial Plan</h2>
 
 
-<input id="salary"
-type="number"
-placeholder="Monthly Salary">
+    <div class="dashboard">
 
 
+        <div class="card">
 
-<input id="rent"
-type="number"
-placeholder="House Rent">
+            <h3>🏠 Rent</h3>
 
+            <h2 id="rentAmount">
+                ₹0
+            </h2>
 
-
-<input id="food"
-type="number"
-placeholder="Food Budget">
-
+        </div>
 
 
-<input id="travel"
-type="number"
-placeholder="Travel Expense">
+        <div class="card">
+
+            <h3>💳 EMI / Loans</h3>
+
+            <h2 id="emiAmount">
+                ₹0
+            </h2>
+
+        </div>
 
 
+        <div class="card">
 
-<input id="emi"
-type="number"
-placeholder="EMI / Loans">
+            <h3>💡 Bills</h3>
 
+            <h2 id="billsAmount">
+                ₹0
+            </h2>
 
-
-<input id="other"
-type="number"
-placeholder="Other Commitments">
-
+        </div>
 
 
-<button onclick="calculateBudget()">
+        <div class="card">
 
-Calculate Budget 🚀
+            <h3>🍱 Food</h3>
 
-</button>
+            <h2 id="foodAmount">
+                ₹0
+            </h2>
 
-
-</div>
-
-
-
-<div class="dashboard">
+        </div>
 
 
-<div class="card">
-<h3>📌 Total Commitments</h3>
-<h2 id="commitments">₹0</h2>
-</div>
+        <div class="card">
+
+            <h3>🚗 Travel</h3>
+
+            <h2 id="travelAmount">
+                ₹0
+            </h2>
+
+        </div>
 
 
+        <div class="card">
 
-<div class="card">
-<h3>💰 Remaining Money</h3>
-<h2 id="remaining">₹0</h2>
-</div>
+            <h3>🛍️ Shopping</h3>
 
+            <h2 id="shoppingAmount">
+                ₹0
+            </h2>
 
-
-<div class="card">
-<h3>🏦 Suggested Savings</h3>
-<h2 id="savingPlan">₹0</h2>
-</div>
+        </div>
 
 
-</div>
-
+    </div>
 
 </section>
 
 
 
-
-
-
+<!-- =====================================================
+     SAVINGS PLAN
+===================================================== -->
 
 <section>
 
-
-<h2>➕ Add New Expense</h2>
-
-
-<div class="card">
+    <h2>🏦 Savings Plan</h2>
 
 
-<input id="expenseName"
-type="text"
-placeholder="Expense Name">
+    <div class="dashboard">
 
 
+        <div class="card">
 
-<input id="expenseAmount"
-type="number"
-placeholder="Amount">
+            <h3>Current Savings</h3>
 
+            <h2 id="currentSavings">
+                ₹0
+            </h2>
 
-
-<select id="expenseCategory">
-
-<option>Food</option>
-<option>Travel</option>
-<option>Shopping</option>
-<option>Education</option>
-<option>Other</option>
-
-</select>
+        </div>
 
 
+        <div class="card">
 
-<button onclick="addExpense()">
+            <h3>Monthly Saving Target</h3>
 
-Add Expense 🚀
+            <h2 id="savingTarget">
+                ₹0
+            </h2>
 
-</button>
+        </div>
 
 
-</div>
+        <div class="card">
 
+            <h3>Suggested Monthly Saving</h3>
+
+            <h2 id="suggestedSaving">
+                ₹0
+            </h2>
+
+        </div>
+
+
+    </div>
 
 </section>
 
 
 
-
-
-
+<!-- =====================================================
+     GOALS PREVIEW
+===================================================== -->
 
 <section>
 
-
-<h2>📋 Recent Expenses</h2>
-
-
-<div class="card">
+    <h2>🎯 Financial Goals</h2>
 
 
-<table id="expenseTable">
+    <div class="dashboard" id="dashboardGoals">
 
-<tr>
+        <div class="card">
 
-<th>S.No</th>
-<th>Name</th>
-<th>Amount</th>
-<th>Category</th>
+            <h3>No goals yet</h3>
 
-</tr>
+            <p>
+                Create your financial profile to add your goals.
+            </p>
+
+        </div>
+
+    </div>
 
 
-</table>
+    <button onclick="window.location.href='goals.html'">
 
+        🎯 View All Goals
 
-</div>
-
+    </button>
 
 </section>
 
 
 
-
-
-
+<!-- =====================================================
+     RECENT EXPENSES
+===================================================== -->
 
 <section>
 
-
-<h2>🤖 AI Financial Coach</h2>
-
-
-<div class="card">
+    <h2>💳 Recent Expenses</h2>
 
 
-<p>
-🟢 Your savings habit is improving.
-</p>
+    <div class="card">
+
+        <table id="expenseTable">
+
+            <tr>
+
+                <th>S.No</th>
+
+                <th>Name</th>
+
+                <th>Amount</th>
+
+                <th>Category</th>
+
+                <th>Date</th>
+
+            </tr>
+
+        </table>
 
 
-<p>
-🟡 Shopping expenses need monitoring.
-</p>
+        <button
+            onclick="window.location.href='expense-tracking.html'"
+        >
 
+            💳 Manage Expenses
 
-<p>
-💡 Maintain your budget to increase savings.
-</p>
+        </button>
 
-
-</div>
-
+    </div>
 
 </section>
 
 
 
+<!-- =====================================================
+     AI FINANCIAL COACH
+===================================================== -->
+
+<section>
+
+    <h2>🤖 AI Financial Coach</h2>
+
+
+    <div class="card">
+
+        <h3>
+            Your Personalized Recommendation
+        </h3>
+
+
+        <p id="dashboardAIAdvice">
+
+            Complete your financial profile to receive
+            personalized AI recommendations.
+
+        </p>
+
+
+        <button
+            onclick="window.location.href='ai.insights.html'"
+        >
+
+            🧠 View Full AI Analysis
+
+        </button>
+
+    </div>
+
+</section>
 
 
 
+<!-- =====================================================
+     QUICK ACTIONS
+===================================================== -->
+
+<section>
+
+    <h2>⚡ Quick Actions</h2>
+
+
+    <div class="dashboard">
+
+
+        <div
+            class="card feature-card"
+            onclick="openProfile()"
+        >
+
+            <h3>✏️ Edit Profile</h3>
+
+            <p>
+                Update your income, expenses and goals.
+            </p>
+
+        </div>
+
+
+        <div
+            class="card feature-card"
+            onclick="window.location.href='expense-tracking.html'"
+        >
+
+            <h3>➕ Add Expense</h3>
+
+            <p>
+                Record a new transaction.
+            </p>
+
+        </div>
+
+
+        <div
+            class="card feature-card"
+            onclick="window.location.href='analytics.html'"
+        >
+
+            <h3>📊 View Analytics</h3>
+
+            <p>
+                Understand your spending behaviour.
+            </p>
+
+        </div>
+
+
+        <div
+            class="card feature-card"
+            onclick="window.location.href='goals.html'"
+        >
+
+            <h3>🎯 Track Goals</h3>
+
+            <p>
+                Monitor your financial goals.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
 <footer>
 
-<p>
-© 2026 FinSight AI | Building smarter financial habits
-</p>
+    <p>
+        © 2026 FinSight AI
+    </p>
+
+    <p>
+        Building smarter financial habits with AI 🤖
+    </p>
 
 </footer>
 
 
 
+<!-- =====================================================
+     AI CHAT BUTTON
+===================================================== -->
 
+<div
+    class="ai-button"
+    onclick="openAIChat()"
+>
 
-
-
-<!-- AI CHAT (will redesign next) -->
-
-<div class="ai-button" onclick="openAIChat()">
-
-🤖
-
-</div>
-
-
-
-<div class="ai-chat-box" id="aiChatBox">
-
-
-<h3>🤖 FinSight AI Assistant</h3>
-
-
-<div id="chatMessages">
-
-<p>🤖 Hi! I can help you with your budget.</p>
+    🤖
 
 </div>
 
 
 
-<input id="aiInput"
-type="text"
-placeholder="Ask about your money...">
+<!-- =====================================================
+     AI CHAT BOX
+===================================================== -->
+
+<div
+    class="ai-chat-box"
+    id="aiChatBox"
+>
 
 
+    <h3>
+        🤖 FinSight AI Assistant
+    </h3>
 
-<button onclick="sendMessage()">
 
-Send
+    <div id="chatMessages">
 
-</button>
+        <p>
+            🤖 Hi! I'm your FinSight AI Assistant.
+        </p>
+
+        <p>
+            Ask me about your salary, expenses,
+            savings, goals or budgeting.
+        </p>
+
+    </div>
+
+
+    <input
+        id="aiInput"
+        type="text"
+        placeholder="Ask about your money..."
+        onkeydown="if(event.key==='Enter') sendMessage()"
+    >
+
+
+    <button onclick="sendMessage()">
+
+        Send
+
+    </button>
 
 
 </div>
 
 
 
-
-
-
-
+<!-- =====================================================
+     SCRIPT
+===================================================== -->
 
 <script src="script.js"></script>
 
@@ -410,58 +632,582 @@ Send
 <script>
 
 
+/* =====================================================
+   LOAD DASHBOARD
+===================================================== */
+
+function loadDashboard(){
+
+    let profile = getProfile();
+
+
+    if(!profile){
+
+        document.getElementById("dashboardTitle").innerHTML =
+            "Welcome to FinSight AI 👋";
+
+        document.getElementById("profileStatus").innerHTML =
+            "Create your financial profile to unlock your personalized dashboard.";
+
+        document.getElementById("profileButton").innerHTML =
+            "🚀 Create Financial Profile";
+
+        return;
+
+    }
+
+
+
+    /* PROFILE */
+
+    document.getElementById("dashboardTitle").innerHTML =
+        "Welcome, " + profile.name + " 👋";
+
+
+    document.getElementById("profileStatus").innerHTML =
+        "Your personalized financial dashboard is ready.";
+
+
+    document.getElementById("profileButton").innerHTML =
+        "✏️ Edit Financial Profile";
+
+
+
+    /* =================================================
+       INCOME
+    ================================================= */
+
+    let salary = Number(profile.salary) || 0;
+
+    let otherIncome =
+        Number(profile.otherIncome) || 0;
+
+    let totalIncome =
+        salary + otherIncome;
+
+
+
+    /* =================================================
+       EXPENSES
+    ================================================= */
+
+    let rent =
+        Number(profile.rent) || 0;
+
+    let emi =
+        Number(profile.emi) || 0;
+
+    let bills =
+        Number(profile.bills) || 0;
+
+    let food =
+        Number(profile.food) || 0;
+
+    let travel =
+        Number(profile.travel) || 0;
+
+    let shopping =
+        Number(profile.shopping) || 0;
+
+    let otherExpense =
+        Number(profile.otherExpense) || 0;
+
+
+    let totalExpense =
+        rent +
+        emi +
+        bills +
+        food +
+        travel +
+        shopping +
+        otherExpense;
+
+
+
+    /* =================================================
+       BALANCE
+    ================================================= */
+
+    let balance =
+        totalIncome - totalExpense;
+
+
+
+    /* =================================================
+       CURRENT SAVINGS
+    ================================================= */
+
+    let currentSavings =
+        Number(profile.currentSavings) || 0;
+
+
+    let savingTarget =
+        Number(profile.savingTarget) || 0;
+
+
+
+    /* =================================================
+       SUGGESTED SAVING
+    ================================================= */
+
+    let suggestedSaving = 0;
+
+
+    if(balance > 0){
+
+        suggestedSaving =
+            Math.round(balance * 0.5);
+
+    }
+
+
+
+    /* =================================================
+       SAFE SPENDING
+    ================================================= */
+
+    let safeSpending =
+        Math.max(
+            0,
+            Math.round(
+                totalIncome * 0.7
+            )
+        );
+
+
+
+    /* =================================================
+       FINANCIAL HEALTH SCORE
+    ================================================= */
+
+    let score = 50;
+
+
+    if(totalIncome > 0){
+
+        let savingRate =
+            balance / totalIncome;
+
+
+        if(savingRate >= 0.30){
+
+            score = 95;
+
+        }
+
+        else if(savingRate >= 0.20){
+
+            score = 90;
+
+        }
+
+        else if(savingRate >= 0.10){
+
+            score = 80;
+
+        }
+
+        else if(savingRate > 0){
+
+            score = 70;
+
+        }
+
+        else{
+
+            score = 45;
+
+        }
+
+    }
+
+
+
+    /* =================================================
+       DISPLAY MAIN DATA
+    ================================================= */
+
+    document.getElementById("dashboardIncome").innerHTML =
+        "₹" + totalIncome.toLocaleString("en-IN");
+
+
+    document.getElementById("dashboardExpense").innerHTML =
+        "₹" + totalExpense.toLocaleString("en-IN");
+
+
+    document.getElementById("dashboardSavings").innerHTML =
+        "₹" + currentSavings.toLocaleString("en-IN");
+
+
+    document.getElementById("dashboardBalance").innerHTML =
+        "₹" + balance.toLocaleString("en-IN");
+
+
+    document.getElementById("dashboardHealth").innerHTML =
+        score + "/100";
+
+
+    document.getElementById("safeSpending").innerHTML =
+        "₹" + safeSpending.toLocaleString("en-IN");
+
+
+
+    /* =================================================
+       HEALTH TEXT
+    ================================================= */
+
+    let healthText;
+
+
+    if(score >= 90){
+
+        healthText =
+            "Excellent financial position";
+
+    }
+
+    else if(score >= 80){
+
+        healthText =
+            "Good financial condition";
+
+    }
+
+    else if(score >= 70){
+
+        healthText =
+            "Needs some improvement";
+
+    }
+
+    else{
+
+        healthText =
+            "High financial pressure";
+
+    }
+
+
+    document.getElementById("dashboardHealthText").innerHTML =
+        healthText;
+
+
+
+    /* =================================================
+       BREAKDOWN
+    ================================================= */
+
+    document.getElementById("rentAmount").innerHTML =
+        "₹" + rent.toLocaleString("en-IN");
+
+
+    document.getElementById("emiAmount").innerHTML =
+        "₹" + emi.toLocaleString("en-IN");
+
+
+    document.getElementById("billsAmount").innerHTML =
+        "₹" + bills.toLocaleString("en-IN");
+
+
+    document.getElementById("foodAmount").innerHTML =
+        "₹" + food.toLocaleString("en-IN");
+
+
+    document.getElementById("travelAmount").innerHTML =
+        "₹" + travel.toLocaleString("en-IN");
+
+
+    document.getElementById("shoppingAmount").innerHTML =
+        "₹" + shopping.toLocaleString("en-IN");
+
+
+
+    /* =================================================
+       SAVINGS
+    ================================================= */
+
+    document.getElementById("currentSavings").innerHTML =
+        "₹" + currentSavings.toLocaleString("en-IN");
+
+
+    document.getElementById("savingTarget").innerHTML =
+        "₹" + savingTarget.toLocaleString("en-IN");
+
+
+    document.getElementById("suggestedSaving").innerHTML =
+        "₹" + suggestedSaving.toLocaleString("en-IN");
+
+
+
+    /* =================================================
+       AI RECOMMENDATION
+    ================================================= */
+
+    let advice = generateAIAdvice();
+
+
+    document.getElementById("dashboardAIAdvice").innerHTML =
+        advice;
+
+
+
+    /* =================================================
+       GOALS
+    ================================================= */
+
+    loadDashboardGoals();
+
+}
+
+
+
+/* =====================================================
+   OPEN PROFILE
+===================================================== */
+
 function openProfile(){
 
-let profile = localStorage.getItem("finSightProfile");
-
-
-if(profile){
-
-window.location.href="setup.html";
-
-}
-
-else{
-
-window.location.href="setup.html";
-
-}
-
+    window.location.href = "setup.html";
 
 }
 
 
 
-window.onload=function(){
+/* =====================================================
+   DASHBOARD GOALS
+===================================================== */
 
-let profile =
-JSON.parse(localStorage.getItem("finSightProfile"));
+function loadDashboardGoals(){
 
+    let profile = getProfile();
 
-let button =
-document.getElementById("profileButton");
-
-
-if(profile){
-
-button.innerHTML="✏️ Update Financial Profile";
+    let container =
+        document.getElementById("dashboardGoals");
 
 
-document.getElementById("homeSalary").innerHTML =
-"₹"+profile.salary;
+    if(!profile){
+
+        return;
+
+    }
 
 
-document.getElementById("homeSavings").innerHTML =
-"₹"+profile.currentSavings;
+    container.innerHTML = "";
 
+
+    let allGoals = [];
+
+
+    if(Array.isArray(profile.shortGoals)){
+
+        profile.shortGoals.forEach(function(goal){
+
+            if(
+                goal.goal &&
+                Number(goal.amount) > 0
+            ){
+
+                allGoals.push({
+                    type: "Short-Term",
+                    goal: goal.goal,
+                    amount: Number(goal.amount)
+                });
+
+            }
+
+        });
+
+    }
+
+
+    if(Array.isArray(profile.longGoals)){
+
+        profile.longGoals.forEach(function(goal){
+
+            if(
+                goal.goal &&
+                Number(goal.amount) > 0
+            ){
+
+                allGoals.push({
+                    type: "Long-Term",
+                    goal: goal.goal,
+                    amount: Number(goal.amount)
+                });
+
+            }
+
+        });
+
+    }
+
+
+    if(allGoals.length === 0){
+
+        container.innerHTML = `
+
+            <div class="card">
+
+                <h3>🎯 No Goals Added</h3>
+
+                <p>
+                    Add your financial goals from your profile.
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    allGoals.slice(0, 4).forEach(function(goal){
+
+        container.innerHTML += `
+
+            <div class="card">
+
+                <h3>
+                    🎯 ${goal.goal}
+                </h3>
+
+                <h2>
+                    ₹${goal.amount.toLocaleString("en-IN")}
+                </h2>
+
+                <p>
+                    ${goal.type} Goal
+                </p>
+
+            </div>
+
+        `;
+
+    });
 
 }
 
-};
+
+
+/* =====================================================
+   RECENT EXPENSES
+===================================================== */
+
+function loadDashboardExpenses(){
+
+    let table =
+        document.getElementById("expenseTable");
+
+
+    if(!table){
+
+        return;
+
+    }
+
+
+    let expenses =
+        JSON.parse(
+            localStorage.getItem("expenses")
+        ) || [];
+
+
+    table.innerHTML = `
+
+        <tr>
+
+            <th>S.No</th>
+
+            <th>Name</th>
+
+            <th>Amount</th>
+
+            <th>Category</th>
+
+            <th>Date</th>
+
+        </tr>
+
+    `;
+
+
+    if(expenses.length === 0){
+
+        let row =
+            table.insertRow();
+
+
+        let cell =
+            row.insertCell();
+
+
+        cell.colSpan = 5;
+
+
+        cell.innerHTML =
+            "No expenses recorded yet.";
+
+        return;
+
+    }
+
+
+    let recent =
+        expenses.slice(-5).reverse();
+
+
+    recent.forEach(function(expense, index){
+
+        let row =
+            table.insertRow();
+
+
+        row.insertCell(0).innerHTML =
+            index + 1;
+
+
+        row.insertCell(1).innerHTML =
+            expense.name;
+
+
+        row.insertCell(2).innerHTML =
+            "₹" +
+            Number(expense.amount)
+            .toLocaleString("en-IN");
+
+
+        row.insertCell(3).innerHTML =
+            expense.category;
+
+
+        row.insertCell(4).innerHTML =
+            expense.date || "-";
+
+    });
+
+}
+
+
+
+/* =====================================================
+   INITIALIZE
+===================================================== */
+
+window.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        loadDashboard();
+
+        loadDashboardExpenses();
+
+    }
+);
 
 
 </script>
-
 
 
 </body>
