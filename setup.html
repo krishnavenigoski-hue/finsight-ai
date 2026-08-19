@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 
-<title>FinSight AI - Setup</title>
+    <meta charset="UTF-8">
 
-<link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FinSight AI - Financial Profile</title>
+
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
@@ -15,168 +19,391 @@
 
 <header>
 
-<h1>🤖 Welcome to FinSight AI</h1>
+    <h1>🤖 FinSight AI</h1>
 
-<p>Create your personal financial profile</p>
+    <p>Create your personal financial profile</p>
 
 </header>
 
 
 
-<section>
+<main>
 
 
-<h2>👤 Personal Details</h2>
+    <!-- ==============================
+         PROFILE INTRO
+    =============================== -->
 
+    <section class="hero">
 
-<input id="userName" type="text" placeholder="Enter your name">
+        <h1>Build Your Financial Profile</h1>
 
+        <p>
+            Enter your financial information once.
+            FinSight AI will use it across your financial dashboard,
+            goals, analytics and AI recommendations.
+        </p>
 
-</section>
+    </section>
 
 
 
+    <!-- ==============================
+         PERSONAL DETAILS
+    =============================== -->
 
+    <section>
 
-<section>
+        <h2>👤 Personal Details</h2>
 
+        <p>
+            Tell us a little about yourself.
+        </p>
 
-<h2>💰 Income Details</h2>
+        <input
+            id="userName"
+            type="text"
+            placeholder="Enter your name"
+        >
 
+    </section>
 
-<input id="salary" type="number" placeholder="Enter monthly salary">
 
 
-<input id="otherIncome" type="number" placeholder="Other monthly income">
+    <!-- ==============================
+         INCOME
+    =============================== -->
 
+    <section>
 
-</section>
+        <h2>💰 Income Details</h2>
 
+        <p>
+            Enter your regular monthly income.
+        </p>
 
+        <input
+            id="salary"
+            type="number"
+            min="0"
+            placeholder="Monthly Salary"
+        >
 
+        <input
+            id="otherIncome"
+            type="number"
+            min="0"
+            placeholder="Other Monthly Income"
+        >
 
+    </section>
 
 
-<section>
 
+    <!-- ==============================
+         FIXED COMMITMENTS
+    =============================== -->
 
-<h2>🏠 Monthly Commitments</h2>
+    <section>
 
+        <h2>🏠 Monthly Commitments</h2>
 
-<input id="rent" type="number" placeholder="House Rent">
+        <p>
+            Enter your essential fixed monthly commitments.
+        </p>
 
+        <input
+            id="rent"
+            type="number"
+            min="0"
+            placeholder="House Rent"
+        >
 
-<input id="emi" type="number" placeholder="EMI / Loans">
+        <input
+            id="emi"
+            type="number"
+            min="0"
+            placeholder="EMI / Loans"
+        >
 
+        <input
+            id="bills"
+            type="number"
+            min="0"
+            placeholder="Bills & Utilities"
+        >
 
-<input id="bills" type="number" placeholder="Bills">
+    </section>
 
 
-</section>
 
+    <!-- ==============================
+         VARIABLE SPENDING
+    =============================== -->
 
+    <section>
 
+        <h2>💸 Monthly Spending</h2>
 
+        <p>
+            Give an approximate monthly amount for each category.
+        </p>
 
+        <input
+            id="food"
+            type="number"
+            min="0"
+            placeholder="Food & Groceries"
+        >
 
+        <input
+            id="travel"
+            type="number"
+            min="0"
+            placeholder="Travel & Transport"
+        >
 
-<section>
+        <input
+            id="shopping"
+            type="number"
+            min="0"
+            placeholder="Shopping"
+        >
 
+        <input
+            id="otherExpense"
+            type="number"
+            min="0"
+            placeholder="Other Expenses"
+        >
 
-<h2>💸 Monthly Spending</h2>
+    </section>
 
 
-<input id="food" type="number" placeholder="Food Budget">
 
+    <!-- ==============================
+         SHORT TERM GOALS
+    =============================== -->
 
-<input id="travel" type="number" placeholder="Travel Budget">
+    <section>
 
+        <h2>🎯 Short-Term Goals</h2>
 
-<input id="shopping" type="number" placeholder="Shopping Budget">
+        <p>
+            Goals you want to achieve in the near future.
+            You can leave unused goals empty.
+        </p>
 
 
-<input id="otherExpense" type="number" placeholder="Other Expenses">
+        <div class="card">
 
+            <h3>Goal 1</h3>
 
-</section>
+            <input
+                id="shortGoal1"
+                type="text"
+                placeholder="Example: New Phone"
+            >
 
+            <input
+                id="shortAmount1"
+                type="number"
+                min="0"
+                placeholder="Target Amount"
+            >
 
+        </div>
 
 
+        <div class="card">
 
+            <h3>Goal 2</h3>
 
+            <input
+                id="shortGoal2"
+                type="text"
+                placeholder="Example: Trip"
+            >
 
+            <input
+                id="shortAmount2"
+                type="number"
+                min="0"
+                placeholder="Target Amount"
+            >
 
-<section>
+        </div>
 
 
-<h2>🎯 Short-Term Goals</h2>
+        <div class="card">
 
-<input id="shortGoal1" type="text" placeholder="Short Goal 1">
-<input id="shortAmount1" type="number" placeholder="Target Amount">
+            <h3>Goal 3</h3>
 
-<input id="shortGoal2" type="text" placeholder="Short Goal 2">
-<input id="shortAmount2" type="number" placeholder="Target Amount">
+            <input
+                id="shortGoal3"
+                type="text"
+                placeholder="Example: Course"
+            >
 
-<input id="shortGoal3" type="text" placeholder="Short Goal 3">
-<input id="shortAmount3" type="number" placeholder="Target Amount">
+            <input
+                id="shortAmount3"
+                type="number"
+                min="0"
+                placeholder="Target Amount"
+            >
 
-</section>
+        </div>
 
+    </section>
 
 
 
+    <!-- ==============================
+         LONG TERM GOALS
+    =============================== -->
 
+    <section>
 
+        <h2>🏆 Long-Term Goals</h2>
 
-<section>
+        <p>
+            Add important long-term financial goals.
+        </p>
 
 
-<h2>🏡 Long-Term Goals</h2>
+        <div class="card">
 
-<input id="longGoal1" type="text" placeholder="Long Goal 1">
-<input id="longAmount1" type="number" placeholder="Target Amount">
+            <h3>Goal 1</h3>
 
-<input id="longGoal2" type="text" placeholder="Long Goal 2">
-<input id="longAmount2" type="number" placeholder="Target Amount">
+            <input
+                id="longGoal1"
+                type="text"
+                placeholder="Example: Higher Education"
+            >
 
-<input id="longGoal3" type="text" placeholder="Long Goal 3">
-<input id="longAmount3" type="number" placeholder="Target Amount">
-</section>
+            <input
+                id="longAmount1"
+                type="number"
+                min="0"
+                placeholder="Target Amount"
+            >
 
+        </div>
 
 
+        <div class="card">
 
+            <h3>Goal 2</h3>
 
+            <input
+                id="longGoal2"
+                type="text"
+                placeholder="Example: Car"
+            >
 
+            <input
+                id="longAmount2"
+                type="number"
+                min="0"
+                placeholder="Target Amount"
+            >
 
-<section>
+        </div>
 
 
-<h2>🏦 Savings</h2>
+        <div class="card">
 
+            <h3>Goal 3</h3>
 
-<input id="currentSavings" type="number" placeholder="Current Savings">
+            <input
+                id="longGoal3"
+                type="text"
+                placeholder="Example: House"
+            >
 
+            <input
+                id="longAmount3"
+                type="number"
+                min="0"
+                placeholder="Target Amount"
+            >
 
-<input id="savingTarget" type="number" placeholder="Monthly Saving Target">
+        </div>
 
+    </section>
 
-</section>
 
 
+    <!-- ==============================
+         SAVINGS
+    =============================== -->
 
+    <section>
 
+        <h2>🏦 Savings</h2>
 
+        <p>
+            Enter your current savings and your desired monthly savings target.
+        </p>
 
+        <input
+            id="currentSavings"
+            type="number"
+            min="0"
+            placeholder="Current Savings"
+        >
 
-<button type="button" onclick="saveProfile()">
-🚀 Create My Financial Profile
-  </button>
+        <input
+            id="savingTarget"
+            type="number"
+            min="0"
+            placeholder="Monthly Saving Target"
+        >
 
+    </section>
 
 
 
+    <!-- ==============================
+         PROFILE ACTION
+    =============================== -->
+
+    <section class="hero">
+
+        <h2>🚀 Ready to Start?</h2>
+
+        <p>
+            Your information will be saved and used throughout FinSight AI.
+        </p>
+
+        <button
+            type="button"
+            onclick="saveProfile()"
+        >
+            🚀 Save Financial Profile
+        </button>
+
+        <button
+            type="button"
+            onclick="window.location.href='index.html'"
+        >
+            Cancel
+        </button>
+
+    </section>
+
+
+</main>
+
+
+
+<footer>
+
+    <p>
+        © 2026 FinSight AI | Building smarter financial habits
+    </p>
+
+</footer>
 
 
 
