@@ -1,13 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 
-<title>FinSight AI - Smart Analytics</title>
+    <meta charset="UTF-8">
 
-<link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>FinSight AI - Smart Analytics</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
 
@@ -15,294 +19,1354 @@
 <body>
 
 
+<!-- =========================
+     HEADER
+========================= -->
+
 <header>
 
-<h1>📊 Smart Analytics</h1>
+    <div class="header-content">
 
-<p>Understand your financial behaviour using AI data analysis</p>
+        <div class="brand">
+
+            <div class="brand-icon">
+                📊
+            </div>
+
+            <div>
+
+                <h1>Smart Analytics</h1>
+
+                <p>
+                    Understand your financial behaviour with real data
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </header>
 
 
 
+<!-- =========================
+     WELCOME
+========================= -->
 
+<section class="page-intro">
 
-<section>
+    <div class="intro-icon">
+        📈
+    </div>
 
-<h2>📈 Financial Analytics</h2>
+    <div>
 
+        <span class="eyebrow">
+            FINANCIAL ANALYTICS
+        </span>
 
-<div class="analytics-container">
+        <h2 id="analyticsWelcome">
+            Your Financial Overview
+        </h2>
 
+        <p>
+            FinSight AI analyses your income, expenses and spending
+            behaviour to help you make better financial decisions.
+        </p>
 
-<div class="chart-box">
-
-<h3>📈 Monthly Spending Trend</h3>
-
-<canvas id="monthlyChart"></canvas>
-
-</div>
-
-
-
-
-<div class="chart-box">
-
-<h3>🥧 Expense Categories</h3>
-
-<canvas id="categoryChart"></canvas>
-
-</div>
-
-
-
-
-<div class="chart-box full-chart">
-
-<h3>📊 Last Month vs This Month</h3>
-
-<canvas id="compareChart"></canvas>
-
-</div>
-
-
-</div>
-
+    </div>
 
 </section>
 
 
 
-
-
-
+<!-- =========================
+     KEY METRICS
+========================= -->
 
 <section>
 
-<h2>💡 Financial Summary</h2>
+    <div class="section-heading">
+
+        <div class="section-icon">
+            💡
+        </div>
+
+        <div>
+
+            <h2>Financial Summary</h2>
+
+            <p>
+                Important numbers calculated from your financial data.
+            </p>
+
+        </div>
+
+    </div>
 
 
-<div class="dashboard">
+    <div class="dashboard">
 
 
-<div class="card">
+        <div class="card">
 
-<h3>🏆 Best Category</h3>
+            <div class="metric-icon">
+                💰
+            </div>
 
-<p>Education</p>
+            <h3>Total Income</h3>
 
-</div>
+            <h2 id="analyticsIncome">
+                ₹0
+            </h2>
 
+            <p>
+                Monthly income
+            </p>
 
-
-
-<div class="card">
-
-<h3>💰 Savings Rate</h3>
-
-<p>64%</p>
-
-</div>
-
-
-
-
-<div class="card">
-
-<h3>💸 Monthly Expense</h3>
-
-<p>₹18,000</p>
-
-</div>
+        </div>
 
 
 
-</div>
+        <div class="card">
 
+            <div class="metric-icon">
+                💸
+            </div>
+
+            <h3>Total Expenses</h3>
+
+            <h2 id="analyticsExpense">
+                ₹0
+            </h2>
+
+            <p>
+                Planned monthly expenses
+            </p>
+
+        </div>
+
+
+
+        <div class="card">
+
+            <div class="metric-icon">
+                🏦
+            </div>
+
+            <h3>Available Savings</h3>
+
+            <h2 id="analyticsSavings">
+                ₹0
+            </h2>
+
+            <p>
+                Income remaining after expenses
+            </p>
+
+        </div>
+
+
+
+        <div class="card">
+
+            <div class="metric-icon">
+                📊
+            </div>
+
+            <h3>Savings Rate</h3>
+
+            <h2 id="analyticsSavingRate">
+                0%
+            </h2>
+
+            <p>
+                Percentage of income saved
+            </p>
+
+        </div>
+
+
+    </div>
 
 </section>
 
 
 
+<!-- =========================
+     SPENDING TREND
+========================= -->
+
+<section>
+
+    <div class="section-heading">
+
+        <div class="section-icon">
+            📈
+        </div>
+
+        <div>
+
+            <h2>Monthly Spending Trend</h2>
+
+            <p>
+                Track how your expenses change over time.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="chart-box full-chart">
+
+        <canvas id="monthlyChart"></canvas>
+
+    </div>
+
+</section>
 
 
 
-<button onclick="history.back()">
+<!-- =========================
+     CATEGORY ANALYSIS
+========================= -->
 
-⬅ Back To Dashboard
+<section>
 
-</button>
+    <div class="section-heading">
+
+        <div class="section-icon">
+            🥧
+        </div>
+
+        <div>
+
+            <h2>Expense Category Analysis</h2>
+
+            <p>
+                See where your money is going.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="analytics-container">
+
+
+        <div class="chart-box">
+
+            <h3>
+                Spending by Category
+            </h3>
+
+            <canvas id="categoryChart"></canvas>
+
+        </div>
 
 
 
+        <div class="chart-box">
+
+            <h3>
+                Planned Monthly Spending
+            </h3>
+
+            <canvas id="plannedChart"></canvas>
+
+        </div>
+
+
+    </div>
+
+</section>
 
 
 
+<!-- =========================
+     EXPENSE COMPARISON
+========================= -->
+
+<section>
+
+    <div class="section-heading">
+
+        <div class="section-icon">
+            📊
+        </div>
+
+        <div>
+
+            <h2>Planned vs Actual Expenses</h2>
+
+            <p>
+                Compare your planned spending with expenses you have actually recorded.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="chart-box full-chart">
+
+        <canvas id="compareChart"></canvas>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     AI ANALYTICS
+========================= -->
+
+<section>
+
+    <div class="section-heading">
+
+        <div class="section-icon">
+            🤖
+        </div>
+
+        <div>
+
+            <h2>AI Financial Analysis</h2>
+
+            <p>
+                Personalised observations based on your financial data.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="dashboard">
+
+
+        <div class="card">
+
+            <div class="metric-icon">
+                🏆
+            </div>
+
+            <h3>
+                Highest Spending Category
+            </h3>
+
+            <h2 id="highestCategory">
+                —
+            </h2>
+
+            <p id="highestCategoryText">
+                Analysing...
+            </p>
+
+        </div>
+
+
+
+        <div class="card">
+
+            <div class="metric-icon">
+                ⚠️
+            </div>
+
+            <h3>
+                Spending Risk
+            </h3>
+
+            <h2 id="spendingRisk">
+                —
+            </h2>
+
+            <p id="spendingRiskText">
+                Analysing...
+            </p>
+
+        </div>
+
+
+
+        <div class="card">
+
+            <div class="metric-icon">
+                💡
+            </div>
+
+            <h3>
+                AI Recommendation
+            </h3>
+
+            <p id="analyticsAIAdvice">
+                Analysing your financial data...
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     DETAILED DATA
+========================= -->
+
+<section>
+
+    <div class="section-heading">
+
+        <div class="section-icon">
+            📋
+        </div>
+
+        <div>
+
+            <h2>Category Breakdown</h2>
+
+            <p>
+                Detailed view of your planned monthly expenses.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        Category
+                    </th>
+
+                    <th>
+                        Amount
+                    </th>
+
+                    <th>
+                        % of Income
+                    </th>
+
+                    <th>
+                        Status
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="analyticsTable">
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     BACK BUTTON
+========================= -->
+
+<section class="back-section">
+
+    <button
+        class="primary-button"
+        onclick="history.back()"
+    >
+
+        ← Back To Dashboard
+
+    </button>
+
+</section>
+
+
+
+<!-- =========================
+     AI CHAT BUTTON
+========================= -->
+
+<div
+    class="ai-button"
+    onclick="openAIChat()"
+>
+
+    🤖
+
+</div>
+
+
+
+<!-- =========================
+     AI CHAT
+========================= -->
+
+<div
+    class="ai-chat-box"
+    id="aiChatBox"
+>
+
+    <h3>
+        🤖 FinSight AI Assistant
+    </h3>
+
+
+    <div id="chatMessages">
+
+        <p>
+            🤖 Hi! I can analyse your income, expenses, savings and goals.
+        </p>
+
+    </div>
+
+
+    <div class="chat-input-row">
+
+        <input
+            id="aiInput"
+            type="text"
+            placeholder="Ask about your money..."
+            onkeydown="if(event.key==='Enter') sendMessage()"
+        >
+
+
+        <button
+            onclick="sendMessage()"
+        >
+
+            Send
+
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     ANALYTICS SCRIPT
+========================= -->
 
 <script>
 
+document.addEventListener("DOMContentLoaded", function(){
 
-// Monthly Spending Trend
-
-new Chart(document.getElementById("monthlyChart"),{
-
-type:"line",
-
-data:{
-
-labels:[
-"Jan",
-"Feb",
-"Mar",
-"Apr",
-"May",
-"Jun"
-],
-
-datasets:[{
-
-label:"Spending (₹)",
-
-data:[
-12000,
-15000,
-13000,
-18000,
-16000,
-20000
-],
-
-borderWidth:2
-
-}]
-
-},
-
-options:{
-
-responsive:true,
-
-maintainAspectRatio:true
-
-}
+    loadAnalytics();
 
 });
 
 
+function loadAnalytics(){
+
+    const profile =
+        JSON.parse(localStorage.getItem("finSightProfile")) || null;
+
+
+    const expenses =
+        JSON.parse(localStorage.getItem("expenses")) || [];
+
+
+    if(!profile){
+
+        document.getElementById("analyticsWelcome").innerHTML =
+            "Please create your financial profile first.";
+
+        document.getElementById("analyticsAIAdvice").innerHTML =
+            "Complete your financial profile so FinSight AI can analyse your finances.";
+
+        return;
+
+    }
+
+
+    /* =========================
+       BASIC CALCULATIONS
+    ========================= */
+
+
+    const salary =
+        Number(profile.salary) || 0;
+
+
+    const otherIncome =
+        Number(profile.otherIncome) || 0;
+
+
+    const totalIncome =
+        salary + otherIncome;
+
+
+    const rent =
+        Number(profile.rent) || 0;
+
+
+    const emi =
+        Number(profile.emi) || 0;
+
+
+    const bills =
+        Number(profile.bills) || 0;
+
+
+    const food =
+        Number(profile.food) || 0;
+
+
+    const travel =
+        Number(profile.travel) || 0;
+
+
+    const shopping =
+        Number(profile.shopping) || 0;
+
+
+    const otherExpense =
+        Number(profile.otherExpense) || 0;
+
+
+    const totalExpense =
+        rent +
+        emi +
+        bills +
+        food +
+        travel +
+        shopping +
+        otherExpense;
+
+
+    const availableSavings =
+        totalIncome - totalExpense;
+
+
+    let savingRate = 0;
+
+
+    if(totalIncome > 0){
+
+        savingRate =
+            (availableSavings / totalIncome) * 100;
+
+    }
+
+
+    /* =========================
+       DISPLAY PROFILE DATA
+    ========================= */
+
+
+    document.getElementById("analyticsWelcome").innerHTML =
+        "Welcome "+profile.name+" 👋";
+
+
+    document.getElementById("analyticsIncome").innerHTML =
+        "₹"+formatNumber(totalIncome);
+
+
+    document.getElementById("analyticsExpense").innerHTML =
+        "₹"+formatNumber(totalExpense);
+
+
+    document.getElementById("analyticsSavings").innerHTML =
+        "₹"+formatNumber(availableSavings);
+
+
+    document.getElementById("analyticsSavingRate").innerHTML =
+        Math.max(0, savingRate).toFixed(1)+"%";
+
+
+    /* =========================
+       CATEGORY DATA
+    ========================= */
+
+
+    const categories = {
+
+        "Rent": rent,
+
+        "EMI / Loans": emi,
+
+        "Bills": bills,
+
+        "Food": food,
+
+        "Travel": travel,
+
+        "Shopping": shopping,
+
+        "Other": otherExpense
+
+    };
+
+
+    const categoryNames =
+        Object.keys(categories);
+
+
+    const categoryValues =
+        Object.values(categories);
+
+
+    /* =========================
+       HIGHEST CATEGORY
+    ========================= */
+
+
+    let highestCategory =
+        "None";
+
+
+    let highestAmount =
+        0;
+
+
+    categoryNames.forEach(function(category){
+
+        if(categories[category] > highestAmount){
+
+            highestAmount =
+                categories[category];
+
+            highestCategory =
+                category;
+
+        }
+
+    });
+
+
+    document.getElementById("highestCategory").innerHTML =
+        highestCategory;
+
+
+    document.getElementById("highestCategoryText").innerHTML =
+        highestAmount > 0
+        ?
+        "₹"+formatNumber(highestAmount)+" planned this month."
+        :
+        "No spending data available.";
 
 
 
+    /* =========================
+       SPENDING RISK
+    ========================= */
+
+
+    let risk =
+        "Low";
+
+
+    let riskText =
+        "Your planned spending is currently under control.";
+
+
+    const expensePercentage =
+        totalIncome > 0
+        ?
+        (totalExpense / totalIncome) * 100
+        :
+        0;
+
+
+    if(expensePercentage >= 90){
+
+        risk =
+            "Very High";
+
+        riskText =
+            "Your planned expenses are taking almost all of your income.";
+
+    }
+
+    else if(expensePercentage >= 75){
+
+        risk =
+            "High";
+
+        riskText =
+            "Your expenses are consuming a large portion of your income.";
+
+    }
+
+    else if(expensePercentage >= 60){
+
+        risk =
+            "Medium";
+
+        riskText =
+            "Keep monitoring your spending to protect your savings.";
+
+    }
+
+    else{
+
+        risk =
+            "Low";
+
+        riskText =
+            "Your planned spending is currently under control.";
+
+    }
+
+
+    document.getElementById("spendingRisk").innerHTML =
+        risk;
+
+
+    document.getElementById("spendingRiskText").innerHTML =
+        riskText;
 
 
 
-// Expense Category Chart
+    /* =========================
+       PERSONAL AI RECOMMENDATION
+    ========================= */
 
-new Chart(document.getElementById("categoryChart"),{
 
-type:"doughnut",
+    let recommendation =
+        "";
 
-data:{
 
-labels:[
-"Food",
-"Travel",
-"Shopping",
-"Education"
-],
+    if(totalIncome <= 0){
 
-datasets:[{
+        recommendation =
+            "💡 Add your monthly income so FinSight AI can calculate a personalised financial plan.";
 
-data:[
-5000,
-3000,
-6000,
-4000
-]
+    }
 
-}]
+    else if(availableSavings < 0){
 
-},
+        recommendation =
+            "⚠️ Your planned expenses are higher than your income by ₹"+
+            formatNumber(Math.abs(availableSavings))+
+            ". Start by reducing non-essential spending, especially "+highestCategory+".";
 
-options:{
+    }
 
-responsive:true,
+    else if(savingRate < 10){
 
-maintainAspectRatio:true
+        recommendation =
+            "⚠️ Your current planned savings rate is only "+
+            savingRate.toFixed(1)+
+            "%. Try reducing unnecessary spending and work towards building a stronger monthly savings buffer.";
+
+    }
+
+    else if(savingRate < 20){
+
+        recommendation =
+            "💡 You are saving about "+
+            savingRate.toFixed(1)+
+            "% of your income. A good next step is to gradually increase your savings while keeping essential expenses stable.";
+
+    }
+
+    else if(savingRate >= 30){
+
+        recommendation =
+            "🟢 Excellent! You are currently keeping around "+
+            savingRate.toFixed(1)+
+            "% of your income available after planned expenses. Continue this habit and allocate part of it towards your financial goals.";
+
+    }
+
+    else{
+
+        recommendation =
+            "🟢 Your finances show a positive savings position. Keep monitoring "+
+            highestCategory+
+            " and maintain consistent savings towards your goals.";
+
+    }
+
+
+    document.getElementById("analyticsAIAdvice").innerHTML =
+        recommendation;
+
+
+
+    /* =========================
+       ANALYTICS TABLE
+    ========================= */
+
+
+    const table =
+        document.getElementById("analyticsTable");
+
+
+    table.innerHTML = "";
+
+
+    categoryNames.forEach(function(category){
+
+        const amount =
+            categories[category];
+
+
+        let percentage =
+            totalIncome > 0
+            ?
+            (amount / totalIncome) * 100
+            :
+            0;
+
+
+        let status =
+            "Healthy";
+
+
+        if(percentage >= 20){
+
+            status =
+                "Watch";
+
+        }
+
+
+        if(percentage >= 30){
+
+            status =
+                "High";
+
+        }
+
+
+        table.innerHTML += `
+
+            <tr>
+
+                <td>
+                    ${category}
+                </td>
+
+                <td>
+                    ₹${formatNumber(amount)}
+                </td>
+
+                <td>
+                    ${percentage.toFixed(1)}%
+                </td>
+
+                <td>
+                    ${status}
+                </td>
+
+            </tr>
+
+        `;
+
+    });
+
+
+
+    /* =========================
+       CHARTS
+    ========================= */
+
+
+    createCategoryChart(
+        categoryNames,
+        categoryValues
+    );
+
+
+    createPlannedChart(
+        categoryNames,
+        categoryValues
+    );
+
+
+    createMonthlyChart(
+        totalExpense
+    );
+
+
+    createComparisonChart(
+        categories,
+        expenses
+    );
 
 }
 
-});
 
 
+/* =========================
+   FORMAT NUMBER
+========================= */
 
 
+function formatNumber(number){
 
-
-
-
-
-// Comparison Chart
-
-new Chart(document.getElementById("compareChart"),{
-
-type:"bar",
-
-data:{
-
-labels:[
-"Food",
-"Travel",
-"Shopping",
-"Education"
-],
-
-datasets:[
-
-{
-
-label:"Last Month",
-
-data:[
-4000,
-2500,
-3000,
-2500
-]
-
-},
-
-
-{
-
-label:"This Month",
-
-data:[
-5000,
-3000,
-6000,
-4000
-]
+    return Number(number || 0)
+        .toLocaleString("en-IN");
 
 }
 
-]
 
-},
 
-options:{
+/* =========================
+   CATEGORY CHART
+========================= */
 
-responsive:true,
 
-maintainAspectRatio:true
+function createCategoryChart(
+    labels,
+    values
+){
+
+    const canvas =
+        document.getElementById("categoryChart");
+
+
+    new Chart(canvas,{
+
+        type:"doughnut",
+
+        data:{
+
+            labels:labels,
+
+            datasets:[{
+
+                data:values,
+
+                borderWidth:0
+
+            }]
+
+        },
+
+        options:{
+
+            responsive:true,
+
+            maintainAspectRatio:true,
+
+            plugins:{
+
+                legend:{
+
+                    position:"bottom"
+
+                }
+
+            }
+
+        }
+
+    });
 
 }
 
-});
 
 
+/* =========================
+   PLANNED SPENDING CHART
+========================= */
+
+
+function createPlannedChart(
+    labels,
+    values
+){
+
+    const canvas =
+        document.getElementById("plannedChart");
+
+
+    new Chart(canvas,{
+
+        type:"bar",
+
+        data:{
+
+            labels:labels,
+
+            datasets:[{
+
+                label:"Planned Amount (₹)",
+
+                data:values,
+
+                borderWidth:1
+
+            }]
+
+        },
+
+        options:{
+
+            responsive:true,
+
+            maintainAspectRatio:true,
+
+            scales:{
+
+                y:{
+
+                    beginAtZero:true
+
+                }
+
+            }
+
+        }
+
+    });
+
+}
+
+
+
+/* =========================
+   MONTHLY CHART
+========================= */
+
+
+function createMonthlyChart(
+    totalExpense
+){
+
+    const canvas =
+        document.getElementById("monthlyChart");
+
+
+    /*
+       We currently have one month's
+       actual profile data.
+
+       Therefore we show the current
+       planned monthly expense instead
+       of inventing previous months.
+    */
+
+
+    new Chart(canvas,{
+
+        type:"line",
+
+        data:{
+
+            labels:["Current Month"],
+
+            datasets:[{
+
+                label:"Monthly Planned Expenses (₹)",
+
+                data:[totalExpense],
+
+                borderWidth:3,
+
+                tension:0.3,
+
+                fill:false
+
+            }]
+
+        },
+
+        options:{
+
+            responsive:true,
+
+            maintainAspectRatio:true,
+
+            scales:{
+
+                y:{
+
+                    beginAtZero:true
+
+                }
+
+            }
+
+        }
+
+    });
+
+}
+
+
+
+/* =========================
+   PLANNED VS ACTUAL
+========================= */
+
+
+function createComparisonChart(
+    categories,
+    expenses
+){
+
+    const actual = {
+
+        Food:0,
+
+        Travel:0,
+
+        Shopping:0,
+
+        Education:0,
+
+        Other:0
+
+    };
+
+
+    expenses.forEach(function(expense){
+
+        const category =
+            expense.category || "Other";
+
+
+        if(actual[category] !== undefined){
+
+            actual[category] +=
+                Number(expense.amount) || 0;
+
+        }
+
+        else{
+
+            actual.Other +=
+                Number(expense.amount) || 0;
+
+        }
+
+    });
+
+
+    const planned = {
+
+        Food:categories["Food"] || 0,
+
+        Travel:categories["Travel"] || 0,
+
+        Shopping:categories["Shopping"] || 0,
+
+        Education:0,
+
+        Other:categories["Other"] || 0
+
+    };
+
+
+    const labels = [
+        "Food",
+        "Travel",
+        "Shopping",
+        "Education",
+        "Other"
+    ];
+
+
+    const plannedValues =
+        labels.map(function(label){
+
+            return planned[label];
+
+        });
+
+
+    const actualValues =
+        labels.map(function(label){
+
+            return actual[label];
+
+        });
+
+
+    const canvas =
+        document.getElementById("compareChart");
+
+
+    new Chart(canvas,{
+
+        type:"bar",
+
+        data:{
+
+            labels:labels,
+
+            datasets:[
+
+                {
+
+                    label:"Planned",
+
+                    data:plannedValues,
+
+                    borderWidth:1
+
+                },
+
+                {
+
+                    label:"Actual",
+
+                    data:actualValues,
+
+                    borderWidth:1
+
+                }
+
+            ]
+
+        },
+
+        options:{
+
+            responsive:true,
+
+            maintainAspectRatio:true,
+
+            scales:{
+
+                y:{
+
+                    beginAtZero:true
+
+                }
+
+            }
+
+        }
+
+    });
+
+}
 
 </script>
 
+
+
+<!-- =========================
+     MAIN SCRIPT
+========================= -->
+
+<script src="script.js"></script>
 
 
 </body>
