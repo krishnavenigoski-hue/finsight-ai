@@ -4,10 +4,9 @@
 <head>
 
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>FinSight AI - Financial Profile</title>
+    <title>FinSight AI | Financial Profile</title>
 
     <link rel="stylesheet" href="style.css">
 
@@ -17,240 +16,515 @@
 <body>
 
 
+<!-- ==============================
+     HEADER
+================================ -->
+
 <header>
 
-    <h1>🤖 FinSight AI</h1>
+    <div class="header-content">
 
-    <p>Create your personal financial profile</p>
+        <div class="brand">
+
+            <div class="brand-icon">
+                💰
+            </div>
+
+            <div>
+
+                <h1>FinSight AI</h1>
+
+                <p>Personal Financial Intelligence</p>
+
+            </div>
+
+        </div>
+
+        <div class="header-badge">
+            🔒 Your data stays on this device
+        </div>
+
+    </div>
 
 </header>
 
 
 
-<main>
+<!-- ==============================
+     PAGE INTRO
+================================ -->
 
+<section class="page-intro">
 
-    <!-- ==============================
-         PROFILE INTRO
-    =============================== -->
+    <div>
 
-    <section class="hero">
+        <span class="eyebrow">
+            PERSONAL FINANCE SETUP
+        </span>
 
-        <h1>Build Your Financial Profile</h1>
+        <h2>
+            Build your financial profile
+        </h2>
 
         <p>
-            Enter your financial information once.
-            FinSight AI will use it across your financial dashboard,
-            goals, analytics and AI recommendations.
+            Tell FinSight AI about your income, expenses,
+            savings and goals. Your information will be used
+            throughout the platform to provide personalized
+            financial insights.
         </p>
 
-    </section>
+    </div>
+
+</section>
 
 
 
-    <!-- ==============================
+<!-- ==============================
+     PROFILE FORM
+================================ -->
+
+<main class="setup-container">
+
+
+    <!-- ==========================
          PERSONAL DETAILS
-    =============================== -->
+    =========================== -->
 
-    <section>
+    <section class="form-section">
 
-        <h2>👤 Personal Details</h2>
+        <div class="section-heading">
 
-        <p>
-            Tell us a little about yourself.
-        </p>
+            <div class="section-icon">
+                👤
+            </div>
 
-        <input
-            id="userName"
-            type="text"
-            placeholder="Enter your name"
-        >
+            <div>
+
+                <h2>Personal Details</h2>
+
+                <p>
+                    Basic information for your financial profile.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="form-grid">
+
+            <div class="input-group full-width">
+
+                <label for="userName">
+                    Your Name
+                </label>
+
+                <input
+                    id="userName"
+                    type="text"
+                    placeholder="Enter your name"
+                >
+
+            </div>
+
+        </div>
 
     </section>
 
 
 
-    <!-- ==============================
+    <!-- ==========================
          INCOME
-    =============================== -->
+    =========================== -->
 
-    <section>
+    <section class="form-section">
 
-        <h2>💰 Income Details</h2>
+        <div class="section-heading">
 
-        <p>
-            Enter your regular monthly income.
-        </p>
+            <div class="section-icon">
+                💰
+            </div>
 
-        <input
-            id="salary"
-            type="number"
-            min="0"
-            placeholder="Monthly Salary"
-        >
+            <div>
 
-        <input
-            id="otherIncome"
-            type="number"
-            min="0"
-            placeholder="Other Monthly Income"
-        >
+                <h2>Income Details</h2>
 
-    </section>
+                <p>
+                    Tell us how much money you receive every month.
+                </p>
+
+            </div>
+
+        </div>
 
 
+        <div class="form-grid">
 
-    <!-- ==============================
-         FIXED COMMITMENTS
-    =============================== -->
+            <div class="input-group">
 
-    <section>
+                <label for="salary">
+                    Monthly Salary
+                </label>
 
-        <h2>🏠 Monthly Commitments</h2>
+                <input
+                    id="salary"
+                    type="number"
+                    min="0"
+                    placeholder="₹ 0"
+                >
 
-        <p>
-            Enter your essential fixed monthly commitments.
-        </p>
+            </div>
 
-        <input
-            id="rent"
-            type="number"
-            min="0"
-            placeholder="House Rent"
-        >
 
-        <input
-            id="emi"
-            type="number"
-            min="0"
-            placeholder="EMI / Loans"
-        >
+            <div class="input-group">
 
-        <input
-            id="bills"
-            type="number"
-            min="0"
-            placeholder="Bills & Utilities"
-        >
+                <label for="otherIncome">
+                    Other Monthly Income
+                </label>
+
+                <input
+                    id="otherIncome"
+                    type="number"
+                    min="0"
+                    placeholder="₹ 0"
+                >
+
+            </div>
+
+        </div>
 
     </section>
 
 
 
-    <!-- ==============================
-         VARIABLE SPENDING
-    =============================== -->
+    <!-- ==========================
+         COMMITMENTS
+    =========================== -->
 
-    <section>
+    <section class="form-section">
 
-        <h2>💸 Monthly Spending</h2>
+        <div class="section-heading">
 
-        <p>
-            Give an approximate monthly amount for each category.
-        </p>
+            <div class="section-icon">
+                🏠
+            </div>
 
-        <input
-            id="food"
-            type="number"
-            min="0"
-            placeholder="Food & Groceries"
-        >
+            <div>
 
-        <input
-            id="travel"
-            type="number"
-            min="0"
-            placeholder="Travel & Transport"
-        >
+                <h2>Monthly Commitments</h2>
 
-        <input
-            id="shopping"
-            type="number"
-            min="0"
-            placeholder="Shopping"
-        >
+                <p>
+                    Enter your regular fixed financial commitments.
+                </p>
 
-        <input
-            id="otherExpense"
-            type="number"
-            min="0"
-            placeholder="Other Expenses"
-        >
+            </div>
+
+        </div>
+
+
+        <div class="form-grid">
+
+            <div class="input-group">
+
+                <label for="rent">
+                    House Rent
+                </label>
+
+                <input
+                    id="rent"
+                    type="number"
+                    min="0"
+                    placeholder="₹ 0"
+                >
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label for="emi">
+                    EMI / Loans
+                </label>
+
+                <input
+                    id="emi"
+                    type="number"
+                    min="0"
+                    placeholder="₹ 0"
+                >
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label for="bills">
+                    Bills & Utilities
+                </label>
+
+                <input
+                    id="bills"
+                    type="number"
+                    min="0"
+                    placeholder="₹ 0"
+                >
+
+            </div>
+
+        </div>
 
     </section>
 
 
 
-    <!-- ==============================
+    <!-- ==========================
+         SPENDING
+    =========================== -->
+
+    <section class="form-section">
+
+        <div class="section-heading">
+
+            <div class="section-icon">
+                💸
+            </div>
+
+            <div>
+
+                <h2>Monthly Spending</h2>
+
+                <p>
+                    Estimate how much you normally spend in each category.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="form-grid">
+
+            <div class="input-group">
+
+                <label for="food">
+                    Food
+                </label>
+
+                <input
+                    id="food"
+                    type="number"
+                    min="0"
+                    placeholder="₹ 0"
+                >
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label for="travel">
+                    Travel
+                </label>
+
+                <input
+                    id="travel"
+                    type="number"
+                    min="0"
+                    placeholder="₹ 0"
+                >
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label for="shopping">
+                    Shopping
+                </label>
+
+                <input
+                    id="shopping"
+                    type="number"
+                    min="0"
+                    placeholder="₹ 0"
+                >
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label for="otherExpense">
+                    Other Expenses
+                </label>
+
+                <input
+                    id="otherExpense"
+                    type="number"
+                    min="0"
+                    placeholder="₹ 0"
+                >
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==========================
          SHORT TERM GOALS
-    =============================== -->
+    =========================== -->
 
-    <section>
+    <section class="form-section">
 
-        <h2>🎯 Short-Term Goals</h2>
+        <div class="section-heading">
 
-        <p>
-            Goals you want to achieve in the near future.
-            You can leave unused goals empty.
-        </p>
+            <div class="section-icon">
+                🎯
+            </div>
 
+            <div>
 
-        <div class="card">
+                <h2>Short-Term Goals</h2>
 
-            <h3>Goal 1</h3>
+                <p>
+                    Goals you want to achieve in the near future.
+                </p>
 
-            <input
-                id="shortGoal1"
-                type="text"
-                placeholder="Example: New Phone"
-            >
-
-            <input
-                id="shortAmount1"
-                type="number"
-                min="0"
-                placeholder="Target Amount"
-            >
+            </div>
 
         </div>
 
 
-        <div class="card">
+        <div class="goal-form">
 
-            <h3>Goal 2</h3>
+            <div class="goal-number">
+                01
+            </div>
 
-            <input
-                id="shortGoal2"
-                type="text"
-                placeholder="Example: Trip"
-            >
+            <div class="goal-fields">
 
-            <input
-                id="shortAmount2"
-                type="number"
-                min="0"
-                placeholder="Target Amount"
-            >
+                <div class="input-group">
+
+                    <label for="shortGoal1">
+                        Goal
+                    </label>
+
+                    <input
+                        id="shortGoal1"
+                        type="text"
+                        placeholder="Example: Buy a phone"
+                    >
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label for="shortAmount1">
+                        Target Amount
+                    </label>
+
+                    <input
+                        id="shortAmount1"
+                        type="number"
+                        min="0"
+                        placeholder="₹ 0"
+                    >
+
+                </div>
+
+            </div>
 
         </div>
 
 
-        <div class="card">
 
-            <h3>Goal 3</h3>
+        <div class="goal-form">
 
-            <input
-                id="shortGoal3"
-                type="text"
-                placeholder="Example: Course"
-            >
+            <div class="goal-number">
+                02
+            </div>
 
-            <input
-                id="shortAmount3"
-                type="number"
-                min="0"
-                placeholder="Target Amount"
-            >
+            <div class="goal-fields">
+
+                <div class="input-group">
+
+                    <label for="shortGoal2">
+                        Goal
+                    </label>
+
+                    <input
+                        id="shortGoal2"
+                        type="text"
+                        placeholder="Example: Emergency fund"
+                    >
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label for="shortAmount2">
+                        Target Amount
+                    </label>
+
+                    <input
+                        id="shortAmount2"
+                        type="number"
+                        min="0"
+                        placeholder="₹ 0"
+                    >
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="goal-form">
+
+            <div class="goal-number">
+                03
+            </div>
+
+            <div class="goal-fields">
+
+                <div class="input-group">
+
+                    <label for="shortGoal3">
+                        Goal
+                    </label>
+
+                    <input
+                        id="shortGoal3"
+                        type="text"
+                        placeholder="Example: Vacation"
+                    >
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label for="shortAmount3">
+                        Target Amount
+                    </label>
+
+                    <input
+                        id="shortAmount3"
+                        type="number"
+                        min="0"
+                        placeholder="₹ 0"
+                    >
+
+                </div>
+
+            </div>
 
         </div>
 
@@ -258,75 +532,158 @@
 
 
 
-    <!-- ==============================
+    <!-- ==========================
          LONG TERM GOALS
-    =============================== -->
+    =========================== -->
 
-    <section>
+    <section class="form-section">
 
-        <h2>🏆 Long-Term Goals</h2>
+        <div class="section-heading">
 
-        <p>
-            Add important long-term financial goals.
-        </p>
+            <div class="section-icon">
+                🏆
+            </div>
 
+            <div>
 
-        <div class="card">
+                <h2>Long-Term Goals</h2>
 
-            <h3>Goal 1</h3>
+                <p>
+                    Bigger financial goals you want to achieve over time.
+                </p>
 
-            <input
-                id="longGoal1"
-                type="text"
-                placeholder="Example: Higher Education"
-            >
-
-            <input
-                id="longAmount1"
-                type="number"
-                min="0"
-                placeholder="Target Amount"
-            >
+            </div>
 
         </div>
 
 
-        <div class="card">
+        <div class="goal-form">
 
-            <h3>Goal 2</h3>
+            <div class="goal-number">
+                01
+            </div>
 
-            <input
-                id="longGoal2"
-                type="text"
-                placeholder="Example: Car"
-            >
+            <div class="goal-fields">
 
-            <input
-                id="longAmount2"
-                type="number"
-                min="0"
-                placeholder="Target Amount"
-            >
+                <div class="input-group">
+
+                    <label for="longGoal1">
+                        Goal
+                    </label>
+
+                    <input
+                        id="longGoal1"
+                        type="text"
+                        placeholder="Example: Buy a house"
+                    >
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label for="longAmount1">
+                        Target Amount
+                    </label>
+
+                    <input
+                        id="longAmount1"
+                        type="number"
+                        min="0"
+                        placeholder="₹ 0"
+                    >
+
+                </div>
+
+            </div>
 
         </div>
 
 
-        <div class="card">
 
-            <h3>Goal 3</h3>
+        <div class="goal-form">
 
-            <input
-                id="longGoal3"
-                type="text"
-                placeholder="Example: House"
-            >
+            <div class="goal-number">
+                02
+            </div>
 
-            <input
-                id="longAmount3"
-                type="number"
-                min="0"
-                placeholder="Target Amount"
-            >
+            <div class="goal-fields">
+
+                <div class="input-group">
+
+                    <label for="longGoal2">
+                        Goal
+                    </label>
+
+                    <input
+                        id="longGoal2"
+                        type="text"
+                        placeholder="Example: Children's education"
+                    >
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label for="longAmount2">
+                        Target Amount
+                    </label>
+
+                    <input
+                        id="longAmount2"
+                        type="number"
+                        min="0"
+                        placeholder="₹ 0"
+                    >
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="goal-form">
+
+            <div class="goal-number">
+                03
+            </div>
+
+            <div class="goal-fields">
+
+                <div class="input-group">
+
+                    <label for="longGoal3">
+                        Goal
+                    </label>
+
+                    <input
+                        id="longGoal3"
+                        type="text"
+                        placeholder="Example: Retirement fund"
+                    >
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label for="longAmount3">
+                        Target Amount
+                    </label>
+
+                    <input
+                        id="longAmount3"
+                        type="number"
+                        min="0"
+                        placeholder="₹ 0"
+                    >
+
+                </div>
+
+            </div>
 
         </div>
 
@@ -334,60 +691,98 @@
 
 
 
-    <!-- ==============================
+    <!-- ==========================
          SAVINGS
-    =============================== -->
+    =========================== -->
 
-    <section>
+    <section class="form-section">
 
-        <h2>🏦 Savings</h2>
+        <div class="section-heading">
 
-        <p>
-            Enter your current savings and your desired monthly savings target.
-        </p>
+            <div class="section-icon">
+                🏦
+            </div>
 
-        <input
-            id="currentSavings"
-            type="number"
-            min="0"
-            placeholder="Current Savings"
-        >
+            <div>
 
-        <input
-            id="savingTarget"
-            type="number"
-            min="0"
-            placeholder="Monthly Saving Target"
-        >
+                <h2>Savings</h2>
+
+                <p>
+                    Tell FinSight AI about your current savings position.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="form-grid">
+
+            <div class="input-group">
+
+                <label for="currentSavings">
+                    Current Savings
+                </label>
+
+                <input
+                    id="currentSavings"
+                    type="number"
+                    min="0"
+                    placeholder="₹ 0"
+                >
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label for="savingTarget">
+                    Monthly Saving Target
+                </label>
+
+                <input
+                    id="savingTarget"
+                    type="number"
+                    min="0"
+                    placeholder="₹ 0"
+                >
+
+            </div>
+
+        </div>
 
     </section>
 
 
 
-    <!-- ==============================
-         PROFILE ACTION
-    =============================== -->
+    <!-- ==========================
+         SAVE
+    =========================== -->
 
-    <section class="hero">
+    <section class="profile-submit">
 
-        <h2>🚀 Ready to Start?</h2>
+        <div>
 
-        <p>
-            Your information will be saved and used throughout FinSight AI.
-        </p>
+            <h2>
+                Ready to build your financial plan?
+            </h2>
+
+            <p>
+                FinSight AI will use this information across your
+                dashboard, goals, analytics and AI recommendations.
+            </p>
+
+        </div>
+
 
         <button
             type="button"
             onclick="saveProfile()"
+            class="primary-button"
         >
-            🚀 Save Financial Profile
-        </button>
 
-        <button
-            type="button"
-            onclick="window.location.href='index.html'"
-        >
-            Cancel
+            🚀 Save Financial Profile
+
         </button>
 
     </section>
@@ -397,10 +792,18 @@
 
 
 
+<!-- ==============================
+     FOOTER
+================================ -->
+
 <footer>
 
     <p>
-        © 2026 FinSight AI | Building smarter financial habits
+        © 2026 FinSight AI
+    </p>
+
+    <p>
+        Your personal financial intelligence platform
     </p>
 
 </footer>
