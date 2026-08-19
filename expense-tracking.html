@@ -1,103 +1,905 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 
-<title>Expense Tracking - FinSight AI</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="style.css">
+    <title>FinSight AI | Expense Tracking</title>
+
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
+
 <body>
+
+
+<!-- =====================================
+     HEADER
+===================================== -->
 
 <header>
 
-<h1>💳 Expense Tracking</h1>
+    <div class="header-content">
 
-<p>Manage and monitor your expenses</p>
+        <div class="brand">
+
+            <div class="brand-icon">
+                💳
+            </div>
+
+            <div>
+
+                <h1>Expense Tracking</h1>
+
+                <p>
+                    Track and understand your spending
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </header>
 
 
-<section>
 
-<h2>📊 Expense Overview</h2>
+<!-- =====================================
+     PAGE INTRO
+===================================== -->
 
-<div class="dashboard">
+<section class="page-intro">
 
-<div class="card">
+    <div class="intro-icon">
+        💳
+    </div>
 
-<h3>Total Transactions</h3>
+    <div>
 
-<h2>24</h2>
+        <span class="eyebrow">
+            EXPENSE MANAGEMENT
+        </span>
 
-</div>
+        <h2 id="expenseWelcome">
+            Track your expenses
+        </h2>
 
-<div class="card">
+        <p>
+            Every expense you record is used by FinSight AI
+            to improve your spending analysis and recommendations.
+        </p>
 
-<h3>Highest Expense</h3>
-
-<h2>₹5,000</h2>
-
-<p>Food</p>
-
-</div>
-
-<div class="card">
-
-<h3>Daily Average</h3>
-
-<h2>₹620</h2>
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
 
+
+<!-- =====================================
+     EXPENSE SUMMARY
+===================================== -->
+
 <section>
 
-<h2>📋 Recent Transactions</h2>
+    <div class="section-heading">
 
-<div class="card">
+        <div class="section-icon">
+            📊
+        </div>
 
-<table>
+        <div>
 
-<tr>
-<th>Date</th>
-<th>Name</th>
-<th>Amount</th>
-<th>Category</th>
-</tr>
+            <h2>Expense Overview</h2>
 
-<tr>
-<td>01 Jul</td>
-<td>Pizza</td>
-<td>₹500</td>
-<td>Food</td>
-</tr>
+            <p>
+                Your current expense activity.
+            </p>
 
-<tr>
-<td>02 Jul</td>
-<td>Bus Pass</td>
-<td>₹1200</td>
-<td>Travel</td>
-</tr>
+        </div>
 
-</table>
+    </div>
 
-</div>
+
+    <div class="dashboard">
+
+
+        <div class="card">
+
+            <h3>
+                Total Transactions
+            </h3>
+
+            <h2 id="totalTransactions">
+                0
+            </h2>
+
+            <p>
+                Recorded expenses
+            </p>
+
+        </div>
+
+
+
+        <div class="card">
+
+            <h3>
+                Highest Expense
+            </h3>
+
+            <h2 id="highestExpense">
+                ₹0
+            </h2>
+
+            <p id="highestExpenseName">
+                No expenses yet
+            </p>
+
+        </div>
+
+
+
+        <div class="card">
+
+            <h3>
+                Average Daily Spending
+            </h3>
+
+            <h2 id="dailyAverage">
+                ₹0
+            </h2>
+
+            <p>
+                Based on recorded expenses
+            </p>
+
+        </div>
+
+
+    </div>
 
 </section>
 
 
-<button onclick="history.back()">
 
-⬅ Back To Dashboard
+<!-- =====================================
+     ADD EXPENSE
+===================================== -->
 
-</button>
+<section>
+
+    <div class="section-heading">
+
+        <div class="section-icon">
+            ➕
+        </div>
+
+        <div>
+
+            <h2>Add New Expense</h2>
+
+            <p>
+                Record a transaction to keep your financial analysis accurate.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+
+        <div class="form-grid">
+
+
+            <div class="input-group">
+
+                <label for="expenseName">
+                    Expense Name
+                </label>
+
+                <input
+                    id="expenseName"
+                    type="text"
+                    placeholder="Example: Groceries"
+                >
+
+            </div>
+
+
+
+            <div class="input-group">
+
+                <label for="expenseAmount">
+                    Amount
+                </label>
+
+                <input
+                    id="expenseAmount"
+                    type="number"
+                    min="1"
+                    placeholder="₹ 0"
+                >
+
+            </div>
+
+
+
+            <div class="input-group">
+
+                <label for="expenseCategory">
+                    Category
+                </label>
+
+                <select id="expenseCategory">
+
+                    <option value="Food">
+                        Food
+                    </option>
+
+                    <option value="Travel">
+                        Travel
+                    </option>
+
+                    <option value="Shopping">
+                        Shopping
+                    </option>
+
+                    <option value="Education">
+                        Education
+                    </option>
+
+                    <option value="Health">
+                        Health
+                    </option>
+
+                    <option value="Bills">
+                        Bills
+                    </option>
+
+                    <option value="Other">
+                        Other
+                    </option>
+
+                </select>
+
+            </div>
+
+
+        </div>
+
+
+        <button
+            onclick="addExpense()"
+        >
+
+            ➕ Add Expense
+
+        </button>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================
+     TRANSACTION HISTORY
+===================================== -->
+
+<section>
+
+    <div class="section-heading">
+
+        <div class="section-icon">
+            📋
+        </div>
+
+        <div>
+
+            <h2>Transaction History</h2>
+
+            <p>
+                Your recorded expenses are shown below.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+
+        <div class="table-wrapper">
+
+            <table id="expenseTable">
+
+                <tr>
+
+                    <th>
+                        S.No
+                    </th>
+
+                    <th>
+                        Date
+                    </th>
+
+                    <th>
+                        Name
+                    </th>
+
+                    <th>
+                        Amount
+                    </th>
+
+                    <th>
+                        Category
+                    </th>
+
+                    <th>
+                        Action
+                    </th>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================
+     AI EXPENSE INSIGHT
+===================================== -->
+
+<section>
+
+    <div class="section-heading">
+
+        <div class="section-icon">
+            🤖
+        </div>
+
+        <div>
+
+            <h2>AI Spending Insight</h2>
+
+            <p>
+                Personalized observations based on your expenses.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="ai-insight-card">
+
+
+        <div class="ai-insight-header">
+
+            <span class="ai-avatar">
+                🤖
+            </span>
+
+            <div>
+
+                <h3>
+                    FinSight AI
+                </h3>
+
+                <p>
+                    Analysing your spending behaviour
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div id="expenseAIAdvice">
+
+            Add expenses to receive personalized spending insights.
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================
+     NAVIGATION
+===================================== -->
+
+<section class="page-actions">
+
+    <button
+        class="secondary-button"
+        onclick="window.location.href='index.html'"
+    >
+
+        ← Back To Dashboard
+
+    </button>
+
+
+    <button
+        onclick="window.location.href='analytics.html'"
+    >
+
+        📊 View Analytics
+
+    </button>
+
+</section>
+
+
+
+<!-- =====================================
+     AI CHAT BUTTON
+===================================== -->
+
+<div
+    class="ai-button"
+    onclick="openAIChat()"
+>
+
+    🤖
+
+</div>
+
+
+
+<!-- =====================================
+     AI CHAT BOX
+===================================== -->
+
+<div
+    class="ai-chat-box"
+    id="aiChatBox"
+>
+
+
+    <div class="chat-header">
+
+        <div>
+
+            <h3>
+                🤖 FinSight AI
+            </h3>
+
+            <p>
+                Personal Financial Assistant
+            </p>
+
+        </div>
+
+
+        <button
+            class="chat-close"
+            onclick="openAIChat()"
+        >
+
+            ×
+
+        </button>
+
+    </div>
+
+
+    <div id="chatMessages">
+
+        <p>
+            🤖 Hi! Ask me about your expenses, savings,
+            goals or budget.
+        </p>
+
+    </div>
+
+
+    <div class="chat-input-area">
+
+        <input
+            id="aiInput"
+            type="text"
+            placeholder="Ask about your money..."
+            onkeydown="if(event.key === 'Enter') sendMessage()"
+        >
+
+
+        <button
+            onclick="sendMessage()"
+        >
+
+            Send
+
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================
+     MASTER SCRIPT
+===================================== -->
+
+<script src="script.js"></script>
+
+
+
+<!-- =====================================
+     EXPENSE PAGE LOGIC
+===================================== -->
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+
+        const profile =
+            JSON.parse(
+                localStorage.getItem(
+                    "finSightProfile"
+                )
+            );
+
+
+        const expenses =
+            JSON.parse(
+                localStorage.getItem(
+                    "expenses"
+                )
+            ) || [];
+
+
+
+        /* =====================================
+           WELCOME
+        ===================================== */
+
+        const welcome =
+            document.getElementById(
+                "expenseWelcome"
+            );
+
+
+        if (welcome && profile) {
+
+            welcome.innerHTML =
+                "Welcome " +
+                escapeHTML(profile.name) +
+                " 👋 Track your spending";
+
+        }
+
+
+
+        /* =====================================
+           BASIC SUMMARY
+        ===================================== */
+
+        const totalTransactions =
+            document.getElementById(
+                "totalTransactions"
+            );
+
+
+        if (totalTransactions) {
+
+            totalTransactions.innerHTML =
+                expenses.length;
+
+        }
+
+
+
+        /* =====================================
+           HIGHEST EXPENSE
+        ===================================== */
+
+        const highestExpense =
+            document.getElementById(
+                "highestExpense"
+            );
+
+
+        const highestExpenseName =
+            document.getElementById(
+                "highestExpenseName"
+            );
+
+
+        if (
+            expenses.length > 0 &&
+            highestExpense
+        ) {
+
+            const highest =
+                expenses.reduce(
+                    function (max, expense) {
+
+                        return Number(
+                            expense.amount
+                        ) >
+                        Number(
+                            max.amount
+                        )
+                            ? expense
+                            : max;
+
+                    }
+                );
+
+
+            highestExpense.innerHTML =
+                formatCurrency(
+                    highest.amount
+                );
+
+
+            if (highestExpenseName) {
+
+                highestExpenseName.innerHTML =
+                    escapeHTML(
+                        highest.name
+                    ) +
+                    " • " +
+                    escapeHTML(
+                        highest.category
+                    );
+
+            }
+
+        }
+
+
+
+        /* =====================================
+           AVERAGE DAILY SPENDING
+        ===================================== */
+
+        const dailyAverage =
+            document.getElementById(
+                "dailyAverage"
+            );
+
+
+        if (dailyAverage) {
+
+            const total =
+                expenses.reduce(
+                    function (
+                        sum,
+                        expense
+                    ) {
+
+                        return (
+                            sum +
+                            Number(
+                                expense.amount
+                            )
+                        );
+
+                    },
+                    0
+                );
+
+
+            const average =
+                total / 30;
+
+
+            dailyAverage.innerHTML =
+                formatCurrency(
+                    average
+                );
+
+        }
+
+
+
+        /* =====================================
+           AI EXPENSE INSIGHT
+        ===================================== */
+
+        const aiAdvice =
+            document.getElementById(
+                "expenseAIAdvice"
+            );
+
+
+        if (
+            aiAdvice &&
+            expenses.length > 0
+        ) {
+
+
+            const categories = {};
+
+
+            expenses.forEach(
+                function (expense) {
+
+                    const category =
+                        expense.category ||
+                        "Other";
+
+
+                    if (
+                        !categories[category]
+                    ) {
+
+                        categories[category] =
+                            0;
+
+                    }
+
+
+                    categories[category] +=
+                        Number(
+                            expense.amount
+                        ) || 0;
+
+                }
+            );
+
+
+            let highestCategory =
+                "Other";
+
+
+            let highestCategoryAmount =
+                0;
+
+
+            Object.keys(
+                categories
+            ).forEach(
+                function (category) {
+
+                    if (
+                        categories[category] >
+                        highestCategoryAmount
+                    ) {
+
+                        highestCategory =
+                            category;
+
+                        highestCategoryAmount =
+                            categories[category];
+
+                    }
+
+                }
+            );
+
+
+            let message =
+                "📊 Your highest recorded spending category is " +
+                escapeHTML(
+                    highestCategory
+                ) +
+                " at " +
+                formatCurrency(
+                    highestCategoryAmount
+                ) +
+                ".";
+
+
+            if (
+                profile &&
+                profile.salary > 0
+            ) {
+
+
+                const income =
+                    Number(
+                        profile.salary
+                    ) +
+                    Number(
+                        profile.otherIncome ||
+                        0
+                    );
+
+
+                const percentage =
+                    (
+                        highestCategoryAmount /
+                        income
+                    ) * 100;
+
+
+                if (
+                    percentage > 20
+                ) {
+
+                    message +=
+                        "<br><br>⚠️ This category is taking a significant share of your income. Consider setting a clear limit for it.";
+
+                }
+
+                else {
+
+                    message +=
+                        "<br><br>🟢 This category is currently at a manageable level compared with your income.";
+
+                }
+
+            }
+
+
+            aiAdvice.innerHTML =
+                message;
+
+        }
+
+    }
+);
+
+
+
+function formatCurrency(amount) {
+
+    return "₹" +
+        Number(
+            amount || 0
+        ).toLocaleString(
+            "en-IN"
+        );
+
+}
+
+
+function escapeHTML(value) {
+
+    return String(
+        value || ""
+    )
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+        .replace(
+            /</g,
+            "&lt;"
+        )
+        .replace(
+            />/g,
+            "&gt;"
+        )
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+</script>
+
+
 
 </body>
 
